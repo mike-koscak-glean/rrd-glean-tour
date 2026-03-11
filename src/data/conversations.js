@@ -1,6 +1,8 @@
 const GLEAN_IMG = "https://app.glean.com/images";
 
-const PROCORE = { letter: "P", color: "#F15A29" };
+const PROCORE_ICON = `${GLEAN_IMG}/logos/procore.svg`;
+const TEAMS_ICON = `${GLEAN_IMG}/logos/teams.svg`;
+const OKTA_FALLBACK = { letter: "O", color: "#007DC1" };
 
 export const flows = [
   /* ═══════════════════════════════════════════════════════
@@ -59,8 +61,8 @@ Would you like me to draft the ServiceNow request bundle and approval checklist 
         id: 2,
         title: "Construction Roles Access Matrix",
         subtitle: "Okta · Identity & Access",
-        iconUrl: `${GLEAN_IMG}/logos/okta.svg`,
-        iconFallback: null,
+        iconUrl: null,
+        iconFallback: OKTA_FALLBACK,
         author: "Dana Marsh",
         excerpt:
           "Field Superintendent maps to the 'Construction Field' Okta group. Provisioning this group grants M365, VPN, and Procore Safety access automatically. Procore Admin Rights require a separate Project Executive approval.",
@@ -79,7 +81,7 @@ Would you like me to draft the ServiceNow request bundle and approval checklist 
         id: 4,
         title: "Phoenix DC Onboarding Thread",
         subtitle: "Teams · Phoenix DC Project",
-        iconUrl: `${GLEAN_IMG}/logos/microsoft-teams.svg`,
+        iconUrl: TEAMS_ICON,
         iconFallback: null,
         author: "Marcus Liu",
         excerpt:
@@ -112,8 +114,8 @@ Would you like me to draft the ServiceNow request bundle and approval checklist 
           label: "Field New Hire Provisioning SOP...",
         },
         {
-          icon: `${GLEAN_IMG}/logos/okta.svg`,
-          iconFallback: null,
+          icon: null,
+          iconFallback: OKTA_FALLBACK,
           label: "Construction Roles Access Matrix...",
         },
         { icon: null, iconFallback: null, label: "+8 more" },
@@ -130,7 +132,7 @@ Would you like me to draft the ServiceNow request bundle and approval checklist 
           label: "Superintendent Day 1 Checklist...",
         },
         {
-          icon: `${GLEAN_IMG}/logos/microsoft-teams.svg`,
+          icon: TEAMS_ICON,
           iconFallback: null,
           label: "Phoenix DC Onboarding Thread...",
         },
@@ -185,8 +187,8 @@ Would you like me to draft the owner update email based on this summary?`,
         id: 1,
         title: "Project Atlas — RFI Log",
         subtitle: "Procore · Project Atlas",
-        iconUrl: null,
-        iconFallback: PROCORE,
+        iconUrl: PROCORE_ICON,
+        iconFallback: null,
         author: "Procore · Field Ops",
         excerpt:
           "RFI-0187, RFI-0188, RFI-0193 open on Level 4 mechanical deck at 9, 11, and 14 days. Limbach flagged Level 4 slab pour cannot proceed until RFI-0188 is resolved. Estimated impact: 5–8 days.",
@@ -195,8 +197,8 @@ Would you like me to draft the owner update email based on this summary?`,
         id: 2,
         title: "Project Atlas — Submittal Register",
         subtitle: "Procore · Project Atlas",
-        iconUrl: null,
-        iconFallback: PROCORE,
+        iconUrl: PROCORE_ICON,
+        iconFallback: null,
         author: "Procore · Field Ops",
         excerpt:
           "Switchgear submittal ITO-E-0041 open 47 days, 12 days past contractual cycle. Eaton resubmission date revised to March 21. Level 3 electrical room energization at risk by 18–22 days.",
@@ -205,7 +207,7 @@ Would you like me to draft the owner update email based on this summary?`,
         id: 3,
         title: "Atlas OAC Coordination Thread",
         subtitle: "Teams · Atlas Project Team",
-        iconUrl: `${GLEAN_IMG}/logos/microsoft-teams.svg`,
+        iconUrl: TEAMS_ICON,
         iconFallback: null,
         author: "Sarah Okonkwo",
         excerpt:
@@ -243,37 +245,37 @@ Would you like me to draft the owner update email based on this summary?`,
         "Project Atlas schedule risks RFI submittal field issues",
       searching: [
         {
-          icon: null,
-          iconFallback: PROCORE,
+          icon: PROCORE_ICON,
+          iconFallback: null,
           label: "Project Atlas — RFI Log...",
         },
         {
-          icon: null,
-          iconFallback: PROCORE,
+          icon: PROCORE_ICON,
+          iconFallback: null,
           label: "Project Atlas — Submittal Register...",
         },
         { icon: null, iconFallback: null, label: "+7 more" },
       ],
       reading: [
         {
-          icon: null,
-          iconFallback: PROCORE,
+          icon: PROCORE_ICON,
+          iconFallback: null,
           label: "Project Atlas — RFI Log...",
         },
         {
-          icon: null,
-          iconFallback: PROCORE,
+          icon: PROCORE_ICON,
+          iconFallback: null,
           label: "Project Atlas — Submittal Register...",
         },
         {
-          icon: `${GLEAN_IMG}/logos/microsoft-teams.svg`,
+          icon: TEAMS_ICON,
           iconFallback: null,
           label: "Atlas OAC Coordination Thread...",
         },
       ],
       synthesizing: {
-        icon: null,
-        iconFallback: PROCORE,
+        icon: PROCORE_ICON,
+        iconFallback: null,
         label: "Project Risk Summary",
         note: "Cross-referencing 4 primary sources across Procore, Teams, and Outlook to compile a complete project risk and owner update brief.",
       },
@@ -332,8 +334,8 @@ Would you like me to build an exec prep one-pager for the pursuit review meeting
         id: 2,
         title: "Similar Delivered Projects — Data Center",
         subtitle: "Procore · Portfolio",
-        iconUrl: null,
-        iconFallback: PROCORE,
+        iconUrl: PROCORE_ICON,
+        iconFallback: null,
         author: "Procore · Preconstruction",
         excerpt:
           "Phoenix DC Campus active at 180 MW. Lakeview Compute Center closed 2023. Client evaluation criteria emphasize schedule certainty; competitor cost overruns on prior campus are an explicit disqualifier in RFP scoring.",
@@ -342,7 +344,7 @@ Would you like me to build an exec prep one-pager for the pursuit review meeting
         id: 3,
         title: "Compute Pursuit War Room",
         subtitle: "Teams · Clayco Compute",
-        iconUrl: `${GLEAN_IMG}/logos/microsoft-teams.svg`,
+        iconUrl: TEAMS_ICON,
         iconFallback: null,
         author: "Derek Solano",
         excerpt:
@@ -385,8 +387,8 @@ Would you like me to build an exec prep one-pager for the pursuit review meeting
           label: "Mission Critical Pursuit Archive...",
         },
         {
-          icon: null,
-          iconFallback: PROCORE,
+          icon: PROCORE_ICON,
+          iconFallback: null,
           label: "Similar Delivered Projects — DC...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
@@ -398,8 +400,8 @@ Would you like me to build an exec prep one-pager for the pursuit review meeting
           label: "Mission Critical Pursuit Archive...",
         },
         {
-          icon: null,
-          iconFallback: PROCORE,
+          icon: PROCORE_ICON,
+          iconFallback: null,
           label: "Similar Delivered Projects — DC...",
         },
         {
@@ -476,8 +478,8 @@ Would you like me to draft the Glean pilot launch plan and 30-day success scorec
         id: 2,
         title: "Portfolio Issue Summary — Active Projects",
         subtitle: "Procore · Portfolio View",
-        iconUrl: null,
-        iconFallback: PROCORE,
+        iconUrl: PROCORE_ICON,
+        iconFallback: null,
         author: "Procore · Analytics",
         excerpt:
           "PMs average 2.3 hours/week reconstructing context from Procore, Teams, and Outlook for owner updates and risk identification. No aggregation layer exists; every PM rebuilds manually each cycle.",
@@ -486,7 +488,7 @@ Would you like me to draft the Glean pilot launch plan and 30-day success scorec
         id: 3,
         title: "AI Steering Committee Notes — Feb 2026",
         subtitle: "Teams · AI Steering Committee",
-        iconUrl: `${GLEAN_IMG}/logos/microsoft-teams.svg`,
+        iconUrl: TEAMS_ICON,
         iconFallback: null,
         author: "CIO Office",
         excerpt:
@@ -529,8 +531,8 @@ Would you like me to draft the Glean pilot launch plan and 30-day success scorec
           label: "Ticket Theme Dashboard — Q1...",
         },
         {
-          icon: null,
-          iconFallback: PROCORE,
+          icon: PROCORE_ICON,
+          iconFallback: null,
           label: "Portfolio Issue Summary — Active...",
         },
         { icon: null, iconFallback: null, label: "+7 more" },
@@ -542,12 +544,12 @@ Would you like me to draft the Glean pilot launch plan and 30-day success scorec
           label: "Ticket Theme Dashboard — Q1...",
         },
         {
-          icon: null,
-          iconFallback: PROCORE,
+          icon: PROCORE_ICON,
+          iconFallback: null,
           label: "Portfolio Issue Summary — Active...",
         },
         {
-          icon: `${GLEAN_IMG}/logos/microsoft-teams.svg`,
+          icon: TEAMS_ICON,
           iconFallback: null,
           label: "AI Steering Committee Notes...",
         },
