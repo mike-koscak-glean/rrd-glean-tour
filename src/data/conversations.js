@@ -1,3 +1,5 @@
+import csodLogo from "../csod_logo.png";
+
 const GLEAN_IMG = "https://app.glean.com/images";
 
 const CONFLUENCE_ICON = `${GLEAN_IMG}/logos/confluence3.svg`;
@@ -9,8 +11,7 @@ const TABLEAU_ICON = `${GLEAN_IMG}/logos/tableau.svg`;
 const SALESFORCE_ICON = `${GLEAN_IMG}/logos/salesforce.svg`;
 const GONG_ICON = `${GLEAN_IMG}/logos/gong.svg`;
 
-// LMS / Cornerstone not available on Glean CDN — using letter fallback
-const LMS_FALLBACK = { letter: "L", color: "#1A6EAD" };
+const LMS_ICON = csodLogo;
 
 export const flows = [
   /* ═══════════════════════════════════════════════════════
@@ -489,8 +490,8 @@ Would you like me to pull the specific one-pager and case example from the propo
         id: 2,
         title: "Commercial University — Core Curriculum",
         subtitle: "LMS · TU Commercial University",
-        iconUrl: null,
-        iconFallback: LMS_FALLBACK,
+        iconUrl: LMS_ICON,
+        iconFallback: null,
         author: "Commercial University",
         excerpt:
           "Core SC curriculum covers TU value story, product positioning for fraud/identity/credit, and OneTru AI Assist field enablement. Required framing: data advantage + governed AI. Certified messaging for regional bank segment emphasizes explainability and operational lift for analyst teams.",
@@ -542,8 +543,8 @@ Would you like me to pull the specific one-pager and case example from the propo
           label: "Fraud & Identity Messaging Framework...",
         },
         {
-          icon: null,
-          iconFallback: LMS_FALLBACK,
+          icon: LMS_ICON,
+          iconFallback: null,
           label: "Commercial University — Core Curriculum...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
@@ -555,8 +556,8 @@ Would you like me to pull the specific one-pager and case example from the propo
           label: "Fraud & Identity Messaging Framework...",
         },
         {
-          icon: null,
-          iconFallback: LMS_FALLBACK,
+          icon: LMS_ICON,
+          iconFallback: null,
           label: "Commercial University — Core Curriculum...",
         },
         {
