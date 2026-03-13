@@ -1,33 +1,38 @@
 import React, { useState } from "react";
-import claycaLogo from "../clayco_logo.png";
+import transunionLogo from "../transunion_logo.png";
 import { flows } from "../data/conversations";
 
 const GLEAN_IMG = "https://app.glean.com/images";
 
 /* ── Persona card icons (inline SVGs since feather variants aren't on Glean CDN) ── */
 const PersonaIcons = {
-  it: (
+  "ai-platform": (
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-      <line x1="8" y1="21" x2="16" y2="21" />
-      <line x1="12" y1="17" x2="12" y2="21" />
+      <rect x="5" y="5" width="14" height="14" rx="2" />
+      <rect x="9" y="9" width="6" height="6" />
+      <line x1="5" y1="12" x2="2" y2="12" />
+      <line x1="22" y1="12" x2="19" y2="12" />
+      <line x1="12" y1="5" x2="12" y2="2" />
+      <line x1="12" y1="22" x2="12" y2="19" />
     </svg>
   ),
-  project: (
+  itops: (
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-      <polyline points="9 22 9 12 15 12 15 22" />
+      <rect x="2" y="2" width="20" height="8" rx="2" />
+      <rect x="2" y="14" width="20" height="8" rx="2" />
+      <line x1="6" y1="6" x2="6.01" y2="6" />
+      <line x1="6" y1="18" x2="6.01" y2="18" />
     </svg>
   ),
-  preconstruction: (
+  security: (
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   ),
-  executive: (
+  enablement: (
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+      <path d="M6 12v5c3 3 9 3 12 0v-5" />
     </svg>
   ),
 };
@@ -53,7 +58,7 @@ export default function PersonaSelect({ onSelect }) {
     >
       {/* Spacer to vertically center on tall screens */}
       <div className="flex-1 min-h-[20px]" />
-      {/* Logos — Glean × Clayco */}
+      {/* Logos — Glean × TransUnion */}
       <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 fade-in">
         <img
           src={`${GLEAN_IMG}/glean-logo2.svg`}
@@ -63,8 +68,8 @@ export default function PersonaSelect({ onSelect }) {
         />
         <span className="text-gray-300 text-lg font-light select-none">×</span>
         <img
-          src={claycaLogo}
-          alt="Clayco"
+          src={transunionLogo}
+          alt="TransUnion"
           className="h-7 sm:h-8"
           draggable="false"
         />
@@ -72,7 +77,7 @@ export default function PersonaSelect({ onSelect }) {
 
       {/* Headline */}
       <h1 className="text-xl sm:text-2xl md:text-[28px] font-semibold text-glean-text text-center mb-2 sm:mb-3 leading-snug fade-in">
-        See what Glean could look like for Clayco
+        See what Glean could look like for TransUnion
       </h1>
 
       {/* Subheading */}
@@ -122,7 +127,7 @@ export default function PersonaSelect({ onSelect }) {
 
       {/* Footer */}
       <p className="text-[11px] text-gray-400 text-center fade-in pb-2">
-        Prepared for Clayco by the Glean team
+        Prepared for TransUnion by the Glean team
       </p>
     </div>
   );

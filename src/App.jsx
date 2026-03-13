@@ -90,7 +90,7 @@ export default function App() {
               />
               {/* Footer on homepage */}
               <p className="text-[11px] text-gray-400 text-center pb-3 flex-shrink-0">
-                Prepared for Clayco by the Glean team
+                Prepared for TransUnion by the Glean team
               </p>
             </div>
           ) : (
