@@ -20,7 +20,7 @@ export const flows = [
     id: "ai-platform",
     persona: {
       title: "AI Platform & Business Prioritization",
-      subtitle: "OneTru AI Assist leadership (Jonathan & Bharat)",
+      subtitle: "OneTru AI Assist leadership",
     },
     greeting: "Good afternoon",
     userQuery:
