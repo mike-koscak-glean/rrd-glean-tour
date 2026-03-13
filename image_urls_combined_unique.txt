@@ -3,6 +3,7 @@ https://app.glean.com/images/logos/servicenow.svg
 https://app.glean.com/images/logos/salesforce.svg
 https://app.glean.com/images/logos/tableau.svg
 https://app.glean.com/images/logos/sharepoint.svg
+https://app.glean.com/images/mimeTypes/pptx-fabric.svg
 https://app.glean.com/images/logos/outlook.svg
 https://app.glean.com/images/logos/confluence3.svg
 https://app.glean.com/images/agent-3.svg

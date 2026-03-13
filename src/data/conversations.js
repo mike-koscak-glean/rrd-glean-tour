@@ -1,16 +1,16 @@
 const GLEAN_IMG = "https://app.glean.com/images";
 
-const CONFLUENCE_ICON = `${GLEAN_IMG}/logos/confluence.svg`;
+const CONFLUENCE_ICON = `${GLEAN_IMG}/logos/confluence3.svg`;
 const SHAREPOINT_ICON = `${GLEAN_IMG}/logos/sharepoint.svg`;
-const JIRA_ICON = `${GLEAN_IMG}/logos/jira.svg`;
+const JIRA_ICON = `${GLEAN_IMG}/logos/jira3.svg`;
 const GLOBE_ICON = `${GLEAN_IMG}/feather/globe.svg`;
+const PPT_ICON = `${GLEAN_IMG}/mimeTypes/pptx-fabric.svg`;
+const TABLEAU_ICON = `${GLEAN_IMG}/logos/tableau.svg`;
+const SALESFORCE_ICON = `${GLEAN_IMG}/logos/salesforce.svg`;
+const GONG_ICON = `${GLEAN_IMG}/logos/gong.svg`;
 
-const PPT_FALLBACK = { letter: "P", color: "#D83B01" };
-const TABLEAU_FALLBACK = { letter: "T", color: "#E97627" };
-const SALESFORCE_FALLBACK = { letter: "S", color: "#00A1E0" };
-const GONG_FALLBACK = { letter: "G", color: "#9B51E0" };
+// LMS / Cornerstone not available on Glean CDN — using letter fallback
 const LMS_FALLBACK = { letter: "L", color: "#1A6EAD" };
-const GRC_FALLBACK = { letter: "G", color: "#CC0000" };
 
 export const flows = [
   /* ═══════════════════════════════════════════════════════
@@ -69,8 +69,8 @@ export const flows = [
         id: 2,
         title: "2026 AI Strategy Readout",
         subtitle: "Strategy · Executive Review",
-        iconUrl: null,
-        iconFallback: PPT_FALLBACK,
+        iconUrl: PPT_ICON,
+        iconFallback: null,
         author: "Bharat Kandanoor",
         excerpt:
           "2026 priorities: governed analytics and explainable AI outputs, structural cost savings through operational automation, and accelerated innovation via OneTru platform. All three recommended use cases map directly to these strategic pillars. Executive buy-in strongest for fraud/analytics and governance copilot.",
@@ -122,8 +122,8 @@ export const flows = [
           label: "OneTru AI Assist — Pilot Feedback...",
         },
         {
-          icon: null,
-          iconFallback: PPT_FALLBACK,
+          icon: PPT_ICON,
+          iconFallback: null,
           label: "2026 AI Strategy Readout...",
         },
         { icon: null, iconFallback: null, label: "+6 more" },
@@ -135,8 +135,8 @@ export const flows = [
           label: "OneTru AI Assist — Pilot Feedback...",
         },
         {
-          icon: null,
-          iconFallback: PPT_FALLBACK,
+          icon: PPT_ICON,
+          iconFallback: null,
           label: "2026 AI Strategy Readout...",
         },
         {
@@ -195,8 +195,8 @@ I can also help draft the analyst playbook or pull the relevant governance check
         id: 1,
         title: "Fraud Feature Performance — Q1",
         subtitle: "Tableau · Fraud Analytics",
-        iconUrl: null,
-        iconFallback: TABLEAU_FALLBACK,
+        iconUrl: TABLEAU_ICON,
+        iconFallback: null,
         author: "Fraud Analytics Team",
         excerpt:
           "Q1 feature performance shows PSI degradation on 3–4 synthetic-risk signals for near-prime auto segment. Thin-file behavioral attributes showing largest drift. Identity consistency features stable at portfolio level but degraded in affected origination cohort. Baseline comparison period: Q4 prior year.",
@@ -215,8 +215,8 @@ I can also help draft the analyst playbook or pull the relevant governance check
         id: 3,
         title: "Partner Escalations — Auto Lending",
         subtitle: "CRM · Client Delivery",
-        iconUrl: null,
-        iconFallback: SALESFORCE_FALLBACK,
+        iconUrl: SALESFORCE_ICON,
+        iconFallback: null,
         author: "Client Delivery",
         excerpt:
           "Escalation log shows elevated first-payment default concerns from 2 partner relationships in near-prime auto. Partner feedback attributes spike to recent origination channel mix shift. Recommended response: channel decomposition analysis and targeted review threshold adjustment before broad policy change.",
@@ -253,8 +253,8 @@ I can also help draft the analyst playbook or pull the relevant governance check
         "synthetic identity auto originations first payment default attribute drift explainability",
       searching: [
         {
-          icon: null,
-          iconFallback: TABLEAU_FALLBACK,
+          icon: TABLEAU_ICON,
+          iconFallback: null,
           label: "Fraud Feature Performance — Q1...",
         },
         {
@@ -266,8 +266,8 @@ I can also help draft the analyst playbook or pull the relevant governance check
       ],
       reading: [
         {
-          icon: null,
-          iconFallback: TABLEAU_FALLBACK,
+          icon: TABLEAU_ICON,
+          iconFallback: null,
           label: "Fraud Feature Performance — Q1...",
         },
         {
@@ -367,8 +367,8 @@ Clearing these three gates would also accelerate the governed analytics and enab
         id: 4,
         title: "Security Exceptions — Q4 2025",
         subtitle: "GRC · Risk & Compliance",
-        iconUrl: null,
-        iconFallback: GRC_FALLBACK,
+        iconUrl: JIRA_ICON,
+        iconFallback: null,
         author: "Risk & Compliance",
         excerpt:
           "Q4 exceptions flagged as high-severity: no centralized incident response procedure for AI-related data exposure events; prompt/answer audit logs stored outside standard data warehouse. Both must be resolved before Steering Committee can approve expansion into Salesforce or finance domains.",
@@ -499,8 +499,8 @@ Would you like me to pull the specific one-pager and case example from the propo
         id: 3,
         title: "Gong Playlist — Fraud / Credit Calls",
         subtitle: "Gong · Field Enablement",
-        iconUrl: null,
-        iconFallback: GONG_FALLBACK,
+        iconUrl: GONG_ICON,
+        iconFallback: null,
         author: "Field Enablement",
         excerpt:
           "Top-performing calls use explainability as a lead, not a qualifier. Best objection handling: 'How do we avoid tool sprawl?' — answered by positioning OneTru as consolidation, not addition. Most effective proof moments: demos of governed workflow reuse across segments.",
@@ -560,8 +560,8 @@ Would you like me to pull the specific one-pager and case example from the propo
           label: "Commercial University — Core Curriculum...",
         },
         {
-          icon: null,
-          iconFallback: GONG_FALLBACK,
+          icon: GONG_ICON,
+          iconFallback: null,
           label: "Gong Playlist — Fraud / Credit Calls...",
         },
       ],
