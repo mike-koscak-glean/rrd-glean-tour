@@ -17,8 +17,9 @@ export default function FollowUpModal({ onRestart }) {
         {/* Body */}
         <p className="text-sm text-glean-gray text-center leading-relaxed mb-6">
           In a live Glean environment, you'd get a real answer here — connected
-          to TransUnion's actual documents and tools. Let's set up 30 minutes to
-          show you the real thing.
+          to RRD's actual documents and tools across Salesforce, Google Drive,
+          and your internal sites. Let's set up 30 minutes to show you the real
+          thing.
         </p>
 
         {/* Primary CTA — only option */}

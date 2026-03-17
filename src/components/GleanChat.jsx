@@ -498,7 +498,7 @@ export default function GleanChat({ flow, onRestart }) {
 
             {/* Footer */}
             <p className="text-[11px] text-gray-400 text-center mt-2 sm:mt-3 pb-2">
-              Prepared for TransUnion by the Glean team
+              Prepared for RRD by the Glean team
             </p>
           </div>
         </div>

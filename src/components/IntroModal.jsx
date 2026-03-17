@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import transunionLogo from "../transunion_logo.png";
+import rrdLogo from "../rrd_logo.svg";
 
 const GLEAN_IMG = "https://app.glean.com/images";
 
@@ -25,15 +25,15 @@ const MaskedIcon = ({ src, size = 20, color = "#1C5BE0" }) => (
 const bullets = [
   {
     icon: `${GLEAN_IMG}/feather/search.svg`,
-    text: "Accelerate high-value use cases already on TransUnion's roadmap — from governed analytics and fraud/risk workflows to service operations and field enablement",
+    text: "Fix content overload for ~900 sellers — surface the right deck, battlecard, or proposal from Salesforce, Google Drive, and internal microsites in seconds",
   },
   {
     icon: `${GLEAN_IMG}/lightbulb-3.svg`,
-    text: "Turn siloed internal knowledge into trusted answers grounded in docs, tickets, decks, LMS content, and call recordings",
+    text: "Accelerate seller onboarding and ramp with a governed, persona-aware assistant that complements RRD's Gemini and Salesforce investments",
   },
   {
     icon: `${GLEAN_IMG}/feather/lock.svg`,
-    text: "Support AI adoption in a regulated environment with permission-aware access, citations, and auditable reasoning",
+    text: "Keep sensitive content secure with permission-aware access — every seller sees only what they're allowed to see, with full citations and auditable reasoning",
   },
 ];
 
@@ -59,10 +59,10 @@ export default function IntroModal({ onDismiss }) {
       >
         {/* Prepared for label */}
         <p className="text-xs text-glean-gray text-center mb-5 tracking-wide">
-          Prepared for TransUnion by the Glean team
+          Prepared for RRD by the Glean team
         </p>
 
-        {/* Logos — Glean × TransUnion */}
+        {/* Logos — Glean × RRD */}
         <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
           <img
             src={`${GLEAN_IMG}/glean-logo2.svg`}
@@ -72,8 +72,8 @@ export default function IntroModal({ onDismiss }) {
           />
           <span className="text-gray-300 text-lg font-light select-none">×</span>
           <img
-            src={transunionLogo}
-            alt="TransUnion"
+            src={rrdLogo}
+            alt="RR Donnelley"
             className="h-7 sm:h-8"
             draggable="false"
           />
@@ -83,7 +83,7 @@ export default function IntroModal({ onDismiss }) {
         <h1 className="text-lg sm:text-xl font-semibold text-glean-text text-center mb-6 leading-snug">
           See what Glean could look like
           <br />
-          for OneTru AI Assist
+          for RRD
         </h1>
 
         {/* Bullet points */}

@@ -2,575 +2,624 @@ import csodLogo from "../csod_logo.png";
 
 const GLEAN_IMG = "https://app.glean.com/images";
 
-const CONFLUENCE_ICON = `${GLEAN_IMG}/logos/confluence3.svg`;
-const SHAREPOINT_ICON = `${GLEAN_IMG}/logos/sharepoint.svg`;
-const JIRA_ICON = `${GLEAN_IMG}/logos/jira3.svg`;
-const GLOBE_ICON = `${GLEAN_IMG}/feather/globe.svg`;
-const PPT_ICON = `${GLEAN_IMG}/mimeTypes/pptx-fabric.svg`;
-const TABLEAU_ICON = `${GLEAN_IMG}/logos/tableau.svg`;
+const GDOCS_ICON = `https://app.glean.com/static/proxy/gdriveicons/32/type/application/vnd.google-apps.document`;
+const GSLIDES_ICON = `https://app.glean.com/static/proxy/gdriveicons/32/type/application/vnd.google-apps.presentation`;
+const GSHEETS_ICON = `https://app.glean.com/static/proxy/gdriveicons/32/type/application/vnd.google-apps.spreadsheet`;
+const GDRIVE_ICON = `${GLEAN_IMG}/logos/gdrive3.svg`;
 const SALESFORCE_ICON = `${GLEAN_IMG}/logos/salesforce.svg`;
-const GONG_ICON = `${GLEAN_IMG}/logos/gong.svg`;
+const GLOBE_ICON = `${GLEAN_IMG}/feather/globe.svg`;
 
 const LMS_ICON = csodLogo;
 
 export const flows = [
   /* ═══════════════════════════════════════════════════════
-   * FLOW 0 — AI Platform & Business Prioritization
+   * FLOW 0 — Sales Enablement Leader
    * ═══════════════════════════════════════════════════════ */
   {
-    id: "ai-platform",
+    id: "enablement-leader",
     persona: {
-      title: "AI Platform & Business Prioritization",
-      subtitle: "OneTru AI Assist leadership",
+      title: "Sales Enablement Leader",
+      subtitle: "VP, Sales Enablement",
     },
     greeting: "Good afternoon",
     userQuery:
-      "Give me a recommendation for the 3 business use cases we should prioritize next for OneTru AI Assist. Base it on current pilot learnings, business impact, governance complexity, and fit with TransUnion's 2026 priorities. For each, summarize who benefits, why it matters now, the expected outcome, and what makes it a good early win.",
+      "For our Q2 sales plays, bring together the most up-to-date enablement content for a mid-market cross-sell opportunity in financial services. Include the primary deck we want sellers to use, the right battlecard and microsite section, and any proposal templates from the acquisition library that match. Then flag anything that looks outdated or duplicative and recommend one canonical package I should promote to sellers and how to roll it out alongside Gemini.",
 
-    aiResponse: `Here are the **3 highest-priority next use cases** for OneTru AI Assist.
+    aiResponse: `Here's the governed package for your Q2 financial services cross-sell plays.
 
-**1. Governed analytics copilot for fraud and credit teams**
-- **Why this should come first:** it aligns directly with TransUnion's public push toward auditable, explainable, governed analytics and builds on the same momentum as the new Analytics Orchestrator Agent.⁴
-- **Who benefits:** fraud analysts, risk analysts, product managers, and analytics leaders.
-- **Expected outcome:** faster investigation cycles, less dependency on specialist data science support, and better reuse of internal analytic know-how.¹
-- **Why it's an early win:** high strategic value, clear executive story, and strong fit with TransUnion's public narrative around governed AI and credit intelligence.²
+**Primary deck to promote**
+Recommended deck: **"Q2 Financial Services Cross-Sell — Core Pitch"**¹
+- Latest version, updated this quarter with new case studies and proof points.¹
+- Already referenced in the Q2 Plays doc and linked from the FS microsite.¹³
+- Used in recent wins; win stories are embedded in the notes.
 
-**2. Revenue and enablement assistant for sellers and solutions consultants**
-- **Why this should come second:** internal discovery already showed strong interest from enablement teams that need better synthesis across product docs, training, proposals, and call recordings.¹
-- **Who benefits:** solutions consultants, sellers, proposal teams, and new hires.
-- **Expected outcome:** faster ramp, stronger consistency, better meeting prep, and fewer "where do I find that?" bottlenecks.
-- **Why it's an early win:** the pain is concrete, the content already exists, and the demo value is immediately obvious.¹³
+**Battlecard and microsite content**
+- Battlecard: **"Financial Services Platform vs [Top Competitors]"**²
+  - Covers pricing, differentiation, and objection handling aligned with your current plays.
+- Microsite section: **"Why RRD for Financial Services"**³
+  - Use this as the canonical source for one-liners and visuals; Gemini and Glean agents should both lean on this page for consistent messaging.³
 
-**3. Security and policy copilot for AI governance and sensitive-data expansion**
-- **Why this should come third:** sensitive data access is a gating issue for Salesforce, finance, and other higher-value domains — so governance acceleration unlocks the rest of the roadmap.³
-- **Who benefits:** security, compliance, architecture, and AI governance stakeholders.
-- **Expected outcome:** faster reviews, clearer approval paths, and more confidence expanding AI into sensitive workflows.
-- **Why it's an early win:** it supports the entire program, not just one department.³
+**Relevant proposal templates**
+Two acquisition-era templates match this play:⁴
+- *"FS Cross-Sell — Existing Print Customer"*
+- *"FS Cross-Sell — Digital + Print Bundle"*
 
-| Use Case | Primary Beneficiaries | Strategic Fit | Governance Complexity |
-|----------|----------------------|---------------|-----------------------|
-| Governed analytics copilot | Fraud / credit / risk teams | ★★★★★ | Medium | 
-| Revenue & enablement assistant | SCs / sellers / new hires | ★★★★☆ | Low |
-| Security / policy copilot | Security, compliance, architecture | ★★★★☆ | High — but unlocks everything else |
+Both include workable language, but the **Digital + Print Bundle** template aligns better with your current platform positioning.⁴
 
-**Bottom line:** this framing lets the program tell a stronger story than "here is how we onboard tools." It says: here is where OneTru AI Assist creates measurable leverage next.²³`,
+**Cleanup: what looks outdated or duplicative**
+Several older decks and battlecards cover similar ground but:
+- Reference retired product names.
+- Use pre-consolidation branding.
+
+Recommend: mark these as deprecated in Glean and remove them from microsite navigation so Gemini and Glean both steer sellers to the newer content.¹³
+
+**Canonical package & rollout plan**
+Canonical set to promote:
+1. Q2 FS Cross-Sell Core Deck¹
+2. FS Platform vs Competitors Battlecard²
+3. FS Microsite "Why RRD" section³
+4. Updated "Digital + Print Bundle" proposal template⁴
+
+Rollout suggestion:
+- Create a Glean "FS Cross-Sell Brief" agent that packages these four assets for any FS opportunity.
+- Link that agent and these assets from the Gemini gem index so sellers see a consistent story whichever assistant they start with.³
+- Spotlight the package in your next sales comms and microsite hero slot.`,
 
     sources: [
       {
         id: 1,
-        title: "OneTru AI Assist — Pilot Feedback",
-        subtitle: "Confluence · AI Platform Team",
-        iconUrl: CONFLUENCE_ICON,
+        title: "Q2 Plays — Financial Services Cross-Sell",
+        subtitle: "Google Slides · Sales Plays",
+        iconUrl: GSLIDES_ICON,
         iconFallback: null,
-        author: "Jonathan Soto",
+        author: "Sales Enablement",
         excerpt:
-          "Pilot feedback highlights two areas of strongest demand: (1) fraud and analytics teams want faster, governed synthesis across model docs and attribute catalogs; (2) enablement and field teams want a single place to pull training, proposals, and call recordings. Governance complexity rated low-to-medium for both.",
+          "Q2 sales play for financial services cross-sell. Updated this quarter with refreshed case studies, proof points, and win stories. Primary deck referenced in the Q2 Plays doc and linked from the FS microsite hub. Used by top performers in recent regional bank and insurance opportunities.",
       },
       {
         id: 2,
-        title: "2026 AI Strategy Readout",
-        subtitle: "Strategy · Executive Review",
-        iconUrl: PPT_ICON,
+        title: "Battlecard — Financial Services Platform vs Competitors",
+        subtitle: "Google Docs · Sales Enablement",
+        iconUrl: GDOCS_ICON,
         iconFallback: null,
-        author: "Bharat Kandanoor",
+        author: "Sales Content & Engagement",
         excerpt:
-          "2026 priorities: governed analytics and explainable AI outputs, structural cost savings through operational automation, and accelerated innovation via OneTru platform. All three recommended use cases map directly to these strategic pillars. Executive buy-in strongest for fraud/analytics and governance copilot.",
+          "Current competitive battlecard for the FS segment. Covers pricing comparison, platform differentiation, and objection handling for the top competitive scenarios. Aligned with Q2 plays and approved for field use. Includes guidance on print vs. digital bundling and cross-sell positioning.",
       },
       {
         id: 3,
-        title: "AI Governance Decision Matrix",
-        subtitle: "Confluence · Security / Architecture",
-        iconUrl: CONFLUENCE_ICON,
-        iconFallback: null,
-        author: "Security Architecture",
-        excerpt:
-          "Governance matrix ranks use cases by data sensitivity, regulatory exposure, and approval complexity. Fraud/analytics and enablement score lowest on governance friction. Sensitive-domain expansion (Salesforce, finance, HR) requires classification coverage and SIEM integration prerequisites to be met first.",
-      },
-      {
-        id: 4,
-        title: "TransUnion Advances AI-Driven Credit Intelligence with Google Cloud",
-        subtitle: "Public · OneTru / TruIQ",
+        title: "Go-to-market Microsite — Financial Services Hub",
+        subtitle: "Internal site · Sales Plays",
         iconUrl: GLOBE_ICON,
         iconFallback: null,
-        author: "TransUnion Newsroom",
+        author: "Microsites Team",
         excerpt:
-          "TransUnion's public launch of its AI Analytics Orchestrator Agent on Google Cloud positions OneTru as the platform for governed, explainable analytics across Credit, Marketing, Fraud, and Consumer Solutions. Governed analytics copilot directly extends this public narrative.",
-      },
-    ],
-
-    followUpQuery:
-      "Turn this into a prioritization one-pager for the executive review",
-
-    chatHistory: {
-      today: ["2026 AI Use Case Prioritization..."],
-      recent: [
-        "OneTru AI Assist — Pilot Feedback...",
-        "2026 AI Strategy Readout...",
-        "Use Case Intake — HR / Finance / Fraud...",
-        "AI Governance Decision Matrix...",
-        "Commercial Enablement Pain Points...",
-        "Analytics Orchestrator Agent — Roadmap...",
-      ],
-    },
-
-    showWork: {
-      searchQuery:
-        "oneTru AI assist use case prioritization pilot feedback governance business impact 2026",
-      searching: [
-        {
-          icon: CONFLUENCE_ICON,
-          iconFallback: null,
-          label: "OneTru AI Assist — Pilot Feedback...",
-        },
-        {
-          icon: PPT_ICON,
-          iconFallback: null,
-          label: "2026 AI Strategy Readout...",
-        },
-        { icon: null, iconFallback: null, label: "+6 more" },
-      ],
-      reading: [
-        {
-          icon: CONFLUENCE_ICON,
-          iconFallback: null,
-          label: "OneTru AI Assist — Pilot Feedback...",
-        },
-        {
-          icon: PPT_ICON,
-          iconFallback: null,
-          label: "2026 AI Strategy Readout...",
-        },
-        {
-          icon: CONFLUENCE_ICON,
-          iconFallback: null,
-          label: "AI Governance Decision Matrix...",
-        },
-      ],
-      synthesizing: {
-        icon: CONFLUENCE_ICON,
-        iconFallback: null,
-        label: "OneTru AI Prioritization Memo",
-        note: "Cross-referencing internal pilot feedback and governance materials with TransUnion's public AI priorities to recommend the next 3 business use cases.",
-      },
-    },
-  },
-
-  /* ═══════════════════════════════════════════════════════
-   * FLOW 1 — Fraud, Risk & Analytics
-   * ═══════════════════════════════════════════════════════ */
-  {
-    id: "fraud",
-    persona: {
-      title: "Fraud, Risk & Analytics",
-      subtitle: "TruIQ / fraud analytics / product strategy",
-    },
-    greeting: "Good afternoon",
-    userQuery:
-      "A lender partner is seeing rising first-payment default and possible synthetic identity risk in near-prime auto originations. Pull together the relevant model notes, attribute definitions, partner escalations, and governance guidance, then recommend the most likely drivers, the first 3 analyses we should run, and the first interventions we should test.",
-
-    aiResponse: `Here's a **focused working brief** for the near-prime auto risk spike.
-
-**1. Most likely drivers**
-- Drift in a small set of identity consistency and thin-file behavioral attributes — the pattern in Q1 feature performance data shows degradation concentrated in 3–4 synthetic-risk signals.¹²
-- A higher share of applications entering from partner/channel combinations with historically noisier applicant profiles, as flagged in partner escalations.³
-- Recent policy tuning likely improved conversion but may have widened the range of applicants entering manual review or approval bands.¹
-
-**2. First 3 analyses to run**
-
-1. **Attribute drift analysis** on the top synthetic-risk features for the last 30–60 days — compare PSI and feature stability against the Q1 baseline in the attribute catalog.¹²
-2. **Channel / partner decomposition** to isolate whether the spike is concentrated in a narrow acquisition cohort rather than a broad portfolio shift.³
-3. **Adverse-action / explainability review** to confirm any intervention can be defended clearly to internal governance and customer teams.³⁴
-
-**3. First interventions to test**
-- Tighten review thresholds for the highest-risk synthetic indicators in the affected segment, using the escalation cohort as the starting population.²
-- Add a targeted step-up identity check only for the riskiest cohort, rather than applying broad friction that degrades approval rates.³
-- Package the workflow into a reusable analyst playbook so future teams can run the same investigation faster.⁴
-
-**4. Governance guardrails**
-The Risk Committee explainability standards require any model or threshold change to be documented with a clear rationale before production deployment.³ Running this as a monitored A/B test with defined rollback criteria is the recommended path.
-
-I can also help draft the analyst playbook or pull the relevant governance checklist for threshold changes.`,
-
-    sources: [
-      {
-        id: 1,
-        title: "Fraud Feature Performance — Q1",
-        subtitle: "Tableau · Fraud Analytics",
-        iconUrl: TABLEAU_ICON,
-        iconFallback: null,
-        author: "Fraud Analytics Team",
-        excerpt:
-          "Q1 feature performance shows PSI degradation on 3–4 synthetic-risk signals for near-prime auto segment. Thin-file behavioral attributes showing largest drift. Identity consistency features stable at portfolio level but degraded in affected origination cohort. Baseline comparison period: Q4 prior year.",
-      },
-      {
-        id: 2,
-        title: "Attribute Catalog — Synthetic Risk Signals",
-        subtitle: "Confluence · Data Science",
-        iconUrl: CONFLUENCE_ICON,
-        iconFallback: null,
-        author: "Data Science",
-        excerpt:
-          "Synthetic identity signal set covers identity consistency, thin-file behavioral indicators, and application velocity patterns. Recommended PSI threshold for flagging material drift: >0.1. Attribute definitions, approved usage scope, and model version mapping documented for governance compliance.",
-      },
-      {
-        id: 3,
-        title: "Partner Escalations — Auto Lending",
-        subtitle: "CRM · Client Delivery",
-        iconUrl: SALESFORCE_ICON,
-        iconFallback: null,
-        author: "Client Delivery",
-        excerpt:
-          "Escalation log shows elevated first-payment default concerns from 2 partner relationships in near-prime auto. Partner feedback attributes spike to recent origination channel mix shift. Recommended response: channel decomposition analysis and targeted review threshold adjustment before broad policy change.",
+          "Canonical internal microsite for the financial services segment. Contains approved one-liners, visuals, and sales messaging for FS cross-sell plays. Designed to be the source of truth for both Gemini gems and Glean agents pointing sellers to FS content. Last updated this quarter.",
       },
       {
         id: 4,
-        title: "Risk Committee Notes — Explainability Standards",
-        subtitle: "SharePoint · Risk Governance",
-        iconUrl: SHAREPOINT_ICON,
+        title: "Acquisition Library — FS Cross-Sell Templates",
+        subtitle: "Google Drive · Content Library",
+        iconUrl: GDRIVE_ICON,
         iconFallback: null,
-        author: "Risk Governance",
+        author: "Content Library",
         excerpt:
-          "All model and threshold changes require documented rationale, explainability evidence, and A/B test design with rollback criteria before production deployment. Analyst playbooks should be filed in the workflow library for reuse. Adverse-action documentation must be prepared for any population-level intervention.",
+          "Proposal templates from the acquisition library. Two templates match the current FS cross-sell play: 'Existing Print Customer' and 'Digital + Print Bundle.' The Digital + Print Bundle version aligns better with current platform positioning. Both contain adaptable language but should not be used without reviewing for retired product names.",
       },
     ],
 
     followUpQuery:
-      "Draft the analyst playbook for this synthetic identity investigation",
+      "Create a Glean FS Cross-Sell Brief agent that packages these four assets",
 
     chatHistory: {
-      today: ["Near-Prime Auto Risk — Synthetic Identity Review..."],
+      today: ["Campaign launch checklist — Q2 Sales Plays"],
       recent: [
-        "Analytics Orchestrator Agent — Reusable Workflows...",
-        "Partner Escalations — Auto Originations...",
-        "Fraud Feature Performance — Q1...",
-        "Attribute Catalog — Synthetic Risk Signals...",
-        "Risk Committee Notes — Explainability...",
-        "TruIQ Product Strategy — Self-Service Analytics...",
+        "Acquisition library — Migration plan...",
+        "Microsite usage dashboard — Last 90 days...",
+        "Salesforce content performance — Battlecards...",
+        "Gemini enablement rollout — Go-to-market team...",
+        "Seller feedback — Content is hard to find...",
+        "Q2 Sales Plays — Launch Readiness...",
       ],
     },
 
     showWork: {
       searchQuery:
-        "synthetic identity auto originations first payment default attribute drift explainability",
+        "Q2 sales plays financial services cross-sell deck battlecard microsite proposal",
       searching: [
         {
-          icon: TABLEAU_ICON,
+          icon: GSLIDES_ICON,
           iconFallback: null,
-          label: "Fraud Feature Performance — Q1...",
+          label: "Q2 Plays — Financial Services Cross-Sell...",
         },
         {
-          icon: CONFLUENCE_ICON,
+          icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Attribute Catalog — Synthetic Risk Signals...",
+          label: "Battlecard — Financial Services Platform vs Competitors...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
       reading: [
         {
-          icon: TABLEAU_ICON,
+          icon: GSLIDES_ICON,
           iconFallback: null,
-          label: "Fraud Feature Performance — Q1...",
+          label: "Q2 Plays — Financial Services Cross-Sell...",
         },
         {
-          icon: CONFLUENCE_ICON,
+          icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Attribute Catalog — Synthetic Risk Signals...",
+          label: "Battlecard — Financial Services Platform vs Competitors...",
         },
         {
-          icon: SHAREPOINT_ICON,
+          icon: GLOBE_ICON,
           iconFallback: null,
-          label: "Risk Committee Notes — Explainability Standards...",
+          label: "Go-to-market Microsite — Financial Services Hub...",
         },
       ],
       synthesizing: {
-        icon: CONFLUENCE_ICON,
+        icon: GDOCS_ICON,
         iconFallback: null,
-        label: "Auto Lending Risk Analysis Brief",
-        note: "Cross-referencing model context, partner feedback, and governance standards to propose a governed next-step analysis plan.",
+        label: "Sales Plays Content Package — Financial Services Cross-Sell",
+        note: "Cross-referencing Q2 plays, microsite content, and acquisition templates to propose a single, governed sales package.",
       },
     },
   },
 
   /* ═══════════════════════════════════════════════════════
-   * FLOW 2 — Security, Risk & Compliance
+   * FLOW 1 — New Enterprise Seller
    * ═══════════════════════════════════════════════════════ */
   {
-    id: "security",
+    id: "new-seller",
     persona: {
-      title: "Security, Risk & Compliance",
-      subtitle: "Security strategy, governance, and data controls",
+      title: "New Enterprise Seller",
+      subtitle: "New hire, first 90 days",
     },
     greeting: "Good afternoon",
     userQuery:
-      "Prepare a concise briefing on what must be true before we expand OneTru AI Assist into more sensitive domains like Salesforce, finance, and broader HR data. Summarize required controls, current gaps, decision gates for approval, and 3 actions for the next AI Governance Steering Committee.",
+      "I'm an enterprise seller in week 2 of onboarding. I have my first discovery call next week with a mid-market account covering commercial print and direct mail. Help me: understand their current programs and products with us, build a discovery question set, know what internal resources I should study ahead of the call, and know how to use Gemini and Glean together to prep efficiently.",
 
-    aiResponse: `Here's the **readiness brief** for expanding OneTru AI Assist into more sensitive domains.
+    aiResponse: `Here's your pre-call brief for the upcoming commercial print and direct mail discovery call.
 
-**Required controls**
-- Confirmed classification coverage on all target repositories¹²
-- Permission-aware access mirrored from source systems — no user sees content they can't already access¹
-- Audited prompt / answer logging with agreed retention and access policy²
-- Clear approval path for any workflow touching regulated or high-sensitivity data³
-- Explainability standards for any analytics-derived outputs used in decisions⁴
+**Your account snapshot**
+Based on the account record, this is an existing print customer with an active commercial print program.³ Key context to know going in:
+- They currently use RRD for commercial print and direct mail production — the relationship predates the recent business unit consolidations.
+- No active cross-sell opportunities are currently logged in Salesforce, which makes this a strong candidate for introducing the digital + direct mail bundle.³
+- The previous seller logged one executive contact in marketing operations; worth confirming the full stakeholder map before the call.
 
-**Current gaps**
-- Uneven classification coverage on some legacy repositories slated for future ingestion¹²
-- Incomplete agreement on what "approved" AI use looks like by business function — shadow tooling is filling the vacuum¹
-- Unresolved logging / SIEM integration questions that block broader expansion sign-off³
+**Discovery question set**
+For a first call with an existing print customer, lead with understanding before pitching:¹
+- *"How is your team thinking about the balance between print and digital channels for your 2026 campaigns?"*
+- *"Where does your print and direct mail workflow tend to slow down today — is it design, production, or tracking ROI?"*
+- *"Are you currently measuring response rates across print and digital in the same place, or are those reporting siloed?"*
+- *"How are decisions about vendors and consolidation typically made — at the marketing team level or above?"*
 
-**Recommended decision gates**
+**Internal resources to study before the call**
+Priority reading:¹²
+1. **Onboarding Plan (Days 1–30)** — specifically the "Existing Customer Discovery" module in your LMS track.¹
+2. **Onboarding Microsite "Start Here" page** — the product overview for commercial print and direct mail.²
+3. **Salesforce First 30 Days Activity Template** — sets up the discovery call follow-up structure you'll complete after the meeting.³
 
-| Gate | Condition |
-|------|-----------|
-| 1 | No expansion until targeted repositories meet classification-readiness threshold |
-| 2 | No sensitive-domain rollout without agreed monitoring / logging pattern |
-| 3 | No business launch without named owner for governance, incident response, and exception handling |
+**How to use Gemini and Glean together**
+Use **Glean** to:
+- Pull the latest account context, past proposals, and any relevant internal notes across Salesforce and Drive before the call.¹³
+- Search for case studies or win stories from similar existing print customers to use as proof points.
 
-**3 actions for the next Steering Committee**
-1. **Approve a formal expansion rubric** for sensitive systems — define what "ready" means with specific, measurable criteria.²³
-2. **Finalize AI acceptable-use standards** by function, with explicit guidance distinguishing internal from external tools and approved patterns for customer-facing use.¹
-3. **Standardize logging and anomaly-detection expectations** for approved AI vendors and internal agents — then require all approved vendors (including Glean) to meet the standard before sensitive-domain access is granted.³⁴
+Use **Gemini** to:
+- Draft variations of your follow-up email and refine your talk track based on the brief.
+- Polish the discovery questions above into a format you're comfortable delivering.
 
-Clearing these three gates would also accelerate the governed analytics and enablement use cases already identified as highest priority.`,
+Together, they keep you aligned to the official content while still letting you move fast.`,
 
     sources: [
       {
         id: 1,
-        title: "AI Risk Assessment — OneTru AI Assist",
-        subtitle: "SharePoint · Security Strategy",
-        iconUrl: SHAREPOINT_ICON,
-        iconFallback: null,
-        author: "Security Strategy",
-        excerpt:
-          "Risk assessment confirms pilot access is appropriately scoped but flags: incomplete classification on legacy repositories, lack of formal AI acceptable-use policy, and shadow tooling proliferating across business teams. All three identified as high-severity prerequisites for sensitive-domain expansion.",
-      },
-      {
-        id: 2,
-        title: "Data Classification & Handling Policy v3.2",
-        subtitle: "Confluence · InfoSec",
-        iconUrl: CONFLUENCE_ICON,
-        iconFallback: null,
-        author: "InfoSec",
-        excerpt:
-          "PCI and consumer credit file content explicitly excluded from current AI pilot scope. Classification coverage gaps on legacy repositories are a blocking condition for expanding OneTru AI Assist to Salesforce, finance, and broader HR data. Coverage must reach defined threshold before expansion approval.",
-      },
-      {
-        id: 3,
-        title: "Vendor Security Review — Glean",
-        subtitle: "SharePoint · Vendor Risk",
-        iconUrl: SHAREPOINT_ICON,
-        iconFallback: null,
-        author: "Vendor Risk Management",
-        excerpt:
-          "Glean review confirmed: SOC 2 controls, encryption in transit/at rest, SSO integration, permission mirroring per source system. Open items blocking sensitive-domain expansion: SIEM log integration not yet configured, EU and India data residency mapping not finalized.",
-      },
-      {
-        id: 4,
-        title: "Security Exceptions — Q4 2025",
-        subtitle: "GRC · Risk & Compliance",
-        iconUrl: JIRA_ICON,
-        iconFallback: null,
-        author: "Risk & Compliance",
-        excerpt:
-          "Q4 exceptions flagged as high-severity: no centralized incident response procedure for AI-related data exposure events; prompt/answer audit logs stored outside standard data warehouse. Both must be resolved before Steering Committee can approve expansion into Salesforce or finance domains.",
-      },
-    ],
-
-    followUpQuery:
-      "Convert this into a 2-slide summary for the Steering Committee deck",
-
-    chatHistory: {
-      today: ["AI Expansion Controls — Sensitive Data Readiness..."],
-      recent: [
-        "AI Risk Assessment — Draft...",
-        "Data Classification Policy — Updated...",
-        "Vendor Evaluation — Glean vs Others...",
-        "PCI / Consumer Data Obligations Matrix...",
-        "Security Exceptions — Q4 Review...",
-        "Steering Committee Deck — AI & Data Governance...",
-      ],
-    },
-
-    showWork: {
-      searchQuery:
-        "AI governance sensitive data salesforce finance HR controls decision gates",
-      searching: [
-        {
-          icon: SHAREPOINT_ICON,
-          iconFallback: null,
-          label: "AI Risk Assessment — OneTru AI Assist...",
-        },
-        {
-          icon: CONFLUENCE_ICON,
-          iconFallback: null,
-          label: "Data Classification & Handling Policy v3.2...",
-        },
-        { icon: null, iconFallback: null, label: "+5 more" },
-      ],
-      reading: [
-        {
-          icon: SHAREPOINT_ICON,
-          iconFallback: null,
-          label: "AI Risk Assessment — OneTru AI Assist...",
-        },
-        {
-          icon: CONFLUENCE_ICON,
-          iconFallback: null,
-          label: "Data Classification & Handling Policy v3.2...",
-        },
-        {
-          icon: SHAREPOINT_ICON,
-          iconFallback: null,
-          label: "Vendor Security Review — Glean...",
-        },
-      ],
-      synthesizing: {
-        icon: CONFLUENCE_ICON,
-        iconFallback: null,
-        label: "Sensitive Data Expansion Brief",
-        note: "Cross-referencing security, policy, and governance materials to define what \"ready for expansion\" should mean.",
-      },
-    },
-  },
-
-  /* ═══════════════════════════════════════════════════════
-   * FLOW 3 — Revenue & Enablement
-   * ═══════════════════════════════════════════════════════ */
-  {
-    id: "enablement",
-    persona: {
-      title: "Revenue & Enablement",
-      subtitle: "Commercial University / solutions consulting / field teams",
-    },
-    greeting: "Good afternoon",
-    userQuery:
-      "I'm preparing for a meeting with a regional bank that cares about fraud prevention, identity, and credit risk. Build me a concise seller and solutions consultant call brief that pulls from approved messaging, relevant training content, past Gong calls, proposal snippets, and competitive intel. Include the best value story, 3 proof points to use, likely objections, and the best follow-up asset to send.",
-
-    aiResponse: `Here's the **call brief** for your regional bank meeting.
-
-**Best value story**
-TransUnion wins when it helps customers make better risk decisions with more confidence and less friction. Position the conversation around:
-- faster, more explainable decisions¹
-- stronger fraud and identity confidence backed by trusted data assets²
-- practical operational lift for analysts and client teams³
-
-Frame OneTru as the way TransUnion scales reusable intelligence across teams and use cases — not just a product, but a platform advantage.¹²
-
-**3 proof points to use**
-
-1. **Data + analytics + governed AI, combined** — TransUnion's strength comes from the combination of trusted data assets, deep analytics expertise, and governed AI — not any single component alone.¹
-2. **Transparency and explainability, not just speed** — regulated customers care that outputs can be defended. Lead with explainability as a feature, not a disclaimer.³
-3. **OneTru scales reusable intelligence** — frame it as the way TU consistently delivers across fraud, credit, marketing, and consumer solutions — not a one-off project.¹²
-
-**Likely objections**
-
-| Objection | Suggested response |
-|-----------|-------------------|
-| "How is this different from a generic AI tool?" | TU's advantage is the combination of proprietary data, domain analytics expertise, and governed delivery — no generic tool has that. |
-| "How do we keep outputs explainable for regulated decisions?" | Explainability is built into the delivery model — not bolted on afterward. |
-| "How do we avoid adding more tool sprawl for field teams?" | OneTru consolidates, it doesn't add. The goal is fewer tools, not more. |
-
-**Best follow-up asset to send**
-Send the most concise, approved fraud and identity value one-pager plus one proof-heavy case example that reinforces governed analytics and business outcomes. Avoid decks with more than 5 slides for a first follow-up.⁴
-
-Would you like me to pull the specific one-pager and case example from the proposal library?`,
-
-    sources: [
-      {
-        id: 1,
-        title: "Fraud & Identity Messaging Framework",
-        subtitle: "Confluence · Solutions Enablement",
-        iconUrl: CONFLUENCE_ICON,
-        iconFallback: null,
-        author: "Solutions Enablement",
-        excerpt:
-          "Approved value story for fraud/identity: lead with data + analytics + governed AI combination. Three core proof points: TU data breadth and quality, explainability-first delivery, OneTru as a scalable intelligence platform. Avoid framing as speed-only — regulated customers require defensibility.",
-      },
-      {
-        id: 2,
-        title: "Commercial University — Core Curriculum",
-        subtitle: "LMS · TU Commercial University",
+        title: "Onboarding Plan — Enterprise Sellers (Days 1–30)",
+        subtitle: "LMS · Sales Onboarding",
         iconUrl: LMS_ICON,
         iconFallback: null,
-        author: "Commercial University",
+        author: "Sales Onboarding",
         excerpt:
-          "Core SC curriculum covers TU value story, product positioning for fraud/identity/credit, and OneTru AI Assist field enablement. Required framing: data advantage + governed AI. Certified messaging for regional bank segment emphasizes explainability and operational lift for analyst teams.",
+          "Structured 30-day onboarding plan for enterprise sellers. Includes curriculum modules, on-the-job training checkpoints, and manager coaching milestones. Contains an 'Existing Customer Discovery' module with approved discovery frameworks and question banks for commercial print and direct mail accounts.",
+      },
+      {
+        id: 2,
+        title: "Onboarding Microsite — Start Here",
+        subtitle: "Internal site · New Sellers",
+        iconUrl: GLOBE_ICON,
+        iconFallback: null,
+        author: "Sales Enablement",
+        excerpt:
+          "New seller onboarding hub. Week-by-week guidance, product overviews, and links to approved training content. Product overview sections cover commercial print, direct mail, digital, and cross-sell bundle positioning. The 'Start Here' page is the primary navigation point for new hires in their first 30 days.",
       },
       {
         id: 3,
-        title: "Gong Playlist — Fraud / Credit Calls",
-        subtitle: "Gong · Field Enablement",
-        iconUrl: GONG_ICON,
+        title: "Salesforce Template — First 30 Days Activities",
+        subtitle: "CRM · Activity Template",
+        iconUrl: SALESFORCE_ICON,
         iconFallback: null,
-        author: "Field Enablement",
+        author: "Sales Operations",
         excerpt:
-          "Top-performing calls use explainability as a lead, not a qualifier. Best objection handling: 'How do we avoid tool sprawl?' — answered by positioning OneTru as consolidation, not addition. Most effective proof moments: demos of governed workflow reuse across segments.",
+          "Salesforce activity template for new sellers in their first 30 days. Pre-populated with key activity types, tasks, and follow-up cadence expected from enterprise AEs. Includes a discovery call prep checklist and a post-call structured update template tied to MEDDIC fields and opportunity stage advancement.",
       },
       {
         id: 4,
-        title: "Proposal Library — Financial Services",
-        subtitle: "SharePoint · Revenue Content",
-        iconUrl: SHAREPOINT_ICON,
+        title: "Gemini for Sellers: Beyond Email Drafting",
+        subtitle: "Training · AI Enablement",
+        iconUrl: LMS_ICON,
         iconFallback: null,
-        author: "Revenue Content",
+        author: "AI / BPO Office",
         excerpt:
-          "Approved proposal templates for banking/lending segment. Best follow-up asset: fraud/identity one-pager (2 pages, approved Q1 2026) plus one proof example from regional bank cohort. Competitive positioning vs. Experian and Equifax: lead on data governance and explainability, not price.",
+          "Training module on using Gemini as a seller productivity tool beyond basic email drafting. Covers: how to build talk tracks from official content, draft follow-up sequences tied to discovery notes, and use Gemini gems to pull the right play for a given opportunity. Required as part of the onboarding AI enablement track.",
       },
     ],
 
     followUpQuery:
-      "Pull the approved fraud and identity one-pager and best case example to send as follow-up",
+      "Pull the most relevant case study for an existing print customer in financial services",
 
     chatHistory: {
-      today: ["Regional Bank Call Brief — Fraud & Identity..."],
+      today: ["Account prep — First Discovery Call"],
       recent: [
-        "Commercial University — Core Curriculum...",
-        "Fraud & Identity Messaging Framework...",
-        "Approved Proposal Library — Financial Services...",
-        "Gong Playlist — Top Fraud / Credit Calls...",
-        "Competitive Intel — Experian & Equifax...",
-        "OneTru Enablement FAQ...",
+        "LMS progress — Days 1–30 track...",
+        "Product overview — Commercial Print & Direct Mail...",
+        "Gemini for sellers training...",
+        "SKO recordings — New hire track...",
+        "Onboarding checklist — Week 2...",
+        "Salesforce first 30 days template...",
       ],
     },
 
     showWork: {
       searchQuery:
-        "fraud identity credit risk seller brief proposal training gong competitive intel",
+        "new seller onboarding discovery call account prep product overview commercial print direct mail",
       searching: [
-        {
-          icon: CONFLUENCE_ICON,
-          iconFallback: null,
-          label: "Fraud & Identity Messaging Framework...",
-        },
         {
           icon: LMS_ICON,
           iconFallback: null,
-          label: "Commercial University — Core Curriculum...",
+          label: "Onboarding Plan — Enterprise Sellers (Days 1–30)...",
+        },
+        {
+          icon: GLOBE_ICON,
+          iconFallback: null,
+          label: "Onboarding Microsite — Start Here...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
       reading: [
         {
-          icon: CONFLUENCE_ICON,
+          icon: LMS_ICON,
           iconFallback: null,
-          label: "Fraud & Identity Messaging Framework...",
+          label: "Onboarding Plan — Enterprise Sellers (Days 1–30)...",
+        },
+        {
+          icon: GLOBE_ICON,
+          iconFallback: null,
+          label: "Onboarding Microsite — Start Here...",
+        },
+        {
+          icon: SALESFORCE_ICON,
+          iconFallback: null,
+          label: "Salesforce Template — First 30 Days Activities...",
+        },
+      ],
+      synthesizing: {
+        icon: GDOCS_ICON,
+        iconFallback: null,
+        label: "First Discovery Call Brief — Commercial Print Account",
+        note: "Pulling onboarding plan, account context, and training materials to build your pre-call brief.",
+      },
+    },
+  },
+
+  /* ═══════════════════════════════════════════════════════
+   * FLOW 2 — Sales Content & Communications Lead
+   * ═══════════════════════════════════════════════════════ */
+  {
+    id: "sales-content",
+    persona: {
+      title: "Sales Content & Communications Lead",
+      subtitle: "Manager, Sales Content & Engagement",
+    },
+    greeting: "Good afternoon",
+    userQuery:
+      "Look across our last two onboarding cohorts and our Gemini rollout. Summarize where new sellers are getting stuck in the first 60 days, which onboarding assets are actually being used, and how often they're using Gemini vs not touching it. Recommend 3 concrete changes we should make to the onboarding experience and content layout.",
+
+    aiResponse: `Here's what the data says about onboarding and what to change next.
+
+**Where new sellers are getting stuck**
+- **Content discovery:** High drop-off after the first few days on the onboarding microsite; many sellers jump straight to ad-hoc search or asking peers.²
+- **Tool behaviors:** A meaningful portion of new hires log into Salesforce and Gemini but don't consistently use the "First 30 Days" templates or tagged plays.⁴
+- **Application gap:** Sellers complete trainings but don't always connect them to real accounts and opportunities in their territory.¹
+
+**What onboarding assets are actually used**
+Strong engagement with:²
+- "Start Here" page and the first-week checklist.
+- Core product overview decks.
+
+Under-used:
+- Deeper playbooks and longform PDFs.
+- Certain acquisition-era assets that are still linked but rarely opened.²
+
+**How Gemini is being used (or not)**
+Adoption is uneven:³
+- A subset of sellers use Gemini heavily for email drafting and light content polishing.
+- Many are still at a baseline level — using it for editing emails but not tying it back to specific plays or accounts.³
+- Very few new hires are using Gemini to synthesize internal content because that content isn't consistently wired in or clearly promoted.
+
+**Three changes to make now**
+
+**1. Create a "New Seller Onboarding" Glean agent.**²
+When a seller types *"I'm in week 2 of onboarding, what should I focus on?"* the agent:
+- Looks at their accounts and opportunities in Salesforce.⁴
+- Maps to the official onboarding plan and microsite structure.¹²
+- Returns a personalized checklist and links to the exact content they should use.
+
+**2. Restructure the onboarding microsite around tasks, not file types.**²
+- Replace sections like *"Decks / PDFs / Videos"* with workflows like *"Prepare for your first discovery call,"* *"Run your first QBR,"* etc.
+- Back those workflows with a Glean-powered search box that finds the right content across systems.
+
+**3. Instrument and showcase a simple "time-to-first-sale" story.**⁴
+- Use Glean analytics and Salesforce to compare behavior patterns — content use and assistant queries — between faster-ramping sellers and the rest.
+- Turn that into a one-slide story for leadership showing how better content discovery and guided onboarding shortens ramp.`,
+
+    sources: [
+      {
+        id: 1,
+        title: "Onboarding Analytics — Cohorts Q3 & Q4",
+        subtitle: "Google Sheets · Sales Enablement",
+        iconUrl: GSHEETS_ICON,
+        iconFallback: null,
+        author: "Sales Enablement",
+        excerpt:
+          "Cohort-level analytics for the Q3 and Q4 enterprise seller onboarding groups. Tracks time-to-first-opportunity, content engagement, LMS completion rates, and manager coaching touchpoints. Q4 cohort shows 18% slower time-to-first-sale vs Q3 despite similar headcount and territory composition.",
+      },
+      {
+        id: 2,
+        title: "Microsite Usage Report — Onboarding Hub",
+        subtitle: "Internal site · Analytics",
+        iconUrl: GLOBE_ICON,
+        iconFallback: null,
+        author: "Microsites Team",
+        excerpt:
+          "'Start Here' and Week 1 checklist show strong engagement. Deeper playbooks and acquisition-era assets have low open rates — several linked pages have under 10 unique visits in 60 days. Bounce rate increases significantly after day 5 of onboarding, suggesting sellers are abandoning structured paths for ad-hoc search.",
+      },
+      {
+        id: 3,
+        title: "Gemini Usage — Go-to-Market Team",
+        subtitle: "Google Sheets · AI / BPO Office",
+        iconUrl: GSHEETS_ICON,
+        iconFallback: null,
+        author: "AI / BPO Office",
+        excerpt:
+          "Gemini usage analysis for the go-to-market team through Q1. Usage is bimodal: a small group of power users accounts for the majority of advanced use cases. New sellers are predominantly using Gemini for email editing only. Fewer than 15% of new hires have used Gemini to synthesize internal content.",
+      },
+      {
+        id: 4,
+        title: "Time to First Opportunity & First Close",
+        subtitle: "CRM · Performance Metrics",
+        iconUrl: SALESFORCE_ICON,
+        iconFallback: null,
+        author: "Sales Operations",
+        excerpt:
+          "Salesforce-based report comparing time-to-first-opportunity and time-to-first-close by seller cohort, tenure band, and territory type. Fastest-ramping sellers show higher early Salesforce activity completion and more consistent use of approved templates and plays in their first 30 days.",
+      },
+    ],
+
+    followUpQuery:
+      "Draft the brief for leadership showing how guided onboarding shortens ramp",
+
+    chatHistory: {
+      today: ["Onboarding content usage — Last cohort"],
+      recent: [
+        "Microsite analytics — Seller behavior by page...",
+        "Email campaign — Announcing Gemini rollout...",
+        "Salesforce report — Time to first opportunity...",
+        "Seller survey — 'Hard to find what I need'...",
+        "Gemini usage patterns — Go-to-market...",
+        "Onboarding Cohort Debrief — Q4...",
+      ],
+    },
+
+    showWork: {
+      searchQuery:
+        "onboarding cohort analytics microsite usage gemini usage first 60 days time to first sale survey",
+      searching: [
+        {
+          icon: GSHEETS_ICON,
+          iconFallback: null,
+          label: "Onboarding Analytics — Cohorts Q3 & Q4...",
+        },
+        {
+          icon: GLOBE_ICON,
+          iconFallback: null,
+          label: "Microsite Usage Report — Onboarding Hub...",
+        },
+        { icon: null, iconFallback: null, label: "+5 more" },
+      ],
+      reading: [
+        {
+          icon: GSHEETS_ICON,
+          iconFallback: null,
+          label: "Onboarding Analytics — Cohorts Q3 & Q4...",
+        },
+        {
+          icon: GLOBE_ICON,
+          iconFallback: null,
+          label: "Microsite Usage Report — Onboarding Hub...",
+        },
+        {
+          icon: GSHEETS_ICON,
+          iconFallback: null,
+          label: "Gemini Usage — Go-to-Market Team...",
+        },
+      ],
+      synthesizing: {
+        icon: GDOCS_ICON,
+        iconFallback: null,
+        label: "Onboarding Optimization Brief — Sales Enablement",
+        note: "Merging usage, performance, and survey data to recommend onboarding and content changes tied to behavior and time-to-first-sale.",
+      },
+    },
+  },
+
+  /* ═══════════════════════════════════════════════════════
+   * FLOW 3 — AI & Business Process Optimization
+   * ═══════════════════════════════════════════════════════ */
+  {
+    id: "ai-bpo",
+    persona: {
+      title: "AI & Business Process Optimization",
+      subtitle: "AI / BPO office",
+    },
+    greeting: "Good afternoon",
+    userQuery:
+      "Within Sales & Onboarding, where can Glean add the most value on top of Gemini and existing tools? Recommend the first 3 Glean agents we should pilot, how they plug into Salesforce, Gemini, and our existing onboarding tracks, and how we'd measure impact in 90 days.",
+
+    aiResponse: `Here are the top three Glean agents to pilot alongside Gemini.
+
+**1. Sales Content Copilot (Cross-System)**
+
+*What it does:*
+Given an account, product, or play, it pulls together the latest deck, battlecard, microsite content, and relevant proposal templates from Salesforce, Drive, and internal sites.¹⁴
+
+*Why it's different from Gemini alone:*
+Uses Glean's knowledge graph and permissions to reliably find and prioritize the right assets across all systems — without manual wiring each time.¹²
+
+*Where it lives:*
+As a panel inside Salesforce, and as a Glean agent sellers can invoke directly or via shortcut from Gemini.²
+
+---
+
+**2. Onboarding Journey Copilot**
+
+*What it does:*
+Watches a new seller's real activity — Salesforce tasks, meetings, content opens — and, when asked, gives a personalized 30/60/90 plan plus "what to do this week" based on the official onboarding track.³
+
+*Why it matters:*
+Reduces time-to-first-sale while using your existing LMS, microsites, and Gemini investments — not displacing them.¹³
+
+*Where it lives:*
+In Glean's assistant, with notifications via email or chat.
+
+---
+
+**3. Call-to-CRM Update Agent**
+
+*What it does:*
+Takes call notes or a meeting summary and drafts structured Salesforce updates: next steps, decision makers, MEDDIC-style fields, and tasks.²
+
+*Why it fits your strategy:*
+Leverages the same AI stack you're investing in, but uses Glean's context and connectors to reduce manual data entry and improve CRM data quality.²
+
+---
+
+**90-day impact measurement**
+Track:
+- **Adoption:** how often these agents are invoked by sellers and managers.
+- **Behavior change:** increase in Salesforce activity completion rates, use of official content, and Gemini usage tied to plays.¹²
+- **Outcome metrics:** change in time-to-first-opportunity / first close for new hires, and win rate on plays supported by the Sales Content Copilot.³⁴
+
+| Agent | Primary metric | Secondary metric |
+|-------|---------------|-----------------|
+| Sales Content Copilot | % of opps using official content | Win rate on supported plays |
+| Onboarding Journey Copilot | Time-to-first-opportunity | Salesforce activity completion |
+| Call-to-CRM Update Agent | CRM update rate post-call | Data quality score |`,
+
+    sources: [
+      {
+        id: 1,
+        title: "Gemini Rollout Plan — Go-to-Market",
+        subtitle: "Google Docs · AI / BPO Office",
+        iconUrl: GDOCS_ICON,
+        iconFallback: null,
+        author: "AI / BPO Office",
+        excerpt:
+          "Go-to-market rollout plan for Gemini across the sales organization. Covers phased rollout, training tracks, gem index structure, and integration with Salesforce and the proposal platform. Open items: Gemini-to-Salesforce integration partially built; Notebook LM usage untracked. Glean positioned as a complementary connector layer.",
+      },
+      {
+        id: 2,
+        title: "Automation Backlog — Sales & Onboarding",
+        subtitle: "Google Sheets · AI Pipeline",
+        iconUrl: GSHEETS_ICON,
+        iconFallback: null,
+        author: "AI / BPO Office",
+        excerpt:
+          "Prioritized backlog of AI and automation opportunities across sales and onboarding. Top-ranked items: cross-system content retrieval for sellers, CRM update automation post-call, and personalized onboarding journey agents. All three identified as high-effort/high-value without a clear owner; Glean pilot addresses the first two directly.",
+      },
+      {
+        id: 3,
+        title: "Onboarding Plan — Enterprise Sellers (Days 1–90)",
+        subtitle: "LMS · Sales Onboarding",
+        iconUrl: LMS_ICON,
+        iconFallback: null,
+        author: "Sales Onboarding",
+        excerpt:
+          "Full 90-day onboarding plan for enterprise sellers. Structured curriculum milestones, manager coaching gates, and on-the-job assignments. Designed to be the source of truth for the Onboarding Journey Copilot; the agent would map seller activity against this plan in real time to generate personalized weekly priorities.",
+      },
+      {
+        id: 4,
+        title: "RRD AI Strategy — Go-to-market & Infrastructure",
+        subtitle: "Google Docs · Strategy",
+        iconUrl: GDOCS_ICON,
+        iconFallback: null,
+        author: "AI / BPO Office",
+        excerpt:
+          "Internal AI strategy document covering infrastructure investments and go-to-market AI priorities. Confirms Gemini as the horizontal AI platform; Glean is scoped as the knowledge layer and cross-system retrieval solution. Strategy explicitly values tools that complement rather than replace Gemini, Salesforce, and existing LMS investments.",
+      },
+    ],
+
+    followUpQuery:
+      "Draft a 90-day Glean pilot proposal to share with Sales Enablement leadership",
+
+    chatHistory: {
+      today: ["Gemini rollout — Go-to-market status"],
+      recent: [
+        "AI + Automation backlog — Sales & Onboarding...",
+        "Gemini Gems — Sales library...",
+        "Proposal platform integration plan...",
+        "Salesforce AI initiatives — Sales Programs evaluation...",
+        "RRD AI strategy — Infrastructure & Go-to-market...",
+        "Glean vs Gemini — Where each plays...",
+      ],
+    },
+
+    showWork: {
+      searchQuery:
+        "gemini rollout sales enablement automation backlog onboarding time to first sale sales programs evaluation",
+      searching: [
+        {
+          icon: GDOCS_ICON,
+          iconFallback: null,
+          label: "Gemini Rollout Plan — Go-to-Market...",
+        },
+        {
+          icon: GSHEETS_ICON,
+          iconFallback: null,
+          label: "Automation Backlog — Sales & Onboarding...",
+        },
+        { icon: null, iconFallback: null, label: "+5 more" },
+      ],
+      reading: [
+        {
+          icon: GDOCS_ICON,
+          iconFallback: null,
+          label: "Gemini Rollout Plan — Go-to-Market...",
+        },
+        {
+          icon: GSHEETS_ICON,
+          iconFallback: null,
+          label: "Automation Backlog — Sales & Onboarding...",
         },
         {
           icon: LMS_ICON,
           iconFallback: null,
-          label: "Commercial University — Core Curriculum...",
-        },
-        {
-          icon: GONG_ICON,
-          iconFallback: null,
-          label: "Gong Playlist — Fraud / Credit Calls...",
+          label: "Onboarding Plan — Enterprise Sellers (Days 1–90)...",
         },
       ],
       synthesizing: {
-        icon: CONFLUENCE_ICON,
+        icon: GDOCS_ICON,
         iconFallback: null,
-        label: "Regional Bank Call Brief — Fraud & Identity",
-        note: "Cross-referencing training, messaging, call history, and proposal content to build a field-ready brief.",
+        label: "Glean Pilot Proposal — Sales & Onboarding Agents",
+        note: "Proposing three Glean agents that complement Gemini and Salesforce, focused on fast, measurable wins.",
       },
     },
   },

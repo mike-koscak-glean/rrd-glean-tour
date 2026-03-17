@@ -1,12 +1,37 @@
 import React, { useState } from "react";
-import transunionLogo from "../transunion_logo.png";
+import rrdLogo from "../rrd_logo.svg";
 import { flows } from "../data/conversations";
 
 const GLEAN_IMG = "https://app.glean.com/images";
 
 /* ── Persona card icons (inline SVGs since feather variants aren't on Glean CDN) ── */
 const PersonaIcons = {
-  "ai-platform": (
+  "enablement-leader": (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  ),
+  "new-seller": (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+      <line x1="12" y1="11" x2="12" y2="17" />
+      <line x1="9" y1="14" x2="15" y2="14" />
+    </svg>
+  ),
+  "sales-content": (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <polyline points="10 9 9 9 8 9" />
+    </svg>
+  ),
+  "ai-bpo": (
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <rect x="5" y="5" width="14" height="14" rx="2" />
       <rect x="9" y="9" width="6" height="6" />
@@ -14,25 +39,6 @@ const PersonaIcons = {
       <line x1="22" y1="12" x2="19" y2="12" />
       <line x1="12" y1="5" x2="12" y2="2" />
       <line x1="12" y1="22" x2="12" y2="19" />
-    </svg>
-  ),
-  fraud: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="18" y1="20" x2="18" y2="10" />
-      <line x1="12" y1="20" x2="12" y2="4" />
-      <line x1="6" y1="20" x2="6" y2="14" />
-      <polyline points="2 20 22 20" />
-    </svg>
-  ),
-  security: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  ),
-  enablement: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1C5BE0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-      <path d="M6 12v5c3 3 9 3 12 0v-5" />
     </svg>
   ),
 };
@@ -58,7 +64,7 @@ export default function PersonaSelect({ onSelect }) {
     >
       {/* Spacer to vertically center on tall screens */}
       <div className="flex-1 min-h-[20px]" />
-      {/* Logos — Glean × TransUnion */}
+      {/* Logos — Glean × RRD */}
       <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 fade-in">
         <img
           src={`${GLEAN_IMG}/glean-logo2.svg`}
@@ -68,8 +74,8 @@ export default function PersonaSelect({ onSelect }) {
         />
         <span className="text-gray-300 text-lg font-light select-none">×</span>
         <img
-          src={transunionLogo}
-          alt="TransUnion"
+          src={rrdLogo}
+          alt="RR Donnelley"
           className="h-7 sm:h-8"
           draggable="false"
         />
@@ -77,7 +83,7 @@ export default function PersonaSelect({ onSelect }) {
 
       {/* Headline */}
       <h1 className="text-xl sm:text-2xl md:text-[28px] font-semibold text-glean-text text-center mb-2 sm:mb-3 leading-snug fade-in">
-        See what Glean could look like for TransUnion
+        See what Glean could look like for RRD
       </h1>
 
       {/* Subheading */}
@@ -127,7 +133,7 @@ export default function PersonaSelect({ onSelect }) {
 
       {/* Footer */}
       <p className="text-[11px] text-gray-400 text-center fade-in pb-2">
-        Prepared for TransUnion by the Glean team
+        Prepared for RRD by the Glean team
       </p>
     </div>
   );
