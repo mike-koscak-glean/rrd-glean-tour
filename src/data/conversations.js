@@ -15,609 +15,600 @@ const LMS_ICON = csodLogo;
 // "Responsive" is RRD's RFP/proposal content system; no CDN logo, so use a lettered chip.
 const RESPONSIVE_FALLBACK = { letter: "R", color: "#5B3DF5" };
 
+/* ═══════════════════════════════════════════════════════════════
+ * Flows realigned to the June 18, 2026 "Glean & RRD" call.
+ * Deliverable in focus: a 5–10 min video for RRD's Sales Leader
+ * Advisory Council showing TOP USE CASES for sales agents, with
+ * quantified time savings, revenue impact, and time-to-onboard —
+ * not a vendor pitch. The through-line from the call: the problem
+ * is not lack of content, it's too much fragmented content and
+ * noise across 14+ microsites, Drive, Responsive, and the Sellers
+ * Library. Glean serves the right thing, in the flow, just in time.
+ * ═══════════════════════════════════════════════════════════════ */
+
 export const flows = [
   /* ═══════════════════════════════════════════════════════
-   * FLOW 0 — Sales Enablement Leader
-   * Stacey's world: content governance, just-in-time serving,
-   * taming microsite + Sellers Library sprawl.
+   * FLOW 0 — Account Executive
+   * The frontline pain every leader recognizes: stage-specific
+   * deal prep served in one flow instead of digging across
+   * microsites, Drive, Responsive, and the Sellers Library.
    * ═══════════════════════════════════════════════════════ */
   {
-    id: "enablement-leader",
+    id: "account-executive",
     persona: {
-      title: "Sales Enablement Leader",
-      subtitle: "VP, Sales Enablement",
+      title: "Account Executive",
+      subtitle: "Enterprise seller, active deal cycle",
     },
     greeting: "Good afternoon",
     userQuery:
-      "Our sellers are drowning in content — 14+ microsites hanging off the go-to-market hub, the Sellers Library in Google Drive, plus leftover acquisition drives. For our packaging plays, show me where the seller-facing content is fragmented across RRD Sales University, the microsites, and Drive. Flag duplicates and anything still on retired or acquired branding, then recommend the canonical must-have / should-have / nice-to-have set. Finally, propose how Glean serves the right asset just-in-time when a packaging opportunity moves to discovery in Salesforce — instead of us blasting another newsletter.",
+      "I'm prepping for a discovery call with a healthcare prospect tomorrow. Instead of me digging through the 14+ microsites, the Sellers Library, Drive, and Responsive, pull it together: what should I review right now, what questions should I ask, and which RRD materials are best for this stage?",
 
-    aiResponse: `Here's the state of your packaging content and a plan to govern and serve it.
+    aiResponse: `Here's your discovery-stage prep pack for the healthcare opportunity — pulled from across your seller systems into one answer.
 
-**Where packaging content is fragmented**
-The same packaging assets show up in several places, which is why reps have to dig:¹²
-- The canonical kit lives in the **Sellers Library** Google Drive, indexed by content type.¹
-- It's also linked (sometimes as older copies) across **5 of the 14 microsites** under the **RRD Sales University go-to-market view**.²
-- Several near-duplicates are still sitting in **un-aggregated acquisition drives** and surface in search ahead of the current version.⁴
+**Why you're seeing one answer instead of 14 tabs**
+This stitches together the discovery-stage content that's normally scattered across the microsites, the Sellers Library, Drive, and Responsive — so you're not hunting for it the night before.¹²
 
-**Duplicates and stale branding to retire**
-- Two packaging decks reference **pre-consolidation / acquired-company branding** and should be deprecated.⁴
-- Three microsite pages point at **outdated Drive files** rather than the Sellers Library source — collapse these to a single link.²
+**What to review now (in priority order)**
+- **Healthcare Discovery Playbook** — the pain themes and talking points that matter most for healthcare buyers.¹
+- **Healthcare Capabilities Overview** — how to position RRD's relevant capabilities early, before you're in a formal proposal.³
+- **Reusable proposal answers** — approved language for the questions healthcare prospects almost always ask, so nothing catches you flat.⁴
 
-**Recommended canonical set**
-*Must-have (served in-deal):*¹
-- Packaging buyer ICPs
-- Packaging discovery question set
-- Packaging "Discovery Kit" deck
+**Questions to ask on the call**
+- *"Where does your current print, packaging, and communications workflow slow you down — design, sourcing, compliance, or production?"*
+- *"How are regulatory and brand-compliance requirements handled across your materials today?"*
+- *"Who else weighs in when you evaluate a partner, and what does a successful first project look like to them?"*
 
-*Should-have (role reinforcement):*¹
-- Packaging battlecard and pricing one-pager
-- Manager coaching guide for packaging deals
+**Suggested 30-minute prep plan**
+1. Discovery Playbook pain themes (10 min)¹
+2. Capabilities talking points (8 min)³
+3. Discovery questions (5 min)¹
+4. Likely-objection answers from Responsive (7 min)⁴
 
-*Nice-to-have (searchable, not pushed):*¹
-- Long-form background decks and recorded enablement sessions
+**Illustrative impact**
+Instead of checking microsites, Drive, Responsive, and the Sellers Library separately, prep like this could go from a typical **30–45 minutes of hunting to a few minutes** — a time-savings hypothesis worth confirming in a "day in the life" blueprint, with a sharper discovery as the upside.²
 
-**Serving it just-in-time instead of by newsletter**
-Rather than another broadcast, wire content to the **Salesforce stage signal**:³
-- When a **packaging opportunity moves into Discovery**, Glean surfaces the buyer ICPs, the packaging training, and the discovery questions to ask — in the seller's flow.³
-- Glean acts as the **horizontal layer** across Drive, microsites, Salesforce, and Responsive, so this works without rebuilding everything inside Gemini or Agentforce.¹
-
-**Suggested rollout**
-1. Lock the must-have set in the Sellers Library and mark the duplicates deprecated in Glean.¹⁴
-2. Point the 5 packaging microsites at the canonical sources.²
-3. Pilot the discovery-stage trigger with one seller pod, then measure content opens vs. the old newsletter push.³`,
+When you're done, ask me to turn this into a one-page discovery brief you can bring into the room.`,
 
     sources: [
       {
         id: 1,
-        title: "Sellers Library — Content Index",
+        title: "Healthcare Discovery Playbook",
+        subtitle: "Google Docs · Sales Enablement",
+        iconUrl: GDOCS_ICON,
+        iconFallback: null,
+        author: "Sales Enablement",
+        excerpt:
+          "Discovery-stage questions and industry talking points for healthcare buyers, including common pain themes and the recommended follow-up assets to send after the call.",
+      },
+      {
+        id: 2,
+        title: "Sellers Library — Discovery Content Index",
         subtitle: "Google Sheets · Sales Enablement",
         iconUrl: GSHEETS_ICON,
         iconFallback: null,
         author: "Sales Enablement",
         excerpt:
-          "The master index for the Sellers Library Google Drive. Organizes seller content by type (marketing, training, L&D, PR, sales engagement) and by must-have / should-have / nice-to-have tier. Built to map cleanly onto sales stages so the right asset can be served when a rep needs it.",
-      },
-      {
-        id: 2,
-        title: "RRD Sales University — Go-to-Market Hub",
-        subtitle: "Internal microsite · GTM",
-        iconUrl: GLOBE_ICON,
-        iconFallback: null,
-        author: "Microsites / Comms",
-        excerpt:
-          "Central go-to-market microsite hub that spiderwebs out into 14+ sub-microsites, any of which can be created by teams across the org. Several packaging pages link directly to Drive files — some current, some outdated copies — making it hard for sellers to know which version is canonical.",
+          "Indexed by content type, this maps sellers to the right discovery decks, industry one-pagers, case studies, and qualification tools — the canonical source the microsites should point to.",
       },
       {
         id: 3,
-        title: "Packaging Play — Discovery Stage Kit",
-        subtitle: "Google Slides · Sales Plays",
+        title: "Healthcare Capabilities Overview",
+        subtitle: "Google Slides · Industry Marketing",
         iconUrl: GSLIDES_ICON,
         iconFallback: null,
-        author: "Sales Enablement",
+        author: "Industry Marketing",
         excerpt:
-          "The current discovery-stage kit for packaging opportunities: buyer ICPs, the approved discovery question set, and packaging positioning. Intended to be triggered when a packaging opportunity enters the Discovery stage in Salesforce rather than pushed to all reps at once.",
+          "Overview deck summarizing RRD's relevant healthcare capabilities and how to position them early in the buying cycle, before a formal proposal.",
       },
       {
         id: 4,
-        title: "Acquisition Drive — Packaging Content Audit",
-        subtitle: "Google Drive · Content Ops",
-        iconUrl: GDRIVE_ICON,
-        iconFallback: null,
-        author: "Content Operations",
-        excerpt:
-          "Audit of packaging assets sitting in un-aggregated acquisition Google Drives. Flags duplicate decks, files using pre-consolidation/acquired-company branding, and content that was never migrated into the Sellers Library. Recommends deprecation or consolidation for each.",
-      },
-    ],
-
-    followUpQuery:
-      "Set up the Salesforce discovery-stage trigger that serves this packaging kit just-in-time",
-
-    chatHistory: {
-      today: ["Packaging content audit — microsites & Drive"],
-      recent: [
-        "Sellers Library — must-have / should-have index...",
-        "Microsite sprawl — who created what this month...",
-        "Just-in-time serving — Salesforce stage triggers...",
-        "Acquisition drives — consolidation backlog...",
-        "Newsletter vs. in-flow content — seller feedback...",
-        "RRD Sales University — go-to-market view cleanup...",
-      ],
-    },
-
-    showWork: {
-      searchQuery:
-        "packaging content sellers library microsites RRD sales university acquisition drive duplicates discovery stage",
-      searching: [
-        {
-          icon: GSHEETS_ICON,
-          iconFallback: null,
-          label: "Sellers Library — Content Index...",
-        },
-        {
-          icon: GLOBE_ICON,
-          iconFallback: null,
-          label: "RRD Sales University — Go-to-Market Hub...",
-        },
-        { icon: null, iconFallback: null, label: "+5 more" },
-      ],
-      reading: [
-        {
-          icon: GSHEETS_ICON,
-          iconFallback: null,
-          label: "Sellers Library — Content Index...",
-        },
-        {
-          icon: GLOBE_ICON,
-          iconFallback: null,
-          label: "RRD Sales University — Go-to-Market Hub...",
-        },
-        {
-          icon: GDRIVE_ICON,
-          iconFallback: null,
-          label: "Acquisition Drive — Packaging Content Audit...",
-        },
-      ],
-      synthesizing: {
-        icon: GDOCS_ICON,
-        iconFallback: null,
-        label: "Packaging Content Governance Plan — Sales Enablement",
-        note: "Cross-referencing the Sellers Library index, microsite links, and acquisition drives to define one canonical, just-in-time package.",
-      },
-    },
-  },
-
-  /* ═══════════════════════════════════════════════════════
-   * FLOW 1 — New Enterprise Seller
-   * The just-in-time discovery dream: packaging opp hits
-   * Discovery in Salesforce → ICPs, training, questions,
-   * correlated with recent call transcripts.
-   * ═══════════════════════════════════════════════════════ */
-  {
-    id: "new-seller",
-    persona: {
-      title: "New Enterprise Seller",
-      subtitle: "New hire, first 90 days",
-    },
-    greeting: "Good afternoon",
-    userQuery:
-      "I'm in my first 90 days and a packaging opportunity just moved to Discovery in Salesforce. Pull together what I should review before the call — the buyer ICPs, the packaging training, and the discovery questions I should be asking — from the Sellers Library and RRD Sales University. If there are recent call transcripts or account notes that should change how I prep, fold those in too.",
-
-    aiResponse: `Here's your just-in-time prep for the packaging opportunity now in Discovery.
-
-**Why you're seeing this**
-Your Salesforce opportunity moved into the **Discovery stage**, so this pulls the must-have packaging content tied to that stage — instead of you hunting across the 14 microsites for it.⁴
-
-**1. Know the buyer (ICPs)**
-Review the **packaging buyer ICPs** before the call:¹
-- Primary buyer is usually in marketing/brand or procurement operations.
-- Top pains: fragmented vendors, slow time-to-market, and proving ROI across print and digital.
-
-**2. Get sharp on the offer (training)**
-Skim the **Packaging 101 seller training** so your language matches the buyer's world:²
-- Core packaging solutions and where RRD differentiates.
-- Early-stage objection handling.
-
-**3. Run a strong discovery (questions)**
-Use the approved **discovery question set for packaging**:³
-- *"How are you balancing speed-to-shelf with packaging consistency across SKUs today?"*
-- *"Where does your packaging workflow slow down — design, sourcing, or production?"*
-- *"How are you measuring packaging's impact on the shelf and on cost?"*
-- *"Who else weighs in when you evaluate a packaging partner?"*
-
-**What changed since the kit was written**
-A **recent discovery call on a similar packaging account** flagged two things worth adapting to:⁵
-- Buyers are pushing on **sustainability / materials**, so have that proof point ready.
-- Pricing transparency came up early — don't save it for the end.
-
-**Suggested 20-minute prep sequence**
-1. Buyer ICP summary (5 min)¹
-2. Packaging 101 highlights (7 min)²
-3. Discovery questions (3 min)³
-4. Recent call transcript takeaways (5 min)⁵
-
-When you're done, ask me to draft your pre-call notes and a follow-up email — I'll keep it aligned to the approved content.`,
-
-    sources: [
-      {
-        id: 1,
-        title: "Packaging Buyer ICPs",
-        subtitle: "Google Docs · Sales Enablement",
-        iconUrl: GDOCS_ICON,
-        iconFallback: null,
-        author: "Sales Enablement",
-        excerpt:
-          "Defines the buyer personas for packaging opportunities — roles, decision criteria, common pains, and messaging guidance. Built to be surfaced at the discovery stage so new sellers walk in understanding who they're talking to and what matters to them.",
-      },
-      {
-        id: 2,
-        title: "Packaging 101 — Seller Training",
-        subtitle: "LMS · Sales Onboarding",
-        iconUrl: LMS_ICON,
-        iconFallback: null,
-        author: "Sales Onboarding",
-        excerpt:
-          "Foundational packaging curriculum for new sellers: solution overview, terminology, differentiation, and early-stage objection handling. Part of the first-90-days enablement track and mapped to the packaging discovery play.",
-      },
-      {
-        id: 3,
-        title: "Discovery Questions — Packaging Opportunities",
-        subtitle: "Google Docs · Sales Plays",
-        iconUrl: GDOCS_ICON,
-        iconFallback: null,
-        author: "Sales Enablement",
-        excerpt:
-          "Approved discovery question set for packaging deals, organized by buyer type and deal maturity. Designed to be served when an opportunity hits Discovery so reps ask the right questions and capture the right signals.",
-      },
-      {
-        id: 4,
-        title: "Opportunity — Packaging Cross-Sell (Discovery)",
-        subtitle: "Salesforce · Opportunity",
-        iconUrl: SALESFORCE_ICON,
-        iconFallback: null,
-        author: "Salesforce",
-        excerpt:
-          "Live opportunity record. Stage recently advanced to Discovery, which triggers the stage-based content recommendation. Includes account context, logged contacts, and current next steps — used to tailor which packaging assets are surfaced.",
-      },
-      {
-        id: 5,
-        title: "Recent Discovery Call — Packaging Account",
-        subtitle: "Gong · Call transcript",
-        iconUrl: GONG_ICON,
-        iconFallback: null,
-        author: "Gong",
-        excerpt:
-          "Transcript from a recent discovery call on a comparable packaging opportunity. Surfaces current buyer priorities (sustainability/materials), an early push on pricing transparency, and objections worth preparing for ahead of this call.",
-      },
-    ],
-
-    followUpQuery:
-      "Draft my pre-call notes and a follow-up email aligned to the approved packaging content",
-
-    chatHistory: {
-      today: ["Discovery prep — Packaging opportunity"],
-      recent: [
-        "Packaging buyer ICPs — who I'm meeting...",
-        "Packaging 101 — training highlights...",
-        "Discovery questions — packaging deals...",
-        "Recent packaging call — what to adapt...",
-        "Onboarding checklist — week 2...",
-        "Salesforce — my opportunities by stage...",
-      ],
-    },
-
-    showWork: {
-      searchQuery:
-        "packaging opportunity discovery stage buyer ICPs packaging training discovery questions recent call transcript",
-      searching: [
-        {
-          icon: SALESFORCE_ICON,
-          iconFallback: null,
-          label: "Opportunity — Packaging Cross-Sell (Discovery)...",
-        },
-        {
-          icon: GDOCS_ICON,
-          iconFallback: null,
-          label: "Packaging Buyer ICPs...",
-        },
-        { icon: null, iconFallback: null, label: "+5 more" },
-      ],
-      reading: [
-        {
-          icon: GDOCS_ICON,
-          iconFallback: null,
-          label: "Packaging Buyer ICPs...",
-        },
-        {
-          icon: LMS_ICON,
-          iconFallback: null,
-          label: "Packaging 101 — Seller Training...",
-        },
-        {
-          icon: GONG_ICON,
-          iconFallback: null,
-          label: "Recent Discovery Call — Packaging Account...",
-        },
-      ],
-      synthesizing: {
-        icon: GDOCS_ICON,
-        iconFallback: null,
-        label: "Discovery Prep Brief — Packaging Opportunity",
-        note: "Correlating the Salesforce stage signal, the packaging kit, and a recent call transcript into a single just-in-time brief.",
-      },
-    },
-  },
-
-  /* ═══════════════════════════════════════════════════════
-   * FLOW 2 — Sales Content & Communications Lead
-   * Kelly / Tonya's world: audit 14+ microsites, consolidate
-   * across acquisition drives + Responsive + Sellers Library.
-   * ═══════════════════════════════════════════════════════ */
-  {
-    id: "sales-content",
-    persona: {
-      title: "Sales Content & Communications Lead",
-      subtitle: "Manager, Sales Content & Engagement",
-    },
-    greeting: "Good afternoon",
-    userQuery:
-      "I need to get our content sprawl under control. Audit our 14+ microsites and tell me where packaging and proposal assets are duplicated, orphaned, or pointing at outdated Drive files across the acquisition drives, the Sellers Library, and Responsive. Show me what should collapse into a single source of truth — and what's still sitting in Drive that never got aggregated into Responsive.",
-
-    aiResponse: `Here's the content audit across your microsites, Drive, and Responsive.
-
-**The three sources of duplication**
-1. **Microsite linking:** Across the 14+ microsites under the go-to-market hub, multiple pages link to near-identical or outdated Drive files.¹
-2. **Acquisition drives:** Content from acquired businesses was never fully consolidated, so duplicates and orphans are scattered across drives.²
-3. **Responsive gap:** Some proposal/RFP content lives in **Responsive**, but other answer content is still in Google Drive and was never aggregated in.³
-
-**What's duplicated or outdated**
-- Packaging and proposal boilerplate appears in **3+ locations** with no clear canonical copy.¹³
-- Several microsite pages point to **stale Drive files** superseded by Sellers Library versions.¹⁴
-- A set of **orphaned files** in acquisition drives have no owner and near-zero opens.²
-
-**What's not yet in Responsive**
-- Recurring RFP answers about capabilities and company details exist as loose Google Docs that should be promoted into the Responsive library so they stay current and reusable.³
-
-**Recommended single sources of truth**
-| Content | Canonical home |
-|---|---|
-| Seller-facing packaging assets | Sellers Library (Drive)⁴ |
-| Proposal / RFP answers | Responsive³ |
-| Buyer-facing one-pagers | Sellers Library, linked from microsites⁴ |
-
-**Cleanup workflow**
-1. **Inventory** every microsite-linked Drive file, Responsive entry, and acquisition-drive asset.¹²³
-2. **Classify** each as canonical, duplicate, orphaned, outdated, or un-aggregated.²
-3. **Consolidate** seller content under the Sellers Library index; promote proposal content into Responsive.³⁴
-4. **Prevent re-sprawl** with light governance on who can spin up a new microsite and how pages must link to canonical sources.¹
-
-Net effect: reps stop digging across destinations, and you stop manually wrangling microsites that multiply every week.`,
-
-    sources: [
-      {
-        id: 1,
-        title: "Microsite Inventory — RRD Sales University Network",
-        subtitle: "Internal microsites · Comms",
-        iconUrl: GLOBE_ICON,
-        iconFallback: null,
-        author: "Sales Content & Engagement",
-        excerpt:
-          "Directory of the 14+ active go-to-market microsites — owners, linked Drive folders, and last-published dates. Highlights pages pointing at outdated or duplicate Drive files and microsites created ad hoc by teams across the org.",
-      },
-      {
-        id: 2,
-        title: "Acquisition Drive Consolidation Tracker",
-        subtitle: "Google Sheets · Content Ops",
-        iconUrl: GSHEETS_ICON,
-        iconFallback: null,
-        author: "Content Operations",
-        excerpt:
-          "Tracks the inherited acquisition Google Drives, migration status, duplicate counts, and owner assignments. Flags orphaned files with no owner and low engagement that are candidates for archival or consolidation.",
-      },
-      {
-        id: 3,
-        title: "Responsive — Content Library Export",
+        title: "Past Healthcare Proposal Answers",
         subtitle: "Responsive · RFP / Proposal",
         iconUrl: null,
         iconFallback: RESPONSIVE_FALLBACK,
         author: "Proposal / RFP Team",
         excerpt:
-          "Current proposal and RFP answer inventory from Responsive with topic tags, last-updated timestamps, and usage frequency. Surfaces recurring answers that still live as loose Google Docs and should be promoted into Responsive to stay canonical.",
-      },
-      {
-        id: 4,
-        title: "Sellers Library — Governance Map",
-        subtitle: "Google Docs · Sales Enablement",
-        iconUrl: GDOCS_ICON,
-        iconFallback: null,
-        author: "Sales Enablement",
-        excerpt:
-          "Defines canonical storage rules, the content-type taxonomy, and the publishing relationship between Sellers Library assets and the microsites that reference them. The blueprint for collapsing duplicates into a single source of truth.",
+          "Reusable, approved response content that helps sellers anticipate the questions healthcare prospects ask before a formal proposal is ever requested.",
       },
     ],
 
     followUpQuery:
-      "Build the consolidation worklist — duplicates and orphans ranked by usage",
+      "Turn this into a one-page discovery brief I can bring into the meeting",
 
     chatHistory: {
-      today: ["Content audit — microsites, Drive & Responsive"],
+      today: ["Discovery prep — healthcare prospect"],
       recent: [
-        "Microsite inventory — owners & last published...",
-        "Acquisition drives — duplicate & orphan scan...",
-        "Responsive — what's still loose in Drive...",
-        "Sellers Library — canonical storage rules...",
-        "Microsite governance — who can publish...",
-        "Proposal boilerplate — single source of truth...",
+        "Healthcare discovery playbook — pain themes...",
+        "Capabilities overview — how to position early...",
+        "Discovery questions — what to ask tomorrow...",
+        "Responsive — likely prospect questions...",
+        "Sellers Library — what's canonical for discovery...",
+        "My opportunities by stage — what needs prep...",
       ],
     },
 
     showWork: {
       searchQuery:
-        "microsite audit duplicate orphaned content acquisition drives responsive sellers library single source of truth",
+        "healthcare discovery prep playbook capabilities discovery questions proposal answers sellers library",
       searching: [
         {
-          icon: GLOBE_ICON,
+          icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Microsite Inventory — RRD Sales University Network...",
+          label: "Healthcare Discovery Playbook...",
         },
         {
           icon: GSHEETS_ICON,
           iconFallback: null,
-          label: "Acquisition Drive Consolidation Tracker...",
+          label: "Sellers Library — Discovery Content Index...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
       reading: [
         {
-          icon: GLOBE_ICON,
+          icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Microsite Inventory — RRD Sales University Network...",
+          label: "Healthcare Discovery Playbook...",
+        },
+        {
+          icon: GSLIDES_ICON,
+          iconFallback: null,
+          label: "Healthcare Capabilities Overview...",
         },
         {
           icon: null,
           iconFallback: RESPONSIVE_FALLBACK,
-          label: "Responsive — Content Library Export...",
-        },
-        {
-          icon: GDOCS_ICON,
-          iconFallback: null,
-          label: "Sellers Library — Governance Map...",
+          label: "Past Healthcare Proposal Answers...",
         },
       ],
       synthesizing: {
         icon: GDOCS_ICON,
         iconFallback: null,
-        label: "Content Consolidation Plan — Sales Content & Comms",
-        note: "Reconciling microsite links, acquisition drives, and Responsive to define a single source of truth per content type.",
+        label: "Discovery Prep Pack — Healthcare Opportunity",
+        note: "Pulling stage-specific content from the microsites, Sellers Library, Drive, and Responsive into one prep pack so the seller stops digging.",
       },
     },
   },
 
   /* ═══════════════════════════════════════════════════════
-   * FLOW 3 — AI & Business Process Optimization
-   * Normalize the AI stack (Gemini Enterprise, Agentforce POC);
-   * where Glean fits as horizontal / backend knowledge layer;
-   * agents to pilot incl. manager just-in-time coaching.
+   * FLOW 1 — Proposal & RFP Lead
+   * Tonya / Kelly's world: assemble the strongest approved
+   * answer content across Responsive, Drive, and the Sellers
+   * Library in minutes instead of hours.
    * ═══════════════════════════════════════════════════════ */
   {
-    id: "ai-bpo",
+    id: "rfp-lead",
     persona: {
-      title: "AI & Business Process Optimization",
-      subtitle: "AI / BPO office",
+      title: "Proposal & RFP Lead",
+      subtitle: "Manager, Proposals & Content",
     },
     greeting: "Good afternoon",
     userQuery:
-      "We're trying to normalize our AI stack — Gemini Enterprise is rolling out to the whole rev team but only inside Google, and IT has an Agentforce POC pulling from API, MCP, Drive, and an RRD.com crawler. Where should Glean fit: the seller/manager-facing assistant, the backend knowledge layer under what we build, or both? Recommend the first 3 agents to pilot (include a manager just-in-time coaching agent), and how we'd measure impact in 90 days on pipeline velocity, days to close, and time-to-first-sale.",
+      "I'm responding to an RFP for packaging and logistics services. Pull the strongest approved content across Responsive, Drive, and the Sellers Library — the best reusable answers, the supporting proof points, and the exact source documents I should use — and flag anything that's stale or missing.",
 
-    aiResponse: `Here's where Glean fits and the first three agents to pilot.
+    aiResponse: `Here's the strongest approved content for the packaging and logistics RFP, assembled from across your systems.
 
-**Where Glean fits: backend layer first, assistant second**
-Your current stack has gaps Glean is built to fill:¹²
-- **Gemini Enterprise** is rolling out to the whole rev team but is **scoped to Google Workspace** — not connected to Salesforce, Responsive, SAP/Oracle, or the wider content estate.¹
-- **Agentforce** is a POC pulling a few feeds (API, MCP, Drive, RRD.com crawler) inside Salesforce.²
-- The unmet need is **cross-system content + coaching orchestration** with role-aware relevance.³
+**Top reusable answer themes**
+The most reused, most recently approved answers for this kind of RFP cluster into four blocks:¹
+- Packaging capabilities and service differentiators
+- Logistics and supply-chain service model
+- Implementation and onboarding approach
+- Quality, compliance, and sustainability
 
-Recommendation: use Glean as the **horizontal knowledge layer** across Drive, microsites, Salesforce, Responsive, and call transcripts — feeding both its own assistant and, where useful, Gemini/Agentforce. It complements, not replaces, what you're already standing up.¹
+**Recommended response content**
+- Lead the **executive summary** with the integrated packaging-plus-logistics story — it's RRD's clearest differentiator versus point vendors.¹²
+- For **differentiators**, reuse the approved language on consolidated sourcing and speed-to-shelf.¹
+- For the **service model**, pull the logistics overview rather than rewriting from scratch.²
 
-**Three agents to pilot**
+**Supporting proof points**
+- Customer outcomes and operational metrics from the packaging case study collection.⁴
+- Reference results you can cite directly in the response.⁴
 
-**1. Seller Stage-Based Content Agent**
-Triggers on a **Salesforce stage change** (e.g., packaging → Discovery) and serves the buyer ICPs, packaging training, and discovery questions in-flow — the just-in-time vision, automated.³
+**Best source materials to open (ranked)**
+1. Approved Packaging Services Response Library (Responsive)¹
+2. Logistics Solutions Overview (Slides)²
+3. Sellers Library — Proposal Content by Type (Sheets)³
+4. Packaging Case Study Collection (Docs)⁴
 
-**2. Manager Just-in-Time Coaching Agent**
-Before a 1:1, surfaces for each rep: **where deals are stalling by stage**, curriculum completed and results, and the skill gaps to coach — pulled across Salesforce, the LMS, and call transcripts.⁴
+**Gaps and risks to fix before you send**
+- The sustainability proof point exists only as a loose Google Doc and was never promoted into Responsive — it'll go stale. Promote it so it stays canonical.³
+- Two logistics answers reference pre-consolidation branding — refresh before reuse.³
 
-**3. Content Governance Agent**
-Continuously detects **duplicate / orphaned / outdated** content across microsites, acquisition drives, Responsive, and the Sellers Library so the estate stops sprawling.¹
+**Illustrative impact**
+Everything above is *retrieved from approved sources with provenance and freshness flags* — not generated — so you stay in control. Pulling it into one place could compress content-gathering from **hours of cross-system hunting to a few minutes**, a workflow-time hypothesis to validate alongside more consistent, on-brand responses.¹
 
-**90-day measurement plan**
-| Dimension | Metric |
-|---|---|
-| Adoption | Weekly active sellers/managers; % of stage-triggers that lead to a content open |
-| Velocity | Pipeline velocity; close-won velocity; days to close |
-| Ramp | Time-to-first-opportunity / time-to-first-sale for new hires |
-| Content health | Duplicate reduction; orphaned-asset cleanup; proactive vs. broadcast comms ratio |
-
-**Suggested sequencing**
-- Weeks 1–3: connect Drive, Salesforce, microsites, Responsive; stand up the knowledge layer.¹
-- Weeks 4–8: pilot agents 1 and 2 with one sales pod and their manager.³⁴
-- Weeks 9–12: layer in the governance agent and report the before/after to the AI committee.¹`,
+Want me to draft a first-pass executive summary and differentiators section from this content?`,
 
     sources: [
       {
         id: 1,
-        title: "Gemini Enterprise — Rev Team Rollout Plan",
-        subtitle: "Google Docs · AI Committee",
-        iconUrl: GDOCS_ICON,
-        iconFallback: null,
-        author: "AI Committee",
+        title: "Approved Packaging Services Response Library",
+        subtitle: "Responsive · RFP / Proposal",
+        iconUrl: null,
+        iconFallback: RESPONSIVE_FALLBACK,
+        author: "Proposal / RFP Team",
         excerpt:
-          "Plan for baseline AI enablement across the entire revenue support org over 6–8 weeks, with every-other-week workstream reviews. Notes that Gemini is currently operating inside the Google suite only and is not connected to Salesforce, SAP/Oracle, or external content repositories.",
+          "Previously approved answers covering packaging capabilities, service differentiators, and implementation language, tagged by topic and ranked by how recently they were approved and reused.",
       },
       {
         id: 2,
-        title: "Agentforce POC — Architecture Notes",
-        subtitle: "Salesforce · IT / AI",
-        iconUrl: SALESFORCE_ICON,
+        title: "Logistics Solutions Overview",
+        subtitle: "Google Slides · Solutions Marketing",
+        iconUrl: GSLIDES_ICON,
         iconFallback: null,
-        author: "IT / AI",
+        author: "Solutions Marketing",
         excerpt:
-          "Proof-of-concept bringing multiple data feeds into Agentforce — one via API, one via MCP, one from Google Drive files, and one from an RRD.com crawler. Goal is to test multi-source retrieval inside Salesforce; the same functionality is slated to be tested through Gemini Enterprise.",
+          "Customer-facing presentation with positioning, capabilities, and proof points for logistics and supply-chain opportunities — reusable directly in the service-model section of a proposal.",
       },
       {
         id: 3,
-        title: "AI Use-Case Prioritization Matrix",
-        subtitle: "Google Sheets · AI / BPO Office",
+        title: "Sellers Library — Proposal Content by Type",
+        subtitle: "Google Sheets · Sales Enablement",
         iconUrl: GSHEETS_ICON,
-        iconFallback: null,
-        author: "AI / BPO Office",
-        excerpt:
-          "Compares AI use cases across sales content, coaching, forecasting, operations, and planning to decide where third-party partners are needed vs. in-house build. Ranks cross-system content retrieval and just-in-time coaching as high-value, high-effort items without a clear owner.",
-      },
-      {
-        id: 4,
-        title: "Sales Manager 1:1 Coaching Framework",
-        subtitle: "Google Docs · Sales Enablement",
-        iconUrl: GDOCS_ICON,
         iconFallback: null,
         author: "Sales Enablement",
         excerpt:
-          "Defines how managers review seller skill gaps, curriculum completion and results, deal-stage progression, and where deals stall — to coach in recurring 1:1s. The blueprint for a just-in-time coaching agent that assembles this view automatically before each meeting.",
+          "Structured index of proposal assets by content type, used to find the right boilerplate, case studies, and proof documents — and to flag answers still loose in Drive that should be promoted into Responsive.",
+      },
+      {
+        id: 4,
+        title: "Packaging Case Study Collection",
+        subtitle: "Google Docs · Industry Marketing",
+        iconUrl: GDOCS_ICON,
+        iconFallback: null,
+        author: "Industry Marketing",
+        excerpt:
+          "Curated customer outcomes and operational results that can be cited as supporting evidence in packaging and logistics proposals.",
       },
     ],
 
     followUpQuery:
-      "Draft a 90-day Glean pilot proposal for the AI committee and Sales Enablement",
+      "Draft a first-pass executive summary and differentiators section for this RFP",
 
     chatHistory: {
-      today: ["AI stack normalization — where Glean fits"],
+      today: ["RFP assembly — packaging & logistics"],
       recent: [
-        "Gemini Enterprise — rollout & connection gaps...",
-        "Agentforce POC — API / MCP / Drive / crawler...",
-        "Just-in-time coaching agent — manager 1:1s...",
-        "Content governance agent — sprawl detection...",
-        "Glean vs. Gemini vs. Agentforce — where each plays...",
-        "90-day pilot — velocity & time-to-first-sale...",
+        "Responsive — approved packaging answers...",
+        "Logistics overview — service model section...",
+        "Proposal content by type — what's canonical...",
+        "Case studies — proof points to cite...",
+        "Stale answers — what to refresh before sending...",
+        "Loose Drive docs — promote into Responsive...",
       ],
     },
 
     showWork: {
       searchQuery:
-        "gemini enterprise agentforce poc knowledge layer pilot agents manager coaching pipeline velocity time to first sale",
+        "packaging logistics RFP approved answers responsive proposal content sellers library case studies proof points",
       searching: [
         {
-          icon: GDOCS_ICON,
-          iconFallback: null,
-          label: "Gemini Enterprise — Rev Team Rollout Plan...",
+          icon: null,
+          iconFallback: RESPONSIVE_FALLBACK,
+          label: "Approved Packaging Services Response Library...",
         },
         {
-          icon: SALESFORCE_ICON,
+          icon: GSLIDES_ICON,
           iconFallback: null,
-          label: "Agentforce POC — Architecture Notes...",
+          label: "Logistics Solutions Overview...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
       reading: [
         {
-          icon: GDOCS_ICON,
-          iconFallback: null,
-          label: "Gemini Enterprise — Rev Team Rollout Plan...",
+          icon: null,
+          iconFallback: RESPONSIVE_FALLBACK,
+          label: "Approved Packaging Services Response Library...",
         },
         {
           icon: GSHEETS_ICON,
           iconFallback: null,
-          label: "AI Use-Case Prioritization Matrix...",
+          label: "Sellers Library — Proposal Content by Type...",
         },
         {
           icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Sales Manager 1:1 Coaching Framework...",
+          label: "Packaging Case Study Collection...",
         },
       ],
       synthesizing: {
         icon: GDOCS_ICON,
         iconFallback: null,
-        label: "Glean Pilot Proposal — AI Stack Normalization",
-        note: "Positioning Glean as the horizontal knowledge layer and scoping three agents that complement Gemini and Agentforce with measurable 90-day outcomes.",
+        label: "RFP Response Pack — Packaging & Logistics",
+        note: "Reconciling Responsive, Drive, and the Sellers Library into one ranked, approved answer set and flagging stale or un-promoted content.",
+      },
+    },
+  },
+
+  /* ═══════════════════════════════════════════════════════
+   * FLOW 2 — Frontline Sales Manager
+   * Stacey's coaching vision: just-in-time insight on skill
+   * gaps and deal progression, assembled across Salesforce,
+   * the LMS, and call transcripts before a 1:1.
+   * ═══════════════════════════════════════════════════════ */
+  {
+    id: "sales-manager",
+    persona: {
+      title: "Frontline Sales Manager",
+      subtitle: "Sales manager, deal coaching",
+    },
+    greeting: "Good afternoon",
+    userQuery:
+      "Two of my reps have late-stage deals that are slipping. Summarize where each deal stands, what risks you see, and what coaching I should give each rep before their next customer meeting — pull from Salesforce, the LMS, and the call transcripts so I'm not reconstructing this by hand.",
+
+    aiResponse: `Here's a just-in-time coaching read on both at-risk deals, assembled from Salesforce, the LMS, and recent call transcripts.
+
+**Portfolio snapshot**
+- **Acme Healthcare Expansion** — greater risk. Late stage, but the next step has slipped twice and a key stakeholder hasn't been engaged.¹
+- **Regional Manufacturing Renewal** — at risk on timeline, not on intent. Stalled on a single open task.²
+
+**Deal-by-deal inspection**
+
+*Acme Healthcare Expansion*¹⁴
+- Stage hasn't advanced in 3 weeks; close date already pushed once.
+- The discovery recap shows pricing came up early but was never followed up.⁴
+- Coaching content on multi-threading was assigned but not completed.³
+
+*Regional Manufacturing Renewal*²
+- A single procurement approval is the blocker; everything else is ready.
+- Rep hasn't logged a mutual close plan.
+
+**Coaching recommendations**
+
+*For the rep on Acme:*³⁴
+- Multi-thread now — get to the economic buyer this week.
+- Revisit the pricing thread the call surfaced before it festers.
+- Ask: *"What has to be true for this to close this quarter, and who hasn't said yes yet?"*
+
+*For the rep on Regional Manufacturing:*²
+- Build a mutual close plan with the procurement milestone dated.
+- Ask: *"What's the approval path, and what can we do this week to de-risk it?"*
+
+**Suggested inspection cadence**
+- Weekly: stage age, slipped next steps, and assigned-vs-completed coaching content.
+- Watch: deals with no activity in 7+ days and any close date pushed more than once.
+
+**Why this matters**
+This replaces manual deal-inspection prep with a live read across opportunity context and recent deal activity — so managers coach from context and intervene earlier on stuck deals. (Illustrative; the time saved and pipeline lift are hypotheses to validate, not claimed RRD numbers.)¹²
+
+Want me to turn this into a coaching agenda for each 1:1?`,
+
+    sources: [
+      {
+        id: 1,
+        title: "Opportunity — Acme Healthcare Expansion",
+        subtitle: "Salesforce · Opportunity",
+        iconUrl: SALESFORCE_ICON,
+        iconFallback: null,
+        author: "Salesforce",
+        excerpt:
+          "Live deal record: current stage, next step, key contacts, and recent activity. Stage age and a twice-pushed close date flag this as the higher-risk opportunity.",
+      },
+      {
+        id: 2,
+        title: "Opportunity — Regional Manufacturing Renewal",
+        subtitle: "Salesforce · Opportunity",
+        iconUrl: SALESFORCE_ICON,
+        iconFallback: null,
+        author: "Salesforce",
+        excerpt:
+          "Second deal record: stage status, open tasks, and timeline indicators. A single open procurement task is driving the slippage, not buyer intent.",
+      },
+      {
+        id: 3,
+        title: "Sales Coaching Framework by Stage",
+        subtitle: "LMS · Sales Enablement",
+        iconUrl: LMS_ICON,
+        iconFallback: null,
+        author: "Sales Enablement",
+        excerpt:
+          "Manager-facing guide on how to coach reps at each sales stage, including common skill gaps and intervention prompts. Shows which coaching content was assigned versus completed.",
+      },
+      {
+        id: 4,
+        title: "Call Review — Acme Discovery Recap",
+        subtitle: "Gong · Call transcript",
+        iconUrl: GONG_ICON,
+        iconFallback: null,
+        author: "Gong",
+        excerpt:
+          "Call notes showing what the rep covered and missed — including an early pricing signal that was never followed up — pinpointing where manager coaching is needed.",
+      },
+    ],
+
+    followUpQuery:
+      "Create a coaching agenda for my 1:1 with each rep",
+
+    chatHistory: {
+      today: ["Coaching read — two slipping deals"],
+      recent: [
+        "Acme Healthcare — why is it stalling...",
+        "Regional Manufacturing — what's the blocker...",
+        "Coaching framework — skill gaps by stage...",
+        "Gong recap — pricing thread to revisit...",
+        "Assigned vs. completed coaching content...",
+        "Deal inspection cadence — what to watch weekly...",
+      ],
+    },
+
+    showWork: {
+      searchQuery:
+        "late stage deals slipping coaching salesforce opportunity stage risk LMS coaching framework gong call recap skill gaps",
+      searching: [
+        {
+          icon: SALESFORCE_ICON,
+          iconFallback: null,
+          label: "Opportunity — Acme Healthcare Expansion...",
+        },
+        {
+          icon: SALESFORCE_ICON,
+          iconFallback: null,
+          label: "Opportunity — Regional Manufacturing Renewal...",
+        },
+        { icon: null, iconFallback: null, label: "+5 more" },
+      ],
+      reading: [
+        {
+          icon: SALESFORCE_ICON,
+          iconFallback: null,
+          label: "Opportunity — Acme Healthcare Expansion...",
+        },
+        {
+          icon: LMS_ICON,
+          iconFallback: null,
+          label: "Sales Coaching Framework by Stage...",
+        },
+        {
+          icon: GONG_ICON,
+          iconFallback: null,
+          label: "Call Review — Acme Discovery Recap...",
+        },
+      ],
+      synthesizing: {
+        icon: GDOCS_ICON,
+        iconFallback: null,
+        label: "Coaching Read — Two At-Risk Deals",
+        note: "Correlating Salesforce stage signals, LMS coaching completion, and call transcripts into a just-in-time coaching brief per rep.",
+      },
+    },
+  },
+
+  /* ═══════════════════════════════════════════════════════
+   * FLOW 3 — New Seller
+   * The time-to-onboard story: one guided path from fragmented
+   * content instead of weeks of tribal searching. Cleanest flow
+   * for the ramp metric the council cares about.
+   * ═══════════════════════════════════════════════════════ */
+  {
+    id: "new-seller",
+    persona: {
+      title: "New Seller",
+      subtitle: "New hire, first 90 days",
+    },
+    greeting: "Good afternoon",
+    userQuery:
+      "I'm new to RRD and I have my first meeting next week with a manufacturing prospect. Give me the basics: what we sell into this segment, the key discovery questions, the best intro materials, and what I should learn first — I don't know which of the 14 microsites to even start with.",
+
+    aiResponse: `Welcome — here's a guided starting path for your first manufacturing meeting, instead of guessing which microsite to open.
+
+**The short version**
+RRD sells into manufacturing across packaging, labels, supply-chain and logistics, and commercial print/communications. Before the first meeting, focus on the buyer's world and a strong discovery — not the full catalog.¹
+
+**What to learn first (in order)**
+1. **Manufacturing Industry Overview** — who you're selling to and what they care about.¹
+2. **New Seller Onboarding Checklist** — the must-complete items for week one.²
+3. **Discovery Questions by Vertical** — the approved questions for a first manufacturing conversation.³
+4. **Manufacturing Starter Pack** — the indexed set of case studies and one-pagers to know cold.⁴
+
+**First-meeting prep**
+- *Intro talk track:* lead with RRD's integrated packaging + supply-chain story, not a product list.¹
+- *Discovery questions:* "Where does your packaging or labeling workflow slow down today?" · "How are you balancing speed-to-shelf with consistency across SKUs?" · "Who owns the decision when you evaluate a partner?"³
+- *Common buyer pains:* fragmented vendors, slow time-to-market, proving ROI across print and digital.¹
+
+**Recommended 2-week ramp path**
+- *Week 1 (required):* Industry overview, onboarding checklist, discovery questions.¹²³
+- *Week 2 (deeper):* Starter-pack case studies and the capabilities you'll position most.⁴
+- *Optional:* long-form background decks — searchable when you need them, not required now.⁴
+
+**Why this matters**
+This turns fragmented content across 14+ microsites into a single guided path, cutting the dependency on tribal knowledge. (Time-to-onboard is the value hypothesis to validate in a "day in the life" blueprint — productive in your first weeks, not your first quarter.)²
+
+When you're ready, ask me to build a 2-week ramp plan from these materials.`,
+
+    sources: [
+      {
+        id: 1,
+        title: "Manufacturing Industry Overview for Sellers",
+        subtitle: "Google Slides · Industry Marketing",
+        iconUrl: GSLIDES_ICON,
+        iconFallback: null,
+        author: "Industry Marketing",
+        excerpt:
+          "Introductory, segment-specific positioning deck that helps new reps understand manufacturing buyer needs and how RRD's packaging, labels, and supply-chain offerings fit.",
+      },
+      {
+        id: 2,
+        title: "New Seller Onboarding Checklist",
+        subtitle: "LMS · Sales Onboarding",
+        iconUrl: LMS_ICON,
+        iconFallback: null,
+        author: "Sales Onboarding",
+        excerpt:
+          "Structured onboarding path covering must-complete training, key assets, and early-ramp milestones for the first 90 days.",
+      },
+      {
+        id: 3,
+        title: "Discovery Questions by Vertical",
+        subtitle: "Google Docs · Sales Enablement",
+        iconUrl: GDOCS_ICON,
+        iconFallback: null,
+        author: "Sales Enablement",
+        excerpt:
+          "Starter set of approved discovery questions organized by industry and early-stage conversation type, so a new seller walks in asking the right things.",
+      },
+      {
+        id: 4,
+        title: "Sellers Library — Manufacturing Starter Pack",
+        subtitle: "Internal microsite · Sellers Library",
+        iconUrl: GLOBE_ICON,
+        iconFallback: null,
+        author: "Sales Enablement",
+        excerpt:
+          "One indexed entry point to the core case studies, one-pagers, and decks a new seller should learn first — replacing a hunt across the 14+ microsites.",
+      },
+    ],
+
+    followUpQuery:
+      "Build me a 2-week ramp plan based on these materials",
+
+    chatHistory: {
+      today: ["Ramp prep — first manufacturing meeting"],
+      recent: [
+        "Manufacturing overview — who I'm selling to...",
+        "Onboarding checklist — week 1 must-dos...",
+        "Discovery questions — manufacturing first call...",
+        "Starter pack — what to learn first...",
+        "Where do I even start — which microsite...",
+        "2-week ramp plan — required vs optional...",
+      ],
+    },
+
+    showWork: {
+      searchQuery:
+        "new seller manufacturing onboarding industry overview discovery questions starter pack ramp time to onboard sellers library",
+      searching: [
+        {
+          icon: GSLIDES_ICON,
+          iconFallback: null,
+          label: "Manufacturing Industry Overview for Sellers...",
+        },
+        {
+          icon: LMS_ICON,
+          iconFallback: null,
+          label: "New Seller Onboarding Checklist...",
+        },
+        { icon: null, iconFallback: null, label: "+5 more" },
+      ],
+      reading: [
+        {
+          icon: GSLIDES_ICON,
+          iconFallback: null,
+          label: "Manufacturing Industry Overview for Sellers...",
+        },
+        {
+          icon: GDOCS_ICON,
+          iconFallback: null,
+          label: "Discovery Questions by Vertical...",
+        },
+        {
+          icon: GLOBE_ICON,
+          iconFallback: null,
+          label: "Sellers Library — Manufacturing Starter Pack...",
+        },
+      ],
+      synthesizing: {
+        icon: GDOCS_ICON,
+        iconFallback: null,
+        label: "Guided Ramp Path — New Seller, Manufacturing",
+        note: "Turning fragmented onboarding content across 14+ microsites into a single guided path to compress time-to-onboard.",
       },
     },
   },

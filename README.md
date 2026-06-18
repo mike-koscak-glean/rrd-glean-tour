@@ -1,28 +1,30 @@
 # Glean × RRD — Vision Demo
 
-A personalized, scripted demo that simulates the Glean AI Assistant experience tailored for RR Donnelley's sales enablement and onboarding stakeholders.
+A personalized, scripted demo that simulates the Glean AI Assistant experience tailored for RR Donnelley's sales organization.
 
 ## What It Does
 
-This app walks viewers through four sales-focused personas, each with a pre-loaded query, an animated AI response with inline citations, a collapsible "Show work" trace, and source cards — demonstrating how Glean would work across RRD's real systems.
+This app walks viewers through four seller-facing use cases, each with a pre-loaded query, an animated AI response with inline citations, a collapsible "Show work" trace, and source cards — demonstrating how Glean serves the right content and coaching, in the flow, across RRD's real systems.
 
-## Personas
+It's built as the basis for the 5–10 minute video for RRD's Sales Leader Advisory Council: top use cases for sellers with quantified time savings, revenue impact, and time-to-onboard — aligned to the June 18, 2026 "Glean & RRD" call. The through-line from that call: the problem isn't a lack of content, it's too much fragmented content and noise across 14+ microsites, Drive, the Responsive RFP system, and the Sellers Library.
 
-| Persona | Role |
-|---------|------|
-| **Sales Enablement Leader** | VP, Sales Enablement |
-| **New Enterprise Seller** | New hire, first 90 days |
-| **Sales Content & Communications Lead** | Manager, Sales Content & Engagement |
-| **AI & Business Process Optimization** | AI / BPO office |
+## Use cases
+
+| Persona | Role | Use case |
+|---------|------|----------|
+| **Account Executive** | Enterprise seller, active deal cycle | Stage-specific discovery prep served in one flow |
+| **Proposal & RFP Lead** | Manager, Proposals & Content | Assemble approved RFP content across Responsive, Drive & the Sellers Library in minutes |
+| **Frontline Sales Manager** | Sales manager, deal coaching | Just-in-time coaching on skill gaps and deal progression |
+| **New Seller** | New hire, first 90 days | A guided ramp path that shrinks time-to-onboard |
 
 ## Deep Links
 
-Each persona has a direct URL:
+Each use case has a direct URL:
 
-- `/enablement-leader` — Sales Enablement Leader
-- `/new-seller` — New Enterprise Seller
-- `/sales-content` — Sales Content & Communications Lead
-- `/ai-bpo` — AI & Business Process Optimization
+- `/account-executive` — Account Executive
+- `/rfp-lead` — Proposal & RFP Lead
+- `/sales-manager` — Frontline Sales Manager
+- `/new-seller` — New Seller
 
 ## Local Development
 
