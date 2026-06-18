@@ -7,13 +7,19 @@ const GSLIDES_ICON = `https://app.glean.com/static/proxy/gdriveicons/32/type/app
 const GSHEETS_ICON = `https://app.glean.com/static/proxy/gdriveicons/32/type/application/vnd.google-apps.spreadsheet`;
 const GDRIVE_ICON = `${GLEAN_IMG}/logos/gdrive3.svg`;
 const SALESFORCE_ICON = `${GLEAN_IMG}/logos/salesforce.svg`;
+const GONG_ICON = `${GLEAN_IMG}/logos/gong.svg`;
 const GLOBE_ICON = `${GLEAN_IMG}/feather/globe.svg`;
 
 const LMS_ICON = csodLogo;
 
+// "Responsive" is RRD's RFP/proposal content system; no CDN logo, so use a lettered chip.
+const RESPONSIVE_FALLBACK = { letter: "R", color: "#5B3DF5" };
+
 export const flows = [
   /* ═══════════════════════════════════════════════════════
    * FLOW 0 — Sales Enablement Leader
+   * Stacey's world: content governance, just-in-time serving,
+   * taming microsite + Sellers Library sprawl.
    * ═══════════════════════════════════════════════════════ */
   {
     id: "enablement-leader",
@@ -23,150 +29,148 @@ export const flows = [
     },
     greeting: "Good afternoon",
     userQuery:
-      "For our Q2 sales plays, bring together the most up-to-date enablement content for a mid-market cross-sell opportunity in financial services. Include the primary deck we want sellers to use, the right battlecard and microsite section, and any proposal templates from the acquisition library that match. Then flag anything that looks outdated or duplicative and recommend one canonical package I should promote to sellers and how to roll it out alongside Gemini.",
+      "Our sellers are drowning in content — 14+ microsites hanging off the go-to-market hub, the Sellers Library in Google Drive, plus leftover acquisition drives. For our packaging plays, show me where the seller-facing content is fragmented across RRD Sales University, the microsites, and Drive. Flag duplicates and anything still on retired or acquired branding, then recommend the canonical must-have / should-have / nice-to-have set. Finally, propose how Glean serves the right asset just-in-time when a packaging opportunity moves to discovery in Salesforce — instead of us blasting another newsletter.",
 
-    aiResponse: `Here's the governed package for your Q2 financial services cross-sell plays.
+    aiResponse: `Here's the state of your packaging content and a plan to govern and serve it.
 
-**Primary deck to promote**
-Recommended deck: **"Q2 Financial Services Cross-Sell — Core Pitch"**¹
-- Latest version, updated this quarter with new case studies and proof points.¹
-- Already referenced in the Q2 Plays doc and linked from the FS microsite.¹³
-- Used in recent wins; win stories are embedded in the notes.
+**Where packaging content is fragmented**
+The same packaging assets show up in several places, which is why reps have to dig:¹²
+- The canonical kit lives in the **Sellers Library** Google Drive, indexed by content type.¹
+- It's also linked (sometimes as older copies) across **5 of the 14 microsites** under the **RRD Sales University go-to-market view**.²
+- Several near-duplicates are still sitting in **un-aggregated acquisition drives** and surface in search ahead of the current version.⁴
 
-**Battlecard and microsite content**
-- Battlecard: **"Financial Services Platform vs [Top Competitors]"**²
-  - Covers pricing, differentiation, and objection handling aligned with your current plays.
-- Microsite section: **"Why RRD for Financial Services"**³
-  - Use this as the canonical source for one-liners and visuals; Gemini and Glean agents should both lean on this page for consistent messaging.³
+**Duplicates and stale branding to retire**
+- Two packaging decks reference **pre-consolidation / acquired-company branding** and should be deprecated.⁴
+- Three microsite pages point at **outdated Drive files** rather than the Sellers Library source — collapse these to a single link.²
 
-**Relevant proposal templates**
-Two acquisition-era templates match this play:⁴
-- *"FS Cross-Sell — Existing Print Customer"*
-- *"FS Cross-Sell — Digital + Print Bundle"*
+**Recommended canonical set**
+*Must-have (served in-deal):*¹
+- Packaging buyer ICPs
+- Packaging discovery question set
+- Packaging "Discovery Kit" deck
 
-Both include workable language, but the **Digital + Print Bundle** template aligns better with your current platform positioning.⁴
+*Should-have (role reinforcement):*¹
+- Packaging battlecard and pricing one-pager
+- Manager coaching guide for packaging deals
 
-**Cleanup: what looks outdated or duplicative**
-Several older decks and battlecards cover similar ground but:
-- Reference retired product names.
-- Use pre-consolidation branding.
+*Nice-to-have (searchable, not pushed):*¹
+- Long-form background decks and recorded enablement sessions
 
-Recommend: mark these as deprecated in Glean and remove them from microsite navigation so Gemini and Glean both steer sellers to the newer content.¹³
+**Serving it just-in-time instead of by newsletter**
+Rather than another broadcast, wire content to the **Salesforce stage signal**:³
+- When a **packaging opportunity moves into Discovery**, Glean surfaces the buyer ICPs, the packaging training, and the discovery questions to ask — in the seller's flow.³
+- Glean acts as the **horizontal layer** across Drive, microsites, Salesforce, and Responsive, so this works without rebuilding everything inside Gemini or Agentforce.¹
 
-**Canonical package & rollout plan**
-Canonical set to promote:
-1. Q2 FS Cross-Sell Core Deck¹
-2. FS Platform vs Competitors Battlecard²
-3. FS Microsite "Why RRD" section³
-4. Updated "Digital + Print Bundle" proposal template⁴
-
-Rollout suggestion:
-- Create a Glean "FS Cross-Sell Brief" agent that packages these four assets for any FS opportunity.
-- Link that agent and these assets from the Gemini gem index so sellers see a consistent story whichever assistant they start with.³
-- Spotlight the package in your next sales comms and microsite hero slot.`,
+**Suggested rollout**
+1. Lock the must-have set in the Sellers Library and mark the duplicates deprecated in Glean.¹⁴
+2. Point the 5 packaging microsites at the canonical sources.²
+3. Pilot the discovery-stage trigger with one seller pod, then measure content opens vs. the old newsletter push.³`,
 
     sources: [
       {
         id: 1,
-        title: "Q2 Plays — Financial Services Cross-Sell",
+        title: "Sellers Library — Content Index",
+        subtitle: "Google Sheets · Sales Enablement",
+        iconUrl: GSHEETS_ICON,
+        iconFallback: null,
+        author: "Sales Enablement",
+        excerpt:
+          "The master index for the Sellers Library Google Drive. Organizes seller content by type (marketing, training, L&D, PR, sales engagement) and by must-have / should-have / nice-to-have tier. Built to map cleanly onto sales stages so the right asset can be served when a rep needs it.",
+      },
+      {
+        id: 2,
+        title: "RRD Sales University — Go-to-Market Hub",
+        subtitle: "Internal microsite · GTM",
+        iconUrl: GLOBE_ICON,
+        iconFallback: null,
+        author: "Microsites / Comms",
+        excerpt:
+          "Central go-to-market microsite hub that spiderwebs out into 14+ sub-microsites, any of which can be created by teams across the org. Several packaging pages link directly to Drive files — some current, some outdated copies — making it hard for sellers to know which version is canonical.",
+      },
+      {
+        id: 3,
+        title: "Packaging Play — Discovery Stage Kit",
         subtitle: "Google Slides · Sales Plays",
         iconUrl: GSLIDES_ICON,
         iconFallback: null,
         author: "Sales Enablement",
         excerpt:
-          "Q2 sales play for financial services cross-sell. Updated this quarter with refreshed case studies, proof points, and win stories. Primary deck referenced in the Q2 Plays doc and linked from the FS microsite hub. Used by top performers in recent regional bank and insurance opportunities.",
-      },
-      {
-        id: 2,
-        title: "Battlecard — Financial Services Platform vs Competitors",
-        subtitle: "Google Docs · Sales Enablement",
-        iconUrl: GDOCS_ICON,
-        iconFallback: null,
-        author: "Sales Content & Engagement",
-        excerpt:
-          "Current competitive battlecard for the FS segment. Covers pricing comparison, platform differentiation, and objection handling for the top competitive scenarios. Aligned with Q2 plays and approved for field use. Includes guidance on print vs. digital bundling and cross-sell positioning.",
-      },
-      {
-        id: 3,
-        title: "Go-to-market Microsite — Financial Services Hub",
-        subtitle: "Internal site · Sales Plays",
-        iconUrl: GLOBE_ICON,
-        iconFallback: null,
-        author: "Microsites Team",
-        excerpt:
-          "Canonical internal microsite for the financial services segment. Contains approved one-liners, visuals, and sales messaging for FS cross-sell plays. Designed to be the source of truth for both Gemini gems and Glean agents pointing sellers to FS content. Last updated this quarter.",
+          "The current discovery-stage kit for packaging opportunities: buyer ICPs, the approved discovery question set, and packaging positioning. Intended to be triggered when a packaging opportunity enters the Discovery stage in Salesforce rather than pushed to all reps at once.",
       },
       {
         id: 4,
-        title: "Acquisition Library — FS Cross-Sell Templates",
-        subtitle: "Google Drive · Content Library",
+        title: "Acquisition Drive — Packaging Content Audit",
+        subtitle: "Google Drive · Content Ops",
         iconUrl: GDRIVE_ICON,
         iconFallback: null,
-        author: "Content Library",
+        author: "Content Operations",
         excerpt:
-          "Proposal templates from the acquisition library. Two templates match the current FS cross-sell play: 'Existing Print Customer' and 'Digital + Print Bundle.' The Digital + Print Bundle version aligns better with current platform positioning. Both contain adaptable language but should not be used without reviewing for retired product names.",
+          "Audit of packaging assets sitting in un-aggregated acquisition Google Drives. Flags duplicate decks, files using pre-consolidation/acquired-company branding, and content that was never migrated into the Sellers Library. Recommends deprecation or consolidation for each.",
       },
     ],
 
     followUpQuery:
-      "Create a Glean FS Cross-Sell Brief agent that packages these four assets",
+      "Set up the Salesforce discovery-stage trigger that serves this packaging kit just-in-time",
 
     chatHistory: {
-      today: ["Campaign launch checklist — Q2 Sales Plays"],
+      today: ["Packaging content audit — microsites & Drive"],
       recent: [
-        "Acquisition library — Migration plan...",
-        "Microsite usage dashboard — Last 90 days...",
-        "Salesforce content performance — Battlecards...",
-        "Gemini enablement rollout — Go-to-market team...",
-        "Seller feedback — Content is hard to find...",
-        "Q2 Sales Plays — Launch Readiness...",
+        "Sellers Library — must-have / should-have index...",
+        "Microsite sprawl — who created what this month...",
+        "Just-in-time serving — Salesforce stage triggers...",
+        "Acquisition drives — consolidation backlog...",
+        "Newsletter vs. in-flow content — seller feedback...",
+        "RRD Sales University — go-to-market view cleanup...",
       ],
     },
 
     showWork: {
       searchQuery:
-        "Q2 sales plays financial services cross-sell deck battlecard microsite proposal",
+        "packaging content sellers library microsites RRD sales university acquisition drive duplicates discovery stage",
       searching: [
         {
-          icon: GSLIDES_ICON,
+          icon: GSHEETS_ICON,
           iconFallback: null,
-          label: "Q2 Plays — Financial Services Cross-Sell...",
+          label: "Sellers Library — Content Index...",
         },
         {
-          icon: GDOCS_ICON,
+          icon: GLOBE_ICON,
           iconFallback: null,
-          label: "Battlecard — Financial Services Platform vs Competitors...",
+          label: "RRD Sales University — Go-to-Market Hub...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
       reading: [
         {
-          icon: GSLIDES_ICON,
+          icon: GSHEETS_ICON,
           iconFallback: null,
-          label: "Q2 Plays — Financial Services Cross-Sell...",
-        },
-        {
-          icon: GDOCS_ICON,
-          iconFallback: null,
-          label: "Battlecard — Financial Services Platform vs Competitors...",
+          label: "Sellers Library — Content Index...",
         },
         {
           icon: GLOBE_ICON,
           iconFallback: null,
-          label: "Go-to-market Microsite — Financial Services Hub...",
+          label: "RRD Sales University — Go-to-Market Hub...",
+        },
+        {
+          icon: GDRIVE_ICON,
+          iconFallback: null,
+          label: "Acquisition Drive — Packaging Content Audit...",
         },
       ],
       synthesizing: {
         icon: GDOCS_ICON,
         iconFallback: null,
-        label: "Sales Plays Content Package — Financial Services Cross-Sell",
-        note: "Cross-referencing Q2 plays, microsite content, and acquisition templates to propose a single, governed sales package.",
+        label: "Packaging Content Governance Plan — Sales Enablement",
+        note: "Cross-referencing the Sellers Library index, microsite links, and acquisition drives to define one canonical, just-in-time package.",
       },
     },
   },
 
   /* ═══════════════════════════════════════════════════════
    * FLOW 1 — New Enterprise Seller
+   * The just-in-time discovery dream: packaging opp hits
+   * Discovery in Salesforce → ICPs, training, questions,
+   * correlated with recent call transcripts.
    * ═══════════════════════════════════════════════════════ */
   {
     id: "new-seller",
@@ -176,142 +180,157 @@ Rollout suggestion:
     },
     greeting: "Good afternoon",
     userQuery:
-      "I'm an enterprise seller in week 2 of onboarding. I have my first discovery call next week with a mid-market account covering commercial print and direct mail. Help me: understand their current programs and products with us, build a discovery question set, know what internal resources I should study ahead of the call, and know how to use Gemini and Glean together to prep efficiently.",
+      "I'm in my first 90 days and a packaging opportunity just moved to Discovery in Salesforce. Pull together what I should review before the call — the buyer ICPs, the packaging training, and the discovery questions I should be asking — from the Sellers Library and RRD Sales University. If there are recent call transcripts or account notes that should change how I prep, fold those in too.",
 
-    aiResponse: `Here's your pre-call brief for the upcoming commercial print and direct mail discovery call.
+    aiResponse: `Here's your just-in-time prep for the packaging opportunity now in Discovery.
 
-**Your account snapshot**
-Based on the account record, this is an existing print customer with an active commercial print program.³ Key context to know going in:
-- They currently use RRD for commercial print and direct mail production — the relationship predates the recent business unit consolidations.
-- No active cross-sell opportunities are currently logged in Salesforce, which makes this a strong candidate for introducing the digital + direct mail bundle.³
-- The previous seller logged one executive contact in marketing operations; worth confirming the full stakeholder map before the call.
+**Why you're seeing this**
+Your Salesforce opportunity moved into the **Discovery stage**, so this pulls the must-have packaging content tied to that stage — instead of you hunting across the 14 microsites for it.⁴
 
-**Discovery question set**
-For a first call with an existing print customer, lead with understanding before pitching:¹
-- *"How is your team thinking about the balance between print and digital channels for your 2026 campaigns?"*
-- *"Where does your print and direct mail workflow tend to slow down today — is it design, production, or tracking ROI?"*
-- *"Are you currently measuring response rates across print and digital in the same place, or are those reporting siloed?"*
-- *"How are decisions about vendors and consolidation typically made — at the marketing team level or above?"*
+**1. Know the buyer (ICPs)**
+Review the **packaging buyer ICPs** before the call:¹
+- Primary buyer is usually in marketing/brand or procurement operations.
+- Top pains: fragmented vendors, slow time-to-market, and proving ROI across print and digital.
 
-**Internal resources to study before the call**
-Priority reading:¹²
-1. **Onboarding Plan (Days 1–30)** — specifically the "Existing Customer Discovery" module in your LMS track.¹
-2. **Onboarding Microsite "Start Here" page** — the product overview for commercial print and direct mail.²
-3. **Salesforce First 30 Days Activity Template** — sets up the discovery call follow-up structure you'll complete after the meeting.³
+**2. Get sharp on the offer (training)**
+Skim the **Packaging 101 seller training** so your language matches the buyer's world:²
+- Core packaging solutions and where RRD differentiates.
+- Early-stage objection handling.
 
-**How to use Gemini and Glean together**
-Use **Glean** to:
-- Pull the latest account context, past proposals, and any relevant internal notes across Salesforce and Drive before the call.¹³
-- Search for case studies or win stories from similar existing print customers to use as proof points.
+**3. Run a strong discovery (questions)**
+Use the approved **discovery question set for packaging**:³
+- *"How are you balancing speed-to-shelf with packaging consistency across SKUs today?"*
+- *"Where does your packaging workflow slow down — design, sourcing, or production?"*
+- *"How are you measuring packaging's impact on the shelf and on cost?"*
+- *"Who else weighs in when you evaluate a packaging partner?"*
 
-Use **Gemini** to:
-- Draft variations of your follow-up email and refine your talk track based on the brief.
-- Polish the discovery questions above into a format you're comfortable delivering.
+**What changed since the kit was written**
+A **recent discovery call on a similar packaging account** flagged two things worth adapting to:⁵
+- Buyers are pushing on **sustainability / materials**, so have that proof point ready.
+- Pricing transparency came up early — don't save it for the end.
 
-Together, they keep you aligned to the official content while still letting you move fast.`,
+**Suggested 20-minute prep sequence**
+1. Buyer ICP summary (5 min)¹
+2. Packaging 101 highlights (7 min)²
+3. Discovery questions (3 min)³
+4. Recent call transcript takeaways (5 min)⁵
+
+When you're done, ask me to draft your pre-call notes and a follow-up email — I'll keep it aligned to the approved content.`,
 
     sources: [
       {
         id: 1,
-        title: "Onboarding Plan — Enterprise Sellers (Days 1–30)",
+        title: "Packaging Buyer ICPs",
+        subtitle: "Google Docs · Sales Enablement",
+        iconUrl: GDOCS_ICON,
+        iconFallback: null,
+        author: "Sales Enablement",
+        excerpt:
+          "Defines the buyer personas for packaging opportunities — roles, decision criteria, common pains, and messaging guidance. Built to be surfaced at the discovery stage so new sellers walk in understanding who they're talking to and what matters to them.",
+      },
+      {
+        id: 2,
+        title: "Packaging 101 — Seller Training",
         subtitle: "LMS · Sales Onboarding",
         iconUrl: LMS_ICON,
         iconFallback: null,
         author: "Sales Onboarding",
         excerpt:
-          "Structured 30-day onboarding plan for enterprise sellers. Includes curriculum modules, on-the-job training checkpoints, and manager coaching milestones. Contains an 'Existing Customer Discovery' module with approved discovery frameworks and question banks for commercial print and direct mail accounts.",
-      },
-      {
-        id: 2,
-        title: "Onboarding Microsite — Start Here",
-        subtitle: "Internal site · New Sellers",
-        iconUrl: GLOBE_ICON,
-        iconFallback: null,
-        author: "Sales Enablement",
-        excerpt:
-          "New seller onboarding hub. Week-by-week guidance, product overviews, and links to approved training content. Product overview sections cover commercial print, direct mail, digital, and cross-sell bundle positioning. The 'Start Here' page is the primary navigation point for new hires in their first 30 days.",
+          "Foundational packaging curriculum for new sellers: solution overview, terminology, differentiation, and early-stage objection handling. Part of the first-90-days enablement track and mapped to the packaging discovery play.",
       },
       {
         id: 3,
-        title: "Salesforce Template — First 30 Days Activities",
-        subtitle: "CRM · Activity Template",
-        iconUrl: SALESFORCE_ICON,
+        title: "Discovery Questions — Packaging Opportunities",
+        subtitle: "Google Docs · Sales Plays",
+        iconUrl: GDOCS_ICON,
         iconFallback: null,
-        author: "Sales Operations",
+        author: "Sales Enablement",
         excerpt:
-          "Salesforce activity template for new sellers in their first 30 days. Pre-populated with key activity types, tasks, and follow-up cadence expected from enterprise AEs. Includes a discovery call prep checklist and a post-call structured update template tied to MEDDIC fields and opportunity stage advancement.",
+          "Approved discovery question set for packaging deals, organized by buyer type and deal maturity. Designed to be served when an opportunity hits Discovery so reps ask the right questions and capture the right signals.",
       },
       {
         id: 4,
-        title: "Gemini for Sellers: Beyond Email Drafting",
-        subtitle: "Training · AI Enablement",
-        iconUrl: LMS_ICON,
+        title: "Opportunity — Packaging Cross-Sell (Discovery)",
+        subtitle: "Salesforce · Opportunity",
+        iconUrl: SALESFORCE_ICON,
         iconFallback: null,
-        author: "AI / BPO Office",
+        author: "Salesforce",
         excerpt:
-          "Training module on using Gemini as a seller productivity tool beyond basic email drafting. Covers: how to build talk tracks from official content, draft follow-up sequences tied to discovery notes, and use Gemini gems to pull the right play for a given opportunity. Required as part of the onboarding AI enablement track.",
+          "Live opportunity record. Stage recently advanced to Discovery, which triggers the stage-based content recommendation. Includes account context, logged contacts, and current next steps — used to tailor which packaging assets are surfaced.",
+      },
+      {
+        id: 5,
+        title: "Recent Discovery Call — Packaging Account",
+        subtitle: "Gong · Call transcript",
+        iconUrl: GONG_ICON,
+        iconFallback: null,
+        author: "Gong",
+        excerpt:
+          "Transcript from a recent discovery call on a comparable packaging opportunity. Surfaces current buyer priorities (sustainability/materials), an early push on pricing transparency, and objections worth preparing for ahead of this call.",
       },
     ],
 
     followUpQuery:
-      "Pull the most relevant case study for an existing print customer in financial services",
+      "Draft my pre-call notes and a follow-up email aligned to the approved packaging content",
 
     chatHistory: {
-      today: ["Account prep — First Discovery Call"],
+      today: ["Discovery prep — Packaging opportunity"],
       recent: [
-        "LMS progress — Days 1–30 track...",
-        "Product overview — Commercial Print & Direct Mail...",
-        "Gemini for sellers training...",
-        "SKO recordings — New hire track...",
-        "Onboarding checklist — Week 2...",
-        "Salesforce first 30 days template...",
+        "Packaging buyer ICPs — who I'm meeting...",
+        "Packaging 101 — training highlights...",
+        "Discovery questions — packaging deals...",
+        "Recent packaging call — what to adapt...",
+        "Onboarding checklist — week 2...",
+        "Salesforce — my opportunities by stage...",
       ],
     },
 
     showWork: {
       searchQuery:
-        "new seller onboarding discovery call account prep product overview commercial print direct mail",
+        "packaging opportunity discovery stage buyer ICPs packaging training discovery questions recent call transcript",
       searching: [
         {
-          icon: LMS_ICON,
+          icon: SALESFORCE_ICON,
           iconFallback: null,
-          label: "Onboarding Plan — Enterprise Sellers (Days 1–30)...",
+          label: "Opportunity — Packaging Cross-Sell (Discovery)...",
         },
         {
-          icon: GLOBE_ICON,
+          icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Onboarding Microsite — Start Here...",
+          label: "Packaging Buyer ICPs...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
       reading: [
         {
+          icon: GDOCS_ICON,
+          iconFallback: null,
+          label: "Packaging Buyer ICPs...",
+        },
+        {
           icon: LMS_ICON,
           iconFallback: null,
-          label: "Onboarding Plan — Enterprise Sellers (Days 1–30)...",
+          label: "Packaging 101 — Seller Training...",
         },
         {
-          icon: GLOBE_ICON,
+          icon: GONG_ICON,
           iconFallback: null,
-          label: "Onboarding Microsite — Start Here...",
-        },
-        {
-          icon: SALESFORCE_ICON,
-          iconFallback: null,
-          label: "Salesforce Template — First 30 Days Activities...",
+          label: "Recent Discovery Call — Packaging Account...",
         },
       ],
       synthesizing: {
         icon: GDOCS_ICON,
         iconFallback: null,
-        label: "First Discovery Call Brief — Commercial Print Account",
-        note: "Pulling onboarding plan, account context, and training materials to build your pre-call brief.",
+        label: "Discovery Prep Brief — Packaging Opportunity",
+        note: "Correlating the Salesforce stage signal, the packaging kit, and a recent call transcript into a single just-in-time brief.",
       },
     },
   },
 
   /* ═══════════════════════════════════════════════════════
    * FLOW 2 — Sales Content & Communications Lead
+   * Kelly / Tonya's world: audit 14+ microsites, consolidate
+   * across acquisition drives + Responsive + Sellers Library.
    * ═══════════════════════════════════════════════════════ */
   {
     id: "sales-content",
@@ -321,148 +340,143 @@ Together, they keep you aligned to the official content while still letting you 
     },
     greeting: "Good afternoon",
     userQuery:
-      "Look across our last two onboarding cohorts and our Gemini rollout. Summarize where new sellers are getting stuck in the first 60 days, which onboarding assets are actually being used, and how often they're using Gemini vs not touching it. Recommend 3 concrete changes we should make to the onboarding experience and content layout.",
+      "I need to get our content sprawl under control. Audit our 14+ microsites and tell me where packaging and proposal assets are duplicated, orphaned, or pointing at outdated Drive files across the acquisition drives, the Sellers Library, and Responsive. Show me what should collapse into a single source of truth — and what's still sitting in Drive that never got aggregated into Responsive.",
 
-    aiResponse: `Here's what the data says about onboarding and what to change next.
+    aiResponse: `Here's the content audit across your microsites, Drive, and Responsive.
 
-**Where new sellers are getting stuck**
-- **Content discovery:** High drop-off after the first few days on the onboarding microsite; many sellers jump straight to ad-hoc search or asking peers.²
-- **Tool behaviors:** A meaningful portion of new hires log into Salesforce and Gemini but don't consistently use the "First 30 Days" templates or tagged plays.⁴
-- **Application gap:** Sellers complete trainings but don't always connect them to real accounts and opportunities in their territory.¹
+**The three sources of duplication**
+1. **Microsite linking:** Across the 14+ microsites under the go-to-market hub, multiple pages link to near-identical or outdated Drive files.¹
+2. **Acquisition drives:** Content from acquired businesses was never fully consolidated, so duplicates and orphans are scattered across drives.²
+3. **Responsive gap:** Some proposal/RFP content lives in **Responsive**, but other answer content is still in Google Drive and was never aggregated in.³
 
-**What onboarding assets are actually used**
-Strong engagement with:²
-- "Start Here" page and the first-week checklist.
-- Core product overview decks.
+**What's duplicated or outdated**
+- Packaging and proposal boilerplate appears in **3+ locations** with no clear canonical copy.¹³
+- Several microsite pages point to **stale Drive files** superseded by Sellers Library versions.¹⁴
+- A set of **orphaned files** in acquisition drives have no owner and near-zero opens.²
 
-Under-used:
-- Deeper playbooks and longform PDFs.
-- Certain acquisition-era assets that are still linked but rarely opened.²
+**What's not yet in Responsive**
+- Recurring RFP answers about capabilities and company details exist as loose Google Docs that should be promoted into the Responsive library so they stay current and reusable.³
 
-**How Gemini is being used (or not)**
-Adoption is uneven:³
-- A subset of sellers use Gemini heavily for email drafting and light content polishing.
-- Many are still at a baseline level — using it for editing emails but not tying it back to specific plays or accounts.³
-- Very few new hires are using Gemini to synthesize internal content because that content isn't consistently wired in or clearly promoted.
+**Recommended single sources of truth**
+| Content | Canonical home |
+|---|---|
+| Seller-facing packaging assets | Sellers Library (Drive)⁴ |
+| Proposal / RFP answers | Responsive³ |
+| Buyer-facing one-pagers | Sellers Library, linked from microsites⁴ |
 
-**Three changes to make now**
+**Cleanup workflow**
+1. **Inventory** every microsite-linked Drive file, Responsive entry, and acquisition-drive asset.¹²³
+2. **Classify** each as canonical, duplicate, orphaned, outdated, or un-aggregated.²
+3. **Consolidate** seller content under the Sellers Library index; promote proposal content into Responsive.³⁴
+4. **Prevent re-sprawl** with light governance on who can spin up a new microsite and how pages must link to canonical sources.¹
 
-**1. Create a "New Seller Onboarding" Glean agent.**²
-When a seller types *"I'm in week 2 of onboarding, what should I focus on?"* the agent:
-- Looks at their accounts and opportunities in Salesforce.⁴
-- Maps to the official onboarding plan and microsite structure.¹²
-- Returns a personalized checklist and links to the exact content they should use.
-
-**2. Restructure the onboarding microsite around tasks, not file types.**²
-- Replace sections like *"Decks / PDFs / Videos"* with workflows like *"Prepare for your first discovery call,"* *"Run your first QBR,"* etc.
-- Back those workflows with a Glean-powered search box that finds the right content across systems.
-
-**3. Instrument and showcase a simple "time-to-first-sale" story.**⁴
-- Use Glean analytics and Salesforce to compare behavior patterns — content use and assistant queries — between faster-ramping sellers and the rest.
-- Turn that into a one-slide story for leadership showing how better content discovery and guided onboarding shortens ramp.`,
+Net effect: reps stop digging across destinations, and you stop manually wrangling microsites that multiply every week.`,
 
     sources: [
       {
         id: 1,
-        title: "Onboarding Analytics — Cohorts Q3 & Q4",
-        subtitle: "Google Sheets · Sales Enablement",
-        iconUrl: GSHEETS_ICON,
+        title: "Microsite Inventory — RRD Sales University Network",
+        subtitle: "Internal microsites · Comms",
+        iconUrl: GLOBE_ICON,
         iconFallback: null,
-        author: "Sales Enablement",
+        author: "Sales Content & Engagement",
         excerpt:
-          "Cohort-level analytics for the Q3 and Q4 enterprise seller onboarding groups. Tracks time-to-first-opportunity, content engagement, LMS completion rates, and manager coaching touchpoints. Q4 cohort shows 18% slower time-to-first-sale vs Q3 despite similar headcount and territory composition.",
+          "Directory of the 14+ active go-to-market microsites — owners, linked Drive folders, and last-published dates. Highlights pages pointing at outdated or duplicate Drive files and microsites created ad hoc by teams across the org.",
       },
       {
         id: 2,
-        title: "Microsite Usage Report — Onboarding Hub",
-        subtitle: "Internal site · Analytics",
-        iconUrl: GLOBE_ICON,
+        title: "Acquisition Drive Consolidation Tracker",
+        subtitle: "Google Sheets · Content Ops",
+        iconUrl: GSHEETS_ICON,
         iconFallback: null,
-        author: "Microsites Team",
+        author: "Content Operations",
         excerpt:
-          "'Start Here' and Week 1 checklist show strong engagement. Deeper playbooks and acquisition-era assets have low open rates — several linked pages have under 10 unique visits in 60 days. Bounce rate increases significantly after day 5 of onboarding, suggesting sellers are abandoning structured paths for ad-hoc search.",
+          "Tracks the inherited acquisition Google Drives, migration status, duplicate counts, and owner assignments. Flags orphaned files with no owner and low engagement that are candidates for archival or consolidation.",
       },
       {
         id: 3,
-        title: "Gemini Usage — Go-to-Market Team",
-        subtitle: "Google Sheets · AI / BPO Office",
-        iconUrl: GSHEETS_ICON,
-        iconFallback: null,
-        author: "AI / BPO Office",
+        title: "Responsive — Content Library Export",
+        subtitle: "Responsive · RFP / Proposal",
+        iconUrl: null,
+        iconFallback: RESPONSIVE_FALLBACK,
+        author: "Proposal / RFP Team",
         excerpt:
-          "Gemini usage analysis for the go-to-market team through Q1. Usage is bimodal: a small group of power users accounts for the majority of advanced use cases. New sellers are predominantly using Gemini for email editing only. Fewer than 15% of new hires have used Gemini to synthesize internal content.",
+          "Current proposal and RFP answer inventory from Responsive with topic tags, last-updated timestamps, and usage frequency. Surfaces recurring answers that still live as loose Google Docs and should be promoted into Responsive to stay canonical.",
       },
       {
         id: 4,
-        title: "Time to First Opportunity & First Close",
-        subtitle: "CRM · Performance Metrics",
-        iconUrl: SALESFORCE_ICON,
+        title: "Sellers Library — Governance Map",
+        subtitle: "Google Docs · Sales Enablement",
+        iconUrl: GDOCS_ICON,
         iconFallback: null,
-        author: "Sales Operations",
+        author: "Sales Enablement",
         excerpt:
-          "Salesforce-based report comparing time-to-first-opportunity and time-to-first-close by seller cohort, tenure band, and territory type. Fastest-ramping sellers show higher early Salesforce activity completion and more consistent use of approved templates and plays in their first 30 days.",
+          "Defines canonical storage rules, the content-type taxonomy, and the publishing relationship between Sellers Library assets and the microsites that reference them. The blueprint for collapsing duplicates into a single source of truth.",
       },
     ],
 
     followUpQuery:
-      "Draft the brief for leadership showing how guided onboarding shortens ramp",
+      "Build the consolidation worklist — duplicates and orphans ranked by usage",
 
     chatHistory: {
-      today: ["Onboarding content usage — Last cohort"],
+      today: ["Content audit — microsites, Drive & Responsive"],
       recent: [
-        "Microsite analytics — Seller behavior by page...",
-        "Email campaign — Announcing Gemini rollout...",
-        "Salesforce report — Time to first opportunity...",
-        "Seller survey — 'Hard to find what I need'...",
-        "Gemini usage patterns — Go-to-market...",
-        "Onboarding Cohort Debrief — Q4...",
+        "Microsite inventory — owners & last published...",
+        "Acquisition drives — duplicate & orphan scan...",
+        "Responsive — what's still loose in Drive...",
+        "Sellers Library — canonical storage rules...",
+        "Microsite governance — who can publish...",
+        "Proposal boilerplate — single source of truth...",
       ],
     },
 
     showWork: {
       searchQuery:
-        "onboarding cohort analytics microsite usage gemini usage first 60 days time to first sale survey",
+        "microsite audit duplicate orphaned content acquisition drives responsive sellers library single source of truth",
       searching: [
-        {
-          icon: GSHEETS_ICON,
-          iconFallback: null,
-          label: "Onboarding Analytics — Cohorts Q3 & Q4...",
-        },
         {
           icon: GLOBE_ICON,
           iconFallback: null,
-          label: "Microsite Usage Report — Onboarding Hub...",
+          label: "Microsite Inventory — RRD Sales University Network...",
+        },
+        {
+          icon: GSHEETS_ICON,
+          iconFallback: null,
+          label: "Acquisition Drive Consolidation Tracker...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
       reading: [
         {
-          icon: GSHEETS_ICON,
-          iconFallback: null,
-          label: "Onboarding Analytics — Cohorts Q3 & Q4...",
-        },
-        {
           icon: GLOBE_ICON,
           iconFallback: null,
-          label: "Microsite Usage Report — Onboarding Hub...",
+          label: "Microsite Inventory — RRD Sales University Network...",
         },
         {
-          icon: GSHEETS_ICON,
+          icon: null,
+          iconFallback: RESPONSIVE_FALLBACK,
+          label: "Responsive — Content Library Export...",
+        },
+        {
+          icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Gemini Usage — Go-to-Market Team...",
+          label: "Sellers Library — Governance Map...",
         },
       ],
       synthesizing: {
         icon: GDOCS_ICON,
         iconFallback: null,
-        label: "Onboarding Optimization Brief — Sales Enablement",
-        note: "Merging usage, performance, and survey data to recommend onboarding and content changes tied to behavior and time-to-first-sale.",
+        label: "Content Consolidation Plan — Sales Content & Comms",
+        note: "Reconciling microsite links, acquisition drives, and Responsive to define a single source of truth per content type.",
       },
     },
   },
 
   /* ═══════════════════════════════════════════════════════
    * FLOW 3 — AI & Business Process Optimization
+   * Normalize the AI stack (Gemini Enterprise, Agentforce POC);
+   * where Glean fits as horizontal / backend knowledge layer;
+   * agents to pilot incl. manager just-in-time coaching.
    * ═══════════════════════════════════════════════════════ */
   {
     id: "ai-bpo",
@@ -472,129 +486,113 @@ When a seller types *"I'm in week 2 of onboarding, what should I focus on?"* the
     },
     greeting: "Good afternoon",
     userQuery:
-      "Within Sales & Onboarding, where can Glean add the most value on top of Gemini and existing tools? Recommend the first 3 Glean agents we should pilot, how they plug into Salesforce, Gemini, and our existing onboarding tracks, and how we'd measure impact in 90 days.",
+      "We're trying to normalize our AI stack — Gemini Enterprise is rolling out to the whole rev team but only inside Google, and IT has an Agentforce POC pulling from API, MCP, Drive, and an RRD.com crawler. Where should Glean fit: the seller/manager-facing assistant, the backend knowledge layer under what we build, or both? Recommend the first 3 agents to pilot (include a manager just-in-time coaching agent), and how we'd measure impact in 90 days on pipeline velocity, days to close, and time-to-first-sale.",
 
-    aiResponse: `Here are the top three Glean agents to pilot alongside Gemini.
+    aiResponse: `Here's where Glean fits and the first three agents to pilot.
 
-**1. Sales Content Copilot (Cross-System)**
+**Where Glean fits: backend layer first, assistant second**
+Your current stack has gaps Glean is built to fill:¹²
+- **Gemini Enterprise** is rolling out to the whole rev team but is **scoped to Google Workspace** — not connected to Salesforce, Responsive, SAP/Oracle, or the wider content estate.¹
+- **Agentforce** is a POC pulling a few feeds (API, MCP, Drive, RRD.com crawler) inside Salesforce.²
+- The unmet need is **cross-system content + coaching orchestration** with role-aware relevance.³
 
-*What it does:*
-Given an account, product, or play, it pulls together the latest deck, battlecard, microsite content, and relevant proposal templates from Salesforce, Drive, and internal sites.¹⁴
+Recommendation: use Glean as the **horizontal knowledge layer** across Drive, microsites, Salesforce, Responsive, and call transcripts — feeding both its own assistant and, where useful, Gemini/Agentforce. It complements, not replaces, what you're already standing up.¹
 
-*Why it's different from Gemini alone:*
-Uses Glean's knowledge graph and permissions to reliably find and prioritize the right assets across all systems — without manual wiring each time.¹²
+**Three agents to pilot**
 
-*Where it lives:*
-As a panel inside Salesforce, and as a Glean agent sellers can invoke directly or via shortcut from Gemini.²
+**1. Seller Stage-Based Content Agent**
+Triggers on a **Salesforce stage change** (e.g., packaging → Discovery) and serves the buyer ICPs, packaging training, and discovery questions in-flow — the just-in-time vision, automated.³
 
----
+**2. Manager Just-in-Time Coaching Agent**
+Before a 1:1, surfaces for each rep: **where deals are stalling by stage**, curriculum completed and results, and the skill gaps to coach — pulled across Salesforce, the LMS, and call transcripts.⁴
 
-**2. Onboarding Journey Copilot**
+**3. Content Governance Agent**
+Continuously detects **duplicate / orphaned / outdated** content across microsites, acquisition drives, Responsive, and the Sellers Library so the estate stops sprawling.¹
 
-*What it does:*
-Watches a new seller's real activity — Salesforce tasks, meetings, content opens — and, when asked, gives a personalized 30/60/90 plan plus "what to do this week" based on the official onboarding track.³
+**90-day measurement plan**
+| Dimension | Metric |
+|---|---|
+| Adoption | Weekly active sellers/managers; % of stage-triggers that lead to a content open |
+| Velocity | Pipeline velocity; close-won velocity; days to close |
+| Ramp | Time-to-first-opportunity / time-to-first-sale for new hires |
+| Content health | Duplicate reduction; orphaned-asset cleanup; proactive vs. broadcast comms ratio |
 
-*Why it matters:*
-Reduces time-to-first-sale while using your existing LMS, microsites, and Gemini investments — not displacing them.¹³
-
-*Where it lives:*
-In Glean's assistant, with notifications via email or chat.
-
----
-
-**3. Call-to-CRM Update Agent**
-
-*What it does:*
-Takes call notes or a meeting summary and drafts structured Salesforce updates: next steps, decision makers, MEDDIC-style fields, and tasks.²
-
-*Why it fits your strategy:*
-Leverages the same AI stack you're investing in, but uses Glean's context and connectors to reduce manual data entry and improve CRM data quality.²
-
----
-
-**90-day impact measurement**
-Track:
-- **Adoption:** how often these agents are invoked by sellers and managers.
-- **Behavior change:** increase in Salesforce activity completion rates, use of official content, and Gemini usage tied to plays.¹²
-- **Outcome metrics:** change in time-to-first-opportunity / first close for new hires, and win rate on plays supported by the Sales Content Copilot.³⁴
-
-| Agent | Primary metric | Secondary metric |
-|-------|---------------|-----------------|
-| Sales Content Copilot | % of opps using official content | Win rate on supported plays |
-| Onboarding Journey Copilot | Time-to-first-opportunity | Salesforce activity completion |
-| Call-to-CRM Update Agent | CRM update rate post-call | Data quality score |`,
+**Suggested sequencing**
+- Weeks 1–3: connect Drive, Salesforce, microsites, Responsive; stand up the knowledge layer.¹
+- Weeks 4–8: pilot agents 1 and 2 with one sales pod and their manager.³⁴
+- Weeks 9–12: layer in the governance agent and report the before/after to the AI committee.¹`,
 
     sources: [
       {
         id: 1,
-        title: "Gemini Rollout Plan — Go-to-Market",
-        subtitle: "Google Docs · AI / BPO Office",
+        title: "Gemini Enterprise — Rev Team Rollout Plan",
+        subtitle: "Google Docs · AI Committee",
         iconUrl: GDOCS_ICON,
         iconFallback: null,
-        author: "AI / BPO Office",
+        author: "AI Committee",
         excerpt:
-          "Go-to-market rollout plan for Gemini across the sales organization. Covers phased rollout, training tracks, gem index structure, and integration with Salesforce and the proposal platform. Open items: Gemini-to-Salesforce integration partially built; Notebook LM usage untracked. Glean positioned as a complementary connector layer.",
+          "Plan for baseline AI enablement across the entire revenue support org over 6–8 weeks, with every-other-week workstream reviews. Notes that Gemini is currently operating inside the Google suite only and is not connected to Salesforce, SAP/Oracle, or external content repositories.",
       },
       {
         id: 2,
-        title: "Automation Backlog — Sales & Onboarding",
-        subtitle: "Google Sheets · AI Pipeline",
+        title: "Agentforce POC — Architecture Notes",
+        subtitle: "Salesforce · IT / AI",
+        iconUrl: SALESFORCE_ICON,
+        iconFallback: null,
+        author: "IT / AI",
+        excerpt:
+          "Proof-of-concept bringing multiple data feeds into Agentforce — one via API, one via MCP, one from Google Drive files, and one from an RRD.com crawler. Goal is to test multi-source retrieval inside Salesforce; the same functionality is slated to be tested through Gemini Enterprise.",
+      },
+      {
+        id: 3,
+        title: "AI Use-Case Prioritization Matrix",
+        subtitle: "Google Sheets · AI / BPO Office",
         iconUrl: GSHEETS_ICON,
         iconFallback: null,
         author: "AI / BPO Office",
         excerpt:
-          "Prioritized backlog of AI and automation opportunities across sales and onboarding. Top-ranked items: cross-system content retrieval for sellers, CRM update automation post-call, and personalized onboarding journey agents. All three identified as high-effort/high-value without a clear owner; Glean pilot addresses the first two directly.",
-      },
-      {
-        id: 3,
-        title: "Onboarding Plan — Enterprise Sellers (Days 1–90)",
-        subtitle: "LMS · Sales Onboarding",
-        iconUrl: LMS_ICON,
-        iconFallback: null,
-        author: "Sales Onboarding",
-        excerpt:
-          "Full 90-day onboarding plan for enterprise sellers. Structured curriculum milestones, manager coaching gates, and on-the-job assignments. Designed to be the source of truth for the Onboarding Journey Copilot; the agent would map seller activity against this plan in real time to generate personalized weekly priorities.",
+          "Compares AI use cases across sales content, coaching, forecasting, operations, and planning to decide where third-party partners are needed vs. in-house build. Ranks cross-system content retrieval and just-in-time coaching as high-value, high-effort items without a clear owner.",
       },
       {
         id: 4,
-        title: "RRD AI Strategy — Go-to-market & Infrastructure",
-        subtitle: "Google Docs · Strategy",
+        title: "Sales Manager 1:1 Coaching Framework",
+        subtitle: "Google Docs · Sales Enablement",
         iconUrl: GDOCS_ICON,
         iconFallback: null,
-        author: "AI / BPO Office",
+        author: "Sales Enablement",
         excerpt:
-          "Internal AI strategy document covering infrastructure investments and go-to-market AI priorities. Confirms Gemini as the horizontal AI platform; Glean is scoped as the knowledge layer and cross-system retrieval solution. Strategy explicitly values tools that complement rather than replace Gemini, Salesforce, and existing LMS investments.",
+          "Defines how managers review seller skill gaps, curriculum completion and results, deal-stage progression, and where deals stall — to coach in recurring 1:1s. The blueprint for a just-in-time coaching agent that assembles this view automatically before each meeting.",
       },
     ],
 
     followUpQuery:
-      "Draft a 90-day Glean pilot proposal to share with Sales Enablement leadership",
+      "Draft a 90-day Glean pilot proposal for the AI committee and Sales Enablement",
 
     chatHistory: {
-      today: ["Gemini rollout — Go-to-market status"],
+      today: ["AI stack normalization — where Glean fits"],
       recent: [
-        "AI + Automation backlog — Sales & Onboarding...",
-        "Gemini Gems — Sales library...",
-        "Proposal platform integration plan...",
-        "Salesforce AI initiatives — Sales Programs evaluation...",
-        "RRD AI strategy — Infrastructure & Go-to-market...",
-        "Glean vs Gemini — Where each plays...",
+        "Gemini Enterprise — rollout & connection gaps...",
+        "Agentforce POC — API / MCP / Drive / crawler...",
+        "Just-in-time coaching agent — manager 1:1s...",
+        "Content governance agent — sprawl detection...",
+        "Glean vs. Gemini vs. Agentforce — where each plays...",
+        "90-day pilot — velocity & time-to-first-sale...",
       ],
     },
 
     showWork: {
       searchQuery:
-        "gemini rollout sales enablement automation backlog onboarding time to first sale sales programs evaluation",
+        "gemini enterprise agentforce poc knowledge layer pilot agents manager coaching pipeline velocity time to first sale",
       searching: [
         {
           icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Gemini Rollout Plan — Go-to-Market...",
+          label: "Gemini Enterprise — Rev Team Rollout Plan...",
         },
         {
-          icon: GSHEETS_ICON,
+          icon: SALESFORCE_ICON,
           iconFallback: null,
-          label: "Automation Backlog — Sales & Onboarding...",
+          label: "Agentforce POC — Architecture Notes...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
@@ -602,24 +600,24 @@ Track:
         {
           icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Gemini Rollout Plan — Go-to-Market...",
+          label: "Gemini Enterprise — Rev Team Rollout Plan...",
         },
         {
           icon: GSHEETS_ICON,
           iconFallback: null,
-          label: "Automation Backlog — Sales & Onboarding...",
+          label: "AI Use-Case Prioritization Matrix...",
         },
         {
-          icon: LMS_ICON,
+          icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Onboarding Plan — Enterprise Sellers (Days 1–90)...",
+          label: "Sales Manager 1:1 Coaching Framework...",
         },
       ],
       synthesizing: {
         icon: GDOCS_ICON,
         iconFallback: null,
-        label: "Glean Pilot Proposal — Sales & Onboarding Agents",
-        note: "Proposing three Glean agents that complement Gemini and Salesforce, focused on fast, measurable wins.",
+        label: "Glean Pilot Proposal — AI Stack Normalization",
+        note: "Positioning Glean as the horizontal knowledge layer and scoping three agents that complement Gemini and Agentforce with measurable 90-day outcomes.",
       },
     },
   },
