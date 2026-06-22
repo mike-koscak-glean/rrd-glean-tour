@@ -39,7 +39,7 @@ export const flows = [
     },
     greeting: "Good afternoon",
     userQuery:
-      "I'm prepping for a discovery call with a healthcare prospect tomorrow. Instead of me digging through the 14+ microsites, the Sellers Library, Drive, and Responsive, pull it together: what should I review right now, what questions should I ask, and which RRD materials are best for this stage?",
+      "I have a discovery call with a healthcare prospect tomorrow. What should I review to prep, what questions should I ask, and which RRD materials are best for this stage?",
 
     aiResponse: `Here's your discovery prep for tomorrow's healthcare call.
 
@@ -171,7 +171,7 @@ Want me to turn this into a one-page discovery brief you can bring into the room
     },
     greeting: "Good afternoon",
     userQuery:
-      "I'm responding to an RFP for packaging and logistics services. Pull the strongest approved content across Responsive, Drive, and the Sellers Library — the best reusable answers, the supporting proof points, and the exact source documents I should use — and flag anything that's stale or missing.",
+      "I'm responding to an RFP for packaging and logistics services. What's the strongest approved content I can reuse — the best answers, proof points, and source documents — and is anything stale or missing?",
 
     aiResponse: `Here's the strongest approved content for the packaging & logistics RFP.
 
@@ -304,7 +304,7 @@ Want a first-pass executive summary and differentiators section drafted from thi
     },
     greeting: "Good afternoon",
     userQuery:
-      "Two of my reps have late-stage deals that are slipping. Summarize where each deal stands, what risks you see, and what coaching I should give each rep before their next customer meeting — pull from Salesforce, the LMS, and the call transcripts so I'm not reconstructing this by hand.",
+      "Two of my reps have late-stage deals that are slipping. Where does each deal stand, what risks do you see, and what coaching should I give each rep before their next customer meeting?",
 
     aiResponse: `Here's where both at-risk deals stand and how to coach each rep, pulled from Salesforce, the LMS, and recent call transcripts.
 
@@ -432,7 +432,7 @@ Want this as a coaching agenda for each 1:1?`,
     },
     greeting: "Good afternoon",
     userQuery:
-      "I'm new to RRD and I have my first meeting next week with a manufacturing prospect. Give me the basics: what we sell into this segment, the key discovery questions, the best intro materials, and what I should learn first — I don't know which of the 14 microsites to even start with.",
+      "I'm new to RRD and I have my first meeting next week with a manufacturing prospect. What do we sell into this segment, what are the key discovery questions, and what should I review first?",
 
     aiResponse: `Welcome to RRD — here's a starting path for your first manufacturing meeting.
 
@@ -489,7 +489,7 @@ Want a 2-week ramp plan built from these materials?`,
         iconFallback: null,
         author: "Sales Enablement",
         excerpt:
-          "One indexed entry point to the core case studies, one-pagers, and decks a new seller should learn first — replacing a hunt across the 14+ microsites.",
+          "One indexed entry point to the core case studies, one-pagers, and decks a new seller should learn first.",
       },
     ],
 
@@ -545,7 +545,7 @@ Want a 2-week ramp plan built from these materials?`,
         icon: GDOCS_ICON,
         iconFallback: null,
         label: "Guided Ramp Path — New Seller, Manufacturing",
-        note: "Turning fragmented onboarding content across 14+ microsites into a single guided path to compress time-to-onboard.",
+        note: "Assembling the manufacturing intro materials, onboarding checklist, and discovery questions into one starting path.",
       },
     },
   },
