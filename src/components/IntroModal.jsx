@@ -25,15 +25,18 @@ const MaskedIcon = ({ src, size = 20, color = "#1C5BE0" }) => (
 const bullets = [
   {
     icon: `${GLEAN_IMG}/feather/search.svg`,
-    text: "Fix content overload for ~900 sellers — surface the right deck, battlecard, or proposal from Salesforce, Google Drive, and internal microsites in seconds",
+    title: "End the content hunt",
+    text: "The right deck, battlecard, or proposal from Salesforce, Drive, and 14+ microsites — in seconds, not tabs.",
   },
   {
     icon: `${GLEAN_IMG}/lightbulb-3.svg`,
-    text: "Accelerate seller onboarding and ramp with a governed, persona-aware assistant that complements RRD's Gemini and Salesforce investments",
+    title: "Ramp sellers faster",
+    text: "A persona-aware assistant that complements RRD's Gemini and Salesforce investments.",
   },
   {
     icon: `${GLEAN_IMG}/feather/lock.svg`,
-    text: "Keep sensitive content secure with permission-aware access — every seller sees only what they're allowed to see, with full citations and auditable reasoning",
+    title: "Secure by permission",
+    text: "Every seller sees only what they're allowed to — with full citations and auditable reasoning.",
   },
 ];
 
@@ -90,12 +93,17 @@ export default function IntroModal({ onDismiss }) {
         <div className="flex flex-col gap-4 mb-8">
           {bullets.map((b, i) => (
             <div key={i} className="flex items-start gap-3">
-              <div className="mt-0.5 flex-shrink-0">
-                <MaskedIcon src={b.icon} size={18} color="#1C5BE0" />
+              <div className="mt-0.5 flex-shrink-0 w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+                <MaskedIcon src={b.icon} size={17} color="#1C5BE0" />
               </div>
-              <p className="text-sm text-glean-text leading-relaxed">
-                {b.text}
-              </p>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-glean-text leading-snug">
+                  {b.title}
+                </p>
+                <p className="text-[13px] text-glean-gray leading-snug mt-0.5">
+                  {b.text}
+                </p>
+              </div>
             </div>
           ))}
         </div>

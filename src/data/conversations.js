@@ -1,5 +1,3 @@
-import csodLogo from "../csod_logo.png";
-
 const GLEAN_IMG = "https://app.glean.com/images";
 
 const GDOCS_ICON = `https://app.glean.com/static/proxy/gdriveicons/32/type/application/vnd.google-apps.document`;
@@ -10,10 +8,10 @@ const SALESFORCE_ICON = `${GLEAN_IMG}/logos/salesforce.svg`;
 const GONG_ICON = `${GLEAN_IMG}/logos/gong.svg`;
 const GLOBE_ICON = `${GLEAN_IMG}/feather/globe.svg`;
 
-const LMS_ICON = csodLogo;
+// LMS (Cornerstone) — show a lettered chip instead of a vendor logo.
+const LMS_FALLBACK = { letter: "L", color: "#1C5BE0" };
 
-// "Responsive" is RRD's RFP/proposal content system; no CDN logo, so use a lettered chip.
-const RESPONSIVE_FALLBACK = { letter: "R", color: "#5B3DF5" };
+const RESPONSIVE_ICON = "https://www.responsive.io/icon.svg";
 
 /* ═══════════════════════════════════════════════════════════════
  * Flows realigned to the June 18, 2026 "Glean & RRD" call.
@@ -43,31 +41,21 @@ export const flows = [
     userQuery:
       "I'm prepping for a discovery call with a healthcare prospect tomorrow. Instead of me digging through the 14+ microsites, the Sellers Library, Drive, and Responsive, pull it together: what should I review right now, what questions should I ask, and which RRD materials are best for this stage?",
 
-    aiResponse: `Here's your discovery-stage prep pack for the healthcare opportunity — pulled from across your seller systems into one answer.
+    aiResponse: `Here's your discovery prep for tomorrow's healthcare call.
 
-**Why you're seeing one answer instead of 14 tabs**
-This stitches together the discovery-stage content that's normally scattered across the microsites, the Sellers Library, Drive, and Responsive — so you're not hunting for it the night before.¹²
-
-**What to review now (in priority order)**
-- **Healthcare Discovery Playbook** — the pain themes and talking points that matter most for healthcare buyers.¹
-- **Healthcare Capabilities Overview** — how to position RRD's relevant capabilities early, before you're in a formal proposal.³
-- **Reusable proposal answers** — approved language for the questions healthcare prospects almost always ask, so nothing catches you flat.⁴
+**What to review first (in priority order)**
+- **Healthcare Discovery Playbook** — the pain themes and talking points that land with healthcare buyers.¹
+- **Healthcare Capabilities Overview** — how to position RRD early, before a formal proposal.³
+- **Reusable proposal answers** — approved language for the questions these buyers most often ask.⁴
 
 **Questions to ask on the call**
-- *"Where does your current print, packaging, and communications workflow slow you down — design, sourcing, compliance, or production?"*
-- *"How are regulatory and brand-compliance requirements handled across your materials today?"*
-- *"Who else weighs in when you evaluate a partner, and what does a successful first project look like to them?"*
+- *"Where does your print, packaging, and compliance workflow slow you down today?"*
+- *"How are regulatory and brand-compliance requirements handled across your materials?"*
+- *"Who else weighs in on a partner decision, and what does a successful first project look like?"*
 
-**Suggested 30-minute prep plan**
-1. Discovery Playbook pain themes (10 min)¹
-2. Capabilities talking points (8 min)³
-3. Discovery questions (5 min)¹
-4. Likely-objection answers from Responsive (7 min)⁴
+The Sellers Library index confirms these are the canonical discovery-stage assets for healthcare, so you're working from the current versions.²
 
-**Illustrative impact**
-Instead of checking microsites, Drive, Responsive, and the Sellers Library separately, prep like this could go from a typical **30–45 minutes of hunting to a few minutes** — a time-savings hypothesis worth confirming in a "day in the life" blueprint, with a sharper discovery as the upside.²
-
-When you're done, ask me to turn this into a one-page discovery brief you can bring into the room.`,
+Want me to turn this into a one-page discovery brief you can bring into the room?`,
 
     sources: [
       {
@@ -104,8 +92,8 @@ When you're done, ask me to turn this into a one-page discovery brief you can br
         id: 4,
         title: "Past Healthcare Proposal Answers",
         subtitle: "Responsive · RFP / Proposal",
-        iconUrl: null,
-        iconFallback: RESPONSIVE_FALLBACK,
+        iconUrl: RESPONSIVE_ICON,
+        iconFallback: null,
         author: "Proposal / RFP Team",
         excerpt:
           "Reusable, approved response content that helps sellers anticipate the questions healthcare prospects ask before a formal proposal is ever requested.",
@@ -155,8 +143,8 @@ When you're done, ask me to turn this into a one-page discovery brief you can br
           label: "Healthcare Capabilities Overview...",
         },
         {
-          icon: null,
-          iconFallback: RESPONSIVE_FALLBACK,
+          icon: RESPONSIVE_ICON,
+          iconFallback: null,
           label: "Past Healthcare Proposal Answers...",
         },
       ],
@@ -164,7 +152,7 @@ When you're done, ask me to turn this into a one-page discovery brief you can br
         icon: GDOCS_ICON,
         iconFallback: null,
         label: "Discovery Prep Pack — Healthcare Opportunity",
-        note: "Pulling stage-specific content from the microsites, Sellers Library, Drive, and Responsive into one prep pack so the seller stops digging.",
+        note: "Pulling stage-specific discovery content from the Sellers Library, Drive, and Responsive into one prep pack.",
       },
     },
   },
@@ -185,46 +173,30 @@ When you're done, ask me to turn this into a one-page discovery brief you can br
     userQuery:
       "I'm responding to an RFP for packaging and logistics services. Pull the strongest approved content across Responsive, Drive, and the Sellers Library — the best reusable answers, the supporting proof points, and the exact source documents I should use — and flag anything that's stale or missing.",
 
-    aiResponse: `Here's the strongest approved content for the packaging and logistics RFP, assembled from across your systems.
+    aiResponse: `Here's the strongest approved content for the packaging & logistics RFP.
 
-**Top reusable answer themes**
-The most reused, most recently approved answers for this kind of RFP cluster into four blocks:¹
-- Packaging capabilities and service differentiators
-- Logistics and supply-chain service model
-- Implementation and onboarding approach
-- Quality, compliance, and sustainability
+**Best content to reuse (ranked)**
+1. **Approved Packaging Services Response Library** — packaging capabilities and differentiators.¹
+2. **Logistics Solutions Overview** — pull the service-model section as-is rather than rewriting.²
+3. **Sellers Library — Proposal Content by Type** — the canonical index of what's approved to reuse.³
+4. **Packaging Case Study Collection** — outcomes and metrics to cite as proof.⁴
 
-**Recommended response content**
-- Lead the **executive summary** with the integrated packaging-plus-logistics story — it's RRD's clearest differentiator versus point vendors.¹²
-- For **differentiators**, reuse the approved language on consolidated sourcing and speed-to-shelf.¹
-- For the **service model**, pull the logistics overview rather than rewriting from scratch.²
+**How to frame it**
+Lead the executive summary with the integrated packaging-plus-logistics story — RRD's clearest differentiator versus point vendors.¹²
 
-**Supporting proof points**
-- Customer outcomes and operational metrics from the packaging case study collection.⁴
-- Reference results you can cite directly in the response.⁴
-
-**Best source materials to open (ranked)**
-1. Approved Packaging Services Response Library (Responsive)¹
-2. Logistics Solutions Overview (Slides)²
-3. Sellers Library — Proposal Content by Type (Sheets)³
-4. Packaging Case Study Collection (Docs)⁴
-
-**Gaps and risks to fix before you send**
-- The sustainability proof point exists only as a loose Google Doc and was never promoted into Responsive — it'll go stale. Promote it so it stays canonical.³
+**Flag before you send**
+- The sustainability proof point exists only as a loose Google Doc and was never promoted into Responsive — promote it so it stays canonical.³
 - Two logistics answers reference pre-consolidation branding — refresh before reuse.³
 
-**Illustrative impact**
-Everything above is *retrieved from approved sources with provenance and freshness flags* — not generated — so you stay in control. Pulling it into one place could compress content-gathering from **hours of cross-system hunting to a few minutes**, a workflow-time hypothesis to validate alongside more consistent, on-brand responses.¹
-
-Want me to draft a first-pass executive summary and differentiators section from this content?`,
+Want a first-pass executive summary and differentiators section drafted from this?`,
 
     sources: [
       {
         id: 1,
         title: "Approved Packaging Services Response Library",
         subtitle: "Responsive · RFP / Proposal",
-        iconUrl: null,
-        iconFallback: RESPONSIVE_FALLBACK,
+        iconUrl: RESPONSIVE_ICON,
+        iconFallback: null,
         author: "Proposal / RFP Team",
         excerpt:
           "Previously approved answers covering packaging capabilities, service differentiators, and implementation language, tagged by topic and ranked by how recently they were approved and reused.",
@@ -281,8 +253,8 @@ Want me to draft a first-pass executive summary and differentiators section from
         "packaging logistics RFP approved answers responsive proposal content sellers library case studies proof points",
       searching: [
         {
-          icon: null,
-          iconFallback: RESPONSIVE_FALLBACK,
+          icon: RESPONSIVE_ICON,
+          iconFallback: null,
           label: "Approved Packaging Services Response Library...",
         },
         {
@@ -294,8 +266,8 @@ Want me to draft a first-pass executive summary and differentiators section from
       ],
       reading: [
         {
-          icon: null,
-          iconFallback: RESPONSIVE_FALLBACK,
+          icon: RESPONSIVE_ICON,
+          iconFallback: null,
           label: "Approved Packaging Services Response Library...",
         },
         {
@@ -334,42 +306,17 @@ Want me to draft a first-pass executive summary and differentiators section from
     userQuery:
       "Two of my reps have late-stage deals that are slipping. Summarize where each deal stands, what risks you see, and what coaching I should give each rep before their next customer meeting — pull from Salesforce, the LMS, and the call transcripts so I'm not reconstructing this by hand.",
 
-    aiResponse: `Here's a just-in-time coaching read on both at-risk deals, assembled from Salesforce, the LMS, and recent call transcripts.
+    aiResponse: `Here's where both at-risk deals stand and how to coach each rep, pulled from Salesforce, the LMS, and recent call transcripts.
 
-**Portfolio snapshot**
-- **Acme Healthcare Expansion** — greater risk. Late stage, but the next step has slipped twice and a key stakeholder hasn't been engaged.¹
-- **Regional Manufacturing Renewal** — at risk on timeline, not on intent. Stalled on a single open task.²
+**Where each deal stands**
+- **Acme Healthcare Expansion** — *higher risk.* Stage hasn't moved in 3 weeks, close date already pushed, and a key stakeholder is still unengaged. Pricing came up early on the call but was never followed up.¹⁴
+- **Regional Manufacturing Renewal** — *at risk on timeline, not intent.* One open procurement approval is the only blocker; no mutual close plan logged yet.²
 
-**Deal-by-deal inspection**
+**Coaching before the next meeting**
+- *Acme rep:* multi-thread to the economic buyer this week and reopen the pricing thread — the multi-threading module was assigned but never completed.³⁴ Ask: *"Who hasn't said yes yet, and what has to be true to close this quarter?"*
+- *Regional rep:* build a mutual close plan with the procurement milestone dated.² Ask: *"What's the approval path, and how do we de-risk it this week?"*
 
-*Acme Healthcare Expansion*¹⁴
-- Stage hasn't advanced in 3 weeks; close date already pushed once.
-- The discovery recap shows pricing came up early but was never followed up.⁴
-- Coaching content on multi-threading was assigned but not completed.³
-
-*Regional Manufacturing Renewal*²
-- A single procurement approval is the blocker; everything else is ready.
-- Rep hasn't logged a mutual close plan.
-
-**Coaching recommendations**
-
-*For the rep on Acme:*³⁴
-- Multi-thread now — get to the economic buyer this week.
-- Revisit the pricing thread the call surfaced before it festers.
-- Ask: *"What has to be true for this to close this quarter, and who hasn't said yes yet?"*
-
-*For the rep on Regional Manufacturing:*²
-- Build a mutual close plan with the procurement milestone dated.
-- Ask: *"What's the approval path, and what can we do this week to de-risk it?"*
-
-**Suggested inspection cadence**
-- Weekly: stage age, slipped next steps, and assigned-vs-completed coaching content.
-- Watch: deals with no activity in 7+ days and any close date pushed more than once.
-
-**Why this matters**
-This replaces manual deal-inspection prep with a live read across opportunity context and recent deal activity — so managers coach from context and intervene earlier on stuck deals. (Illustrative; the time saved and pipeline lift are hypotheses to validate, not claimed RRD numbers.)¹²
-
-Want me to turn this into a coaching agenda for each 1:1?`,
+Want this as a coaching agenda for each 1:1?`,
 
     sources: [
       {
@@ -396,8 +343,8 @@ Want me to turn this into a coaching agenda for each 1:1?`,
         id: 3,
         title: "Sales Coaching Framework by Stage",
         subtitle: "LMS · Sales Enablement",
-        iconUrl: LMS_ICON,
-        iconFallback: null,
+        iconUrl: null,
+        iconFallback: LMS_FALLBACK,
         author: "Sales Enablement",
         excerpt:
           "Manager-facing guide on how to coach reps at each sales stage, including common skill gaps and intervention prompts. Shows which coaching content was assigned versus completed.",
@@ -452,8 +399,8 @@ Want me to turn this into a coaching agenda for each 1:1?`,
           label: "Opportunity — Acme Healthcare Expansion...",
         },
         {
-          icon: LMS_ICON,
-          iconFallback: null,
+          icon: null,
+          iconFallback: LMS_FALLBACK,
           label: "Sales Coaching Framework by Stage...",
         },
         {
@@ -487,31 +434,21 @@ Want me to turn this into a coaching agenda for each 1:1?`,
     userQuery:
       "I'm new to RRD and I have my first meeting next week with a manufacturing prospect. Give me the basics: what we sell into this segment, the key discovery questions, the best intro materials, and what I should learn first — I don't know which of the 14 microsites to even start with.",
 
-    aiResponse: `Welcome — here's a guided starting path for your first manufacturing meeting, instead of guessing which microsite to open.
+    aiResponse: `Welcome to RRD — here's a starting path for your first manufacturing meeting.
 
-**The short version**
-RRD sells into manufacturing across packaging, labels, supply-chain and logistics, and commercial print/communications. Before the first meeting, focus on the buyer's world and a strong discovery — not the full catalog.¹
+RRD sells into manufacturing across packaging, labels, supply-chain and logistics, and commercial print. For a first meeting, focus on the buyer's world and a strong discovery — not the full catalog.¹
 
 **What to learn first (in order)**
 1. **Manufacturing Industry Overview** — who you're selling to and what they care about.¹
-2. **New Seller Onboarding Checklist** — the must-complete items for week one.²
-3. **Discovery Questions by Vertical** — the approved questions for a first manufacturing conversation.³
-4. **Manufacturing Starter Pack** — the indexed set of case studies and one-pagers to know cold.⁴
+2. **New Seller Onboarding Checklist** — the week-one must-dos.²
+3. **Discovery Questions by Vertical** — approved questions for a first conversation.³
+4. **Manufacturing Starter Pack** — the case studies and one-pagers to know cold.⁴
 
-**First-meeting prep**
-- *Intro talk track:* lead with RRD's integrated packaging + supply-chain story, not a product list.¹
-- *Discovery questions:* "Where does your packaging or labeling workflow slow down today?" · "How are you balancing speed-to-shelf with consistency across SKUs?" · "Who owns the decision when you evaluate a partner?"³
-- *Common buyer pains:* fragmented vendors, slow time-to-market, proving ROI across print and digital.¹
+**For the meeting**
+- *Talk track:* lead with RRD's integrated packaging + supply-chain story, not a product list.¹
+- *Ask:* "Where does your packaging or labeling workflow slow down?" · "How do you balance speed-to-shelf with consistency across SKUs?" · "Who owns the partner decision?"³
 
-**Recommended 2-week ramp path**
-- *Week 1 (required):* Industry overview, onboarding checklist, discovery questions.¹²³
-- *Week 2 (deeper):* Starter-pack case studies and the capabilities you'll position most.⁴
-- *Optional:* long-form background decks — searchable when you need them, not required now.⁴
-
-**Why this matters**
-This turns fragmented content across 14+ microsites into a single guided path, cutting the dependency on tribal knowledge. (Time-to-onboard is the value hypothesis to validate in a "day in the life" blueprint — productive in your first weeks, not your first quarter.)²
-
-When you're ready, ask me to build a 2-week ramp plan from these materials.`,
+Want a 2-week ramp plan built from these materials?`,
 
     sources: [
       {
@@ -528,8 +465,8 @@ When you're ready, ask me to build a 2-week ramp plan from these materials.`,
         id: 2,
         title: "New Seller Onboarding Checklist",
         subtitle: "LMS · Sales Onboarding",
-        iconUrl: LMS_ICON,
-        iconFallback: null,
+        iconUrl: null,
+        iconFallback: LMS_FALLBACK,
         author: "Sales Onboarding",
         excerpt:
           "Structured onboarding path covering must-complete training, key assets, and early-ramp milestones for the first 90 days.",
@@ -581,8 +518,8 @@ When you're ready, ask me to build a 2-week ramp plan from these materials.`,
           label: "Manufacturing Industry Overview for Sellers...",
         },
         {
-          icon: LMS_ICON,
-          iconFallback: null,
+          icon: null,
+          iconFallback: LMS_FALLBACK,
           label: "New Seller Onboarding Checklist...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
