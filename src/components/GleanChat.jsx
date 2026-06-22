@@ -110,7 +110,8 @@ const CALLOUTS = [
     arrowAlign: "left",
   },
   {
-    text: "In a live environment, these open directly in Confluence, Jira, Remedy, Workday — wherever the doc lives.",
+    // {apps} is replaced per-flow with the systems that flow actually cites
+    text: "In a live environment, these open directly in {apps} — wherever the doc lives.",
     arrowSide: "top",
     arrowAlign: "left",
   },
@@ -129,6 +130,7 @@ export default function GleanChat({ flow, onRestart }) {
     sources,
     chatHistory,
     showWork: showWorkData,
+    sourceApps,
   } = flow;
 
   const SHOW_WORK_STEPS = buildShowWorkSteps(showWorkData);
@@ -508,7 +510,7 @@ export default function GleanChat({ flow, onRestart }) {
           <GuidedCallout
             key={callout.idx}
             targetRef={callout.ref}
-            text={CALLOUTS[callout.idx].text}
+            text={CALLOUTS[callout.idx].text.replace("{apps}", sourceApps)}
             arrowSide={CALLOUTS[callout.idx].arrowSide}
             arrowAlign={CALLOUTS[callout.idx].arrowAlign}
             onDismiss={handleCalloutDismiss}

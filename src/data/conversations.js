@@ -33,6 +33,7 @@ export const flows = [
    * ═══════════════════════════════════════════════════════ */
   {
     id: "account-executive",
+    sourceApps: "Google Drive, Responsive, and the Sellers Library",
     persona: {
       title: "Account Executive",
       subtitle: "Enterprise seller, active deal cycle",
@@ -165,6 +166,7 @@ Want me to turn this into a one-page discovery brief you can bring into the room
    * ═══════════════════════════════════════════════════════ */
   {
     id: "rfp-lead",
+    sourceApps: "Responsive, Google Drive, and the Sellers Library",
     persona: {
       title: "Proposal & RFP Lead",
       subtitle: "Manager, Proposals & Content",
@@ -298,6 +300,7 @@ Want a first-pass executive summary and differentiators section drafted from thi
    * ═══════════════════════════════════════════════════════ */
   {
     id: "sales-manager",
+    sourceApps: "Salesforce, your LMS, and Gong",
     persona: {
       title: "Frontline Sales Manager",
       subtitle: "Sales manager, deal coaching",
@@ -426,6 +429,7 @@ Want this as a coaching agenda for each 1:1?`,
    * ═══════════════════════════════════════════════════════ */
   {
     id: "new-seller",
+    sourceApps: "Google Drive, your LMS, and the Sellers Library",
     persona: {
       title: "New Seller",
       subtitle: "New hire, first 90 days",
