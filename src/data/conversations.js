@@ -5,7 +5,6 @@ const GSLIDES_ICON = `https://app.glean.com/static/proxy/gdriveicons/32/type/app
 const GSHEETS_ICON = `https://app.glean.com/static/proxy/gdriveicons/32/type/application/vnd.google-apps.spreadsheet`;
 const GDRIVE_ICON = `${GLEAN_IMG}/logos/gdrive3.svg`;
 const SALESFORCE_ICON = `${GLEAN_IMG}/logos/salesforce.svg`;
-const GONG_ICON = `${GLEAN_IMG}/logos/gong.svg`;
 const GLOBE_ICON = `${GLEAN_IMG}/feather/globe.svg`;
 
 // LMS (Cornerstone) — show a lettered chip instead of a vendor logo.
@@ -33,7 +32,7 @@ export const flows = [
    * ═══════════════════════════════════════════════════════ */
   {
     id: "account-executive",
-    sourceApps: "Google Drive, Responsive, and the Sellers Library",
+    sourceApps: "Salesforce, Google Drive, Responsive, and the Sellers Library",
     persona: {
       title: "Account Executive",
       subtitle: "Enterprise seller, active deal cycle",
@@ -43,6 +42,8 @@ export const flows = [
       "I have a discovery call with a healthcare prospect tomorrow. What should I review to prep, what questions should I ask, and which RRD materials are best for this stage?",
 
     aiResponse: `Here's your discovery prep for tomorrow's healthcare call.
+
+The Salesforce opportunity shows this is an early-stage expansion — two contacts engaged and no proposal sent yet — so keep this discovery-led, not pricing-led.⁵
 
 **What to review first (in priority order)**
 - **Healthcare Discovery Playbook** — the pain themes and talking points that land with healthcare buyers.¹
@@ -99,6 +100,16 @@ Want me to turn this into a one-page discovery brief you can bring into the room
         excerpt:
           "Reusable, approved response content that helps sellers anticipate the questions healthcare prospects ask before a formal proposal is ever requested.",
       },
+      {
+        id: 5,
+        title: "Opportunity — Meridian Health Expansion",
+        subtitle: "Salesforce · Opportunity",
+        iconUrl: SALESFORCE_ICON,
+        iconFallback: null,
+        author: "Salesforce",
+        excerpt:
+          "Live deal record for the healthcare opportunity: current stage, engaged contacts, and recent activity. Shows an early-stage expansion with two contacts engaged and no proposal sent yet.",
+      },
     ],
 
     followUpQuery:
@@ -118,21 +129,26 @@ Want me to turn this into a one-page discovery brief you can bring into the room
 
     showWork: {
       searchQuery:
-        "healthcare discovery prep playbook capabilities discovery questions proposal answers sellers library",
+        "healthcare discovery prep playbook capabilities discovery questions proposal answers sellers library salesforce opportunity stage",
       searching: [
+        {
+          icon: SALESFORCE_ICON,
+          iconFallback: null,
+          label: "Opportunity — Meridian Health Expansion...",
+        },
         {
           icon: GDOCS_ICON,
           iconFallback: null,
           label: "Healthcare Discovery Playbook...",
         },
-        {
-          icon: GSHEETS_ICON,
-          iconFallback: null,
-          label: "Sellers Library — Discovery Content Index...",
-        },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
       reading: [
+        {
+          icon: SALESFORCE_ICON,
+          iconFallback: null,
+          label: "Opportunity — Meridian Health Expansion...",
+        },
         {
           icon: GDOCS_ICON,
           iconFallback: null,
@@ -143,17 +159,12 @@ Want me to turn this into a one-page discovery brief you can bring into the room
           iconFallback: null,
           label: "Healthcare Capabilities Overview...",
         },
-        {
-          icon: RESPONSIVE_ICON,
-          iconFallback: null,
-          label: "Past Healthcare Proposal Answers...",
-        },
       ],
       synthesizing: {
         icon: GDOCS_ICON,
         iconFallback: null,
         label: "Discovery Prep Pack — Healthcare Opportunity",
-        note: "Pulling stage-specific discovery content from the Sellers Library, Drive, and Responsive into one prep pack.",
+        note: "Grounding stage-specific content from the Sellers Library, Drive, and Responsive in the live Salesforce deal context.",
       },
     },
   },
@@ -166,7 +177,7 @@ Want me to turn this into a one-page discovery brief you can bring into the room
    * ═══════════════════════════════════════════════════════ */
   {
     id: "rfp-lead",
-    sourceApps: "Responsive, Google Drive, and the Sellers Library",
+    sourceApps: "Salesforce, Responsive, Google Drive, and the Sellers Library",
     persona: {
       title: "Proposal & RFP Lead",
       subtitle: "Manager, Proposals & Content",
@@ -185,6 +196,9 @@ Want me to turn this into a one-page discovery brief you can bring into the room
 
 **How to frame it**
 Lead the executive summary with the integrated packaging-plus-logistics story — RRD's clearest differentiator versus point vendors.¹²
+
+**Tailor it to the account**
+The Salesforce opportunity notes the prospect ranked sustainability and speed-to-shelf as their top evaluation criteria — lead with those themes, which makes promoting the sustainability proof point below even more important.⁵
 
 **Flag before you send**
 - The sustainability proof point exists only as a loose Google Doc and was never promoted into Responsive — promote it so it stays canonical.³
@@ -233,6 +247,16 @@ Want a first-pass executive summary and differentiators section drafted from thi
         excerpt:
           "Curated customer outcomes and operational results that can be cited as supporting evidence in packaging and logistics proposals.",
       },
+      {
+        id: 5,
+        title: "Opportunity — Crestline Foods Packaging RFP",
+        subtitle: "Salesforce · Opportunity",
+        iconUrl: SALESFORCE_ICON,
+        iconFallback: null,
+        author: "Salesforce",
+        excerpt:
+          "Live deal record for the RFP: scope, incumbent vendor, key contacts, and the evaluation criteria the prospect shared — with sustainability and speed-to-shelf ranked as top priorities.",
+      },
     ],
 
     followUpQuery:
@@ -252,30 +276,30 @@ Want a first-pass executive summary and differentiators section drafted from thi
 
     showWork: {
       searchQuery:
-        "packaging logistics RFP approved answers responsive proposal content sellers library case studies proof points",
+        "packaging logistics RFP approved answers responsive proposal content sellers library case studies proof points salesforce opportunity evaluation criteria",
       searching: [
+        {
+          icon: SALESFORCE_ICON,
+          iconFallback: null,
+          label: "Opportunity — Crestline Foods Packaging RFP...",
+        },
         {
           icon: RESPONSIVE_ICON,
           iconFallback: null,
           label: "Approved Packaging Services Response Library...",
-        },
-        {
-          icon: GSLIDES_ICON,
-          iconFallback: null,
-          label: "Logistics Solutions Overview...",
         },
         { icon: null, iconFallback: null, label: "+5 more" },
       ],
       reading: [
         {
+          icon: SALESFORCE_ICON,
+          iconFallback: null,
+          label: "Opportunity — Crestline Foods Packaging RFP...",
+        },
+        {
           icon: RESPONSIVE_ICON,
           iconFallback: null,
           label: "Approved Packaging Services Response Library...",
-        },
-        {
-          icon: GSHEETS_ICON,
-          iconFallback: null,
-          label: "Sellers Library — Proposal Content by Type...",
         },
         {
           icon: GDOCS_ICON,
@@ -287,7 +311,7 @@ Want a first-pass executive summary and differentiators section drafted from thi
         icon: GDOCS_ICON,
         iconFallback: null,
         label: "RFP Response Pack — Packaging & Logistics",
-        note: "Reconciling Responsive, Drive, and the Sellers Library into one ranked, approved answer set and flagging stale or un-promoted content.",
+        note: "Matching approved content from Responsive, Drive, and the Sellers Library to the prospect's evaluation criteria in the Salesforce opportunity, and flagging stale content.",
       },
     },
   },
@@ -300,7 +324,7 @@ Want a first-pass executive summary and differentiators section drafted from thi
    * ═══════════════════════════════════════════════════════ */
   {
     id: "sales-manager",
-    sourceApps: "Salesforce, your LMS, and Gong",
+    sourceApps: "Salesforce, your LMS, and call recaps in Drive",
     persona: {
       title: "Frontline Sales Manager",
       subtitle: "Sales manager, deal coaching",
@@ -309,7 +333,7 @@ Want a first-pass executive summary and differentiators section drafted from thi
     userQuery:
       "Two of my reps have late-stage deals that are slipping. Where does each deal stand, what risks do you see, and what coaching should I give each rep before their next customer meeting?",
 
-    aiResponse: `Here's where both at-risk deals stand and how to coach each rep, pulled from Salesforce, the LMS, and recent call transcripts.
+    aiResponse: `Here's where both at-risk deals stand and how to coach each rep, pulled from Salesforce, the LMS, and recent call recaps.
 
 **Where each deal stands**
 - **Acme Healthcare Expansion** — *higher risk.* Stage hasn't moved in 3 weeks, close date already pushed, and a key stakeholder is still unengaged. Pricing came up early on the call but was never followed up.¹⁴
@@ -354,11 +378,11 @@ Want this as a coaching agenda for each 1:1?`,
       },
       {
         id: 4,
-        title: "Call Review — Acme Discovery Recap",
-        subtitle: "Gong · Call transcript",
-        iconUrl: GONG_ICON,
+        title: "Call Recap — Acme Discovery",
+        subtitle: "Google Docs · Call notes",
+        iconUrl: GDOCS_ICON,
         iconFallback: null,
-        author: "Gong",
+        author: "Account Team",
         excerpt:
           "Call notes showing what the rep covered and missed — including an early pricing signal that was never followed up — pinpointing where manager coaching is needed.",
       },
@@ -373,7 +397,7 @@ Want this as a coaching agenda for each 1:1?`,
         "Acme Healthcare — why is it stalling...",
         "Regional Manufacturing — what's the blocker...",
         "Coaching framework — skill gaps by stage...",
-        "Gong recap — pricing thread to revisit...",
+        "Call recap — pricing thread to revisit...",
         "Assigned vs. completed coaching content...",
         "Deal inspection cadence — what to watch weekly...",
       ],
@@ -381,7 +405,7 @@ Want this as a coaching agenda for each 1:1?`,
 
     showWork: {
       searchQuery:
-        "late stage deals slipping coaching salesforce opportunity stage risk LMS coaching framework gong call recap skill gaps",
+        "late stage deals slipping coaching salesforce opportunity stage risk LMS coaching framework call recap notes skill gaps",
       searching: [
         {
           icon: SALESFORCE_ICON,
@@ -407,16 +431,16 @@ Want this as a coaching agenda for each 1:1?`,
           label: "Sales Coaching Framework by Stage...",
         },
         {
-          icon: GONG_ICON,
+          icon: GDOCS_ICON,
           iconFallback: null,
-          label: "Call Review — Acme Discovery Recap...",
+          label: "Call Recap — Acme Discovery...",
         },
       ],
       synthesizing: {
         icon: GDOCS_ICON,
         iconFallback: null,
         label: "Coaching Read — Two At-Risk Deals",
-        note: "Correlating Salesforce stage signals, LMS coaching completion, and call transcripts into a just-in-time coaching brief per rep.",
+        note: "Correlating Salesforce stage signals, LMS coaching completion, and call recaps into a just-in-time coaching brief per rep.",
       },
     },
   },
